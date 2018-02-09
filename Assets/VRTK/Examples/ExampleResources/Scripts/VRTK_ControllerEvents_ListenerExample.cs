@@ -4,30 +4,7 @@
 
     public class VRTK_ControllerEvents_ListenerExample : MonoBehaviour
     {
-        public GameObject button;
-        public Animator buttonAnim;
 
-        /*
-        public GameObject sbutton;
-        public GameObject dbutton;
-        public GameObject cbutton;
-        public GameObject rbutton;
-        public GameObject pbutton;
-        public GameObject mbutton;
-        public GameObject bbutton;
-        public Animator sbuttonAnim;
-        public Animator dbuttonAnim;
-        public Animator cbuttonAnim;
-        public Animator rbuttonAnim;
-        public Animator pbuttonAnim;
-        public Animator mbuttonAnim;
-        public Animator bbuttonAnim;
-        */
-        public void TriggerButton (Animator anim) {
-            if (button.GetComponent<Button_Anim>() != null)
-                button.GetComponent<Button_Anim>().buttonType();
-            anim.SetTrigger("Push");
-        }
         private void Start()
         {
             if (GetComponent<VRTK_ControllerEvents>() == null)
@@ -102,11 +79,6 @@
 
         private void DoTriggerPressed(object sender, ControllerInteractionEventArgs e)
         {
-            //DebugLogger(VRTK_ControllerReference.GetRealIndex(e.controllerReference), "TRIGGER", "pressed", e);
-            //if(WhateverYouHit.GetComponent<Button_Anim>() != null)
-            //buttonAnim = GetComponent of whatever you hit
-            //button = Hit.gameobject;
-            TriggerButton(buttonAnim);
         }
 
         private void DoTriggerReleased(object sender, ControllerInteractionEventArgs e)
