@@ -5,20 +5,30 @@ using UnityEngine;
 public class ToppingSpawner : MonoBehaviour {
 
     private List<ToppingController> fridgeToppings = new List<ToppingController>();
+    private List<ToppingController> fridgeToppingHolder = new List<ToppingController>();
     private List<Transform> fridgeSpace = new List<Transform>();
     private List<ToppingController> sliceToppings = new List<ToppingController>();
     private List<Transform> spawnPoint = new List<Transform>();
 
     public Collider slicer;
 
+    private void Start()
+    {
+        
+    }
+
     private void FrigeSpawner()
     {
         // check if there is already a topping in there
         for (var i = 0; i < fridgeToppings.Count; i++)
-        {
-             Instantiate(fridgeToppings[i], fridgeSpace[i].position, fridgeSpace[i].rotation);
+        { 
+            Instantiate(fridgeToppings[i], fridgeSpace[i].position, fridgeSpace[i].rotation);
+            fridgeToppingHolder.Insert(i, fridgeToppings[i]);
+            
         }
+        // have a list the hold topping might have to be an array
     }
+
 
     private void SlicerSpawner()
     {
