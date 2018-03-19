@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PizzaController : MonoBehaviour {
-
-    
+public class PizzaController : MonoBehaviour
+{
+   
     private Material currentPizzaMaterial;
     private Topping pizzaTopping;
     private List<Topping> toppingOrder = new List<Topping>();

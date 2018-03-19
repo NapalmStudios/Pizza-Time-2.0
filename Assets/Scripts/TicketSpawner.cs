@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TicketSpawner : MonoBehaviour {
+public class TicketSpawner : MonoBehaviour
+{
+    public Ticket currentTicket;
 
     private List<Ticket> possibleTickets = new List<Ticket>();
     private Transform ticketPole;
-    private Ticket currentTicket;
 
-
+    public Ticket RandomTicket()
+    {
+        int randomNum = Random.Range(0, possibleTickets.Count - 1);
+        Ticket spawnTicket = possibleTickets[randomNum];
+        return spawnTicket;
+    }
     public Ticket SpawnTickets(Ticket toSpawn)
     {
-        Instantiate(currentTicket, ticketPole.position, ticketPole.rotation);
-        return toSpawn;
-    }
-
-	
+        currentTicket = Instantiate(toSpawn, ticketPole.position, ticketPole.rotation);
+        return currentTicket;
+    }	
 }

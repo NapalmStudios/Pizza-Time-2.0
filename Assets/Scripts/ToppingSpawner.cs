@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToppingSpawner : MonoBehaviour {
+public class ToppingSpawner : MonoBehaviour
+{
+    public Collider slicer;
 
     private List<ToppingController> fridgeToppings = new List<ToppingController>();
     private List<ToppingController> fridgeToppingHolder = new List<ToppingController>();
     private List<Transform> fridgeSpace = new List<Transform>();
     private List<ToppingController> sliceToppings = new List<ToppingController>();
     private List<Transform> spawnPoint = new List<Transform>();
-
-    public Collider slicer;
-
-    private void Start()
-    {
-        
-    }
 
     private void FrigeSpawner()
     {
@@ -28,7 +23,6 @@ public class ToppingSpawner : MonoBehaviour {
         }
         // have a list the hold topping might have to be an array
     }
-
 
     private void SlicerSpawner()
     {

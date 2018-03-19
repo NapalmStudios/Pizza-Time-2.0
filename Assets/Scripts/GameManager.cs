@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
     public static GameManager instance;
     public int cookTimer;
     public int burnTimmer;
     public List<Topping> multipleToppings = new List<Topping>();
-    private List<Ticket> currentTickets = new List<Ticket>();
 
-    private void AddToTicketList()
+    public List<Ticket> currentTickets = new List<Ticket>();
+
+    public void AddToTicketList()
     {
-        //currentTickets.Add() the ticket that spawned
+        // Add new ticket to list od tickets
+        //currentTickets.Add()
     }
 
     private void RemoveFromList()
     {
-
+        // remove forom list when pizza complete
     }
 
     private void Awake()
@@ -26,5 +28,10 @@ public class GameManager : MonoBehaviour {
         {
             instance = this;
         }        
+    }
+
+    public void PizzaCheck()
+    {
+        // check if pizza is correct to  a tick vurrent on a list
     }
 }

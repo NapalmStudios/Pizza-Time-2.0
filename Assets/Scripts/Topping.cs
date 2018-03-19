@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Pizza Topping")]
-public class Topping : ScriptableObject {
-
+public class Topping : ScriptableObject
+{
     public string ToppingName;
     public Material toppingMaterial;
     public Material cookedPizzaMaterial;
