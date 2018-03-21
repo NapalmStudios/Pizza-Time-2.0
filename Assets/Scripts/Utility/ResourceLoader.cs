@@ -30,11 +30,32 @@ namespace PizzaTime
         // ------------------------------------------------------------- \\
 
         // -------------- Two-Topping Material Variables ---------------------- \\
-        
+        public Material roniAndBaconMaterial;
+        public Material roniAndPeppersMaterial;
+        public Material roniAndMushMaterial;
+        public Material peppersAndMushMaterial;
+        public Material peppersAndBaconMaterial;
+        public Material baconAndMushMaterial;
         // -------------------------------------------------------------------- \\
+
+        // -------------- Three-Topping Material Variables ---------------------- \\
+        public Material roniAndBaconAndPeppersMaterial;
+        public Material roniAndBaconAndMushMaterial;
+        public Material roniAndPeppersAndMushMaterial;
+        public Material mushAndBaconAndPeppers;
+        // ---------------------------------------------------------------------- \\
+
+        // -------------- Specialty Material Variables ---------------------- \\
+        public Material theWorksMaterial;
+        // ------------------------------------------------------------------ \\
 
         // Loads Game Objects / Materials
         void Start()
+        {
+            LoadResources();
+        }
+
+        private void LoadResources()
         {
             // -------------- Load GameObject Into Variables ---------------------- \\
             pizzaObj = Resources.Load("ToppingPrefabs/Pie2.0") as GameObject;
@@ -46,7 +67,7 @@ namespace PizzaTime
             mushObj = Resources.Load("ToppingPrefabs/Mushroom2.0") as GameObject;
             // -------------------------------------------------------------------- \\
 
-            // -------------- Load Materials Into Variables ---------------------- \\
+            // -------------- Load Base Materials Into Variables ---------------------------------------------- \\
             pizzaDoughMaterial = Resources.Load("ToppingMaterial/Uncooked/Materials/Pizza_Dough") as Material;
             sauceMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Sauce") as Material;
             cheeseMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Cheese") as Material;
@@ -54,7 +75,27 @@ namespace PizzaTime
             baconMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Bacon") as Material;
             peppersMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Pepper") as Material;
             mushMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Mush") as Material;
-            // ------------------------------------------------------------------- \\
+            // ------------------------------------------------------------------------------------------------ \\
+
+            // -------------- Load Two-Topping Materials Into Variables ------------------------------------------------ \\
+            roniAndBaconMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Roni_Bacon") as Material;
+            roniAndPeppersMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Roni_Peppers") as Material;
+            roniAndMushMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Roni_Mush") as Material;
+            peppersAndMushMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Peppers_Mush") as Material;
+            peppersAndBaconMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Peppers_Bacon") as Material;
+            baconAndMushMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Bacon_Mush") as Material;
+            // --------------------------------------------------------------------------------------------------------- \\
+
+            // -------------- Load Three-Topping Materials Into Variables ------------------------------------------------ \\
+            roniAndBaconAndPeppersMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Roni_Bacon_Peppers") as Material;
+            roniAndBaconAndMushMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Roni_Bacon_Mush") as Material;
+            roniAndPeppersAndMushMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Roni_Peppers_Mush") as Material;
+            mushAndBaconAndPeppers = Resources.Load("ToppingMaterial/Uncooked/Pizza_Bacon_Peppers_Mush") as Material;
+            // ----------------------------------------------------------------------------------------------------------- \\
+
+            // -------------- Load Specialty Material Variables ------------------------------------------------------------- \\
+            theWorksMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_The_Works") as Material;
+            // -------------------------------------------------------------------------------------------------------------- \\
         }
     }
 }

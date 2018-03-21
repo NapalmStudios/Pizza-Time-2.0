@@ -4,6 +4,7 @@ using UnityEngine;
 using Valve.VR;
 namespace PizzaTime
 {
+    // TODO: Refactor in a way that it could be expaneded later
     public class Pizza_Controller : MonoBehaviour
     {
         public float cookTime = 0;
@@ -15,24 +16,25 @@ namespace PizzaTime
         public Pizza_Controller S;
 
         public Material active;
-        public Material sauceMaterialForObj;
-        public Material cheeseMaterialForObj;
-        public Material roniMaterialForObj;
-        public Material peppersMaterialForObj;
-        public Material mushroomsMaterialForObj;
-        public Material baconMaterialForObj;
-        public Material roniandbacon;
-        public Material roniandpeppers;
-        public Material roniandmush;
-        public Material peppersandmush;
-        public Material peppersandbacon;
-        public Material baconandmush;
-        public Material roniandbaconandpep;
-        public Material roniandbaconandmush;
-        public Material roniandPepandmush;
-        public Material mushandbaconandpep;
-        public Material theworks;
-        public Material doughMaterialForObj;
+        private Material doughMaterialForObj;
+        private Material sauceMaterialForObj;
+        private Material cheeseMaterialForObj;
+        private Material roniMaterialForObj;
+        private Material peppersMaterialForObj;
+        private Material mushroomsMaterialForObj;
+        private Material baconMaterialForObj;
+        private Material roniAndBaconMaterialForObj;
+        private Material roniAndPeppersMaterialForObj;
+        private Material roniAndMushMaterialForObj;
+        private Material peppersAndMushMaterialForObj;
+        private Material peppersAndBaconMaterialForObj;
+        private Material baconAndMushMaterialForObj;
+        private Material roniAndBaconAndPeppersMaterialForObj;
+        private Material roniAndBaconAndMushMaterialForObj;
+        private Material roniAndPeppersAndMushMaterialForObj;
+        private Material mushAndBaconAndPeppersMaterialForObj;
+        private Material theWorksMaterialForObj;
+        
         public Material cookedDough;
         public Material burnt;
         public Material cooked;
@@ -80,8 +82,25 @@ namespace PizzaTime
             // -------------------------------------------------------------------------------- \\
 
             // ------------------------ Two-Topping Material Initalization --------------------------- \\
-
+            roniAndBaconMaterialForObj = resourceLoader.roniAndBaconMaterial;
+            roniAndPeppersMaterialForObj = resourceLoader.roniAndPeppersMaterial;
+            roniAndMushMaterialForObj = resourceLoader.roniAndMushMaterial;
+            peppersAndMushMaterialForObj = resourceLoader.peppersAndMushMaterial;
+            peppersAndBaconMaterialForObj = resourceLoader.peppersAndBaconMaterial;
+            baconAndMushMaterialForObj = resourceLoader.baconAndMushMaterial;
             // --------------------------------------------------------------------------------------- \\
+
+            // -------------- Three-Topping Material Variables ---------------------------------------- \\
+            roniAndBaconAndPeppersMaterialForObj = resourceLoader.roniAndBaconAndPeppersMaterial;
+            roniAndBaconAndMushMaterialForObj = resourceLoader.roniAndBaconAndMushMaterial;
+            roniAndPeppersAndMushMaterialForObj = resourceLoader.roniAndPeppersAndMushMaterial;
+            mushAndBaconAndPeppersMaterialForObj = resourceLoader.mushAndBaconAndPeppers;
+            // ---------------------------------------------------------------------------------------- \\
+
+            // -------------- Load Specialty Material Variables ------------------------------------------------------------- \\
+            theWorksMaterialForObj = resourceLoader.theWorksMaterial;
+            // -------------------------------------------------------------------------------------------------------------- \\
+
             S = this;
             active = doughMaterialForObj;
         }
@@ -127,57 +146,57 @@ namespace PizzaTime
                     }
                     else if (psauce == true && pcheese == true && proni == true && ppeppers == true && pbacon != true && pmush != true)
                     {
-                        active = roniandpeppers;
+                        active = roniAndPeppersMaterialForObj;
                         //pizzatype = "roniandpeppers";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush == true && ppeppers != true && pbacon != true)
                     {
-                        active = roniandmush;
+                        active = roniAndMushMaterialForObj;
                         //pizzatype = "roniandmush";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pbacon == true && pmush != true && ppeppers != true)
                     {
-                        active = roniandbacon;
+                        active = roniAndBaconMaterialForObj;
                         //pizzatype = "roniandbacon";
                     }
                     else if (psauce == true && pcheese == true && pmush == true && ppeppers == true && pbacon != true && proni != true)
                     {
-                        active = peppersandmush;
+                        active = peppersAndMushMaterialForObj;
                         //pizzatype = "peppersandmush";
                     }
                     else if (psauce == true && pcheese == true && pbacon == true && ppeppers == true && proni != true && pmush != true)
                     {
-                        active = peppersandbacon;
+                        active = peppersAndBaconMaterialForObj;
                         //pizzatype = "peppersandbacon";
                     }
                     else if (psauce == true && pcheese == true && pmush == true && pbacon == true && proni != true && ppeppers != true)
                     {
-                        active = baconandmush;
+                        active = baconAndMushMaterialForObj;
                         //pizzatype = "baconandmush";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pbacon == true && ppeppers == true && pmush != true)
                     {
-                        active = roniandbaconandpep;
+                        active = roniAndBaconAndPeppersMaterialForObj;
                         //pizzatype = "roniandbaconandpep";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush == true && pbacon == true && ppeppers != true)
                     {
-                        active = roniandbaconandmush;
+                        active = roniAndBaconAndMushMaterialForObj;
                         //pizzatype = "roniandbaconandmush";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush == true && ppeppers == true && pbacon != true)
                     {
-                        active = roniandPepandmush;
+                        active = roniAndPeppersAndMushMaterialForObj;
                         //pizzatype = "roniandPepandmush";
                     }
                     else if (psauce == true && pcheese == true && pmush == true && pbacon == true && ppeppers == true && proni != true)
                     {
-                        active = mushandbaconandpep;
+                        active = mushAndBaconAndPeppersMaterialForObj;
                         //pizzatype = "mushandbaconandpep";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush == true && pbacon == true && ppeppers == true)
                     {
-                        active = theworks;
+                        active = theWorksMaterialForObj;
                         //pizzatype = "theworks";
                     }
                     break;
