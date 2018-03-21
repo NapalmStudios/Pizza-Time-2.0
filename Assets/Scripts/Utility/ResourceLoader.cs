@@ -9,24 +9,48 @@ namespace PizzaTime
     /// </summary>
     public class ResourceLoader : MonoBehaviour
     {
-        public GameObject pizza;
-        public GameObject sauce;
-        public GameObject cheese;
-        public GameObject roni;
-        public GameObject bacon;
-        public GameObject pepper;
-        public GameObject mush;
+        // -------------- GameObject Variables -------------------- \\
+        public GameObject pizzaObj;
+        public GameObject sauceObj;
+        public GameObject cheeseObj;
+        public GameObject roniObj;
+        public GameObject baconObj;
+        public GameObject pepperObj;
+        public GameObject mushObj;
+        // -------------------------------------------------------- \\
+
+        // -------------- Material Variables ---------------------- \\
+        public Material pizzaDoughMaterial;
+        public Material sauceMaterial;
+        public Material cheeseMaterial;
+        public Material roniMaterial;
+        public Material baconMaterial;
+        public Material peppersMaterial;
+        public Material mushMaterial;
+        // -------------------------------------------------------- \\
 
         // Loads Game Objects / Materials
         void Start()
         {
-            pizza = Resources.Load("Pie2.0") as GameObject;
-            sauce = Resources.Load("Sauce2.0") as GameObject;
-            cheese = Resources.Load("Cheese2.0") as GameObject;
-            roni = Resources.Load("Pepperoni2.0") as GameObject;
-            bacon = Resources.Load("Bacon2.0") as GameObject;
-            pepper = Resources.Load("Pepper2.0") as GameObject;
-            mush = Resources.Load("Mushroom2.0") as GameObject;
+            // -------------- Load GameObject Into Variables ---------------------- \\
+            pizzaObj = Resources.Load("ToppingPrefabs/Pie2.0") as GameObject;
+            sauceObj = Resources.Load("ToppingPrefabs/Sauce2.0") as GameObject;
+            cheeseObj = Resources.Load("ToppingPrefabs/Cheese2.0") as GameObject;
+            roniObj = Resources.Load("ToppingPrefabs/Pepperoni2.0") as GameObject;
+            baconObj = Resources.Load("ToppingPrefabs/Bacon2.0") as GameObject;
+            pepperObj = Resources.Load("ToppingPrefabs/Pepper2.0") as GameObject;
+            mushObj = Resources.Load("ToppingPrefabs/Mushroom2.0") as GameObject;
+            // -------------------------------------------------------------------- \\
+
+            // -------------- Load Materials Into Variables ---------------------- \\
+            //pizzaDoughMaterial = Resources.Load("Pizza_Dough") as Material;
+            //sauceMaterial = Resources.Load("Pizza_Sauce") as Material;
+            //cheeseMaterial = Resources.Load("Pizza_Cheese") as Material;
+            //roniMaterial = Resources.Load("Pizza_Roni") as Material;
+            //baconMaterial = Resources.Load("Pizza_Bacon") as Material;
+            //peppersMaterial = Resources.Load("Pizza_Pepper") as Material;
+            //mushMaterial = Resources.Load("Pizza_Mush") as Material;
+            // ------------------------------------------------------------------- \\
         }
     }
 }

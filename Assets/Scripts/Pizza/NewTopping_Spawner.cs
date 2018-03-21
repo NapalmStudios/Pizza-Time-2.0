@@ -7,13 +7,13 @@ namespace PizzaTime
     public class NewTopping_Spawner : MonoBehaviour
     {
 
-        private GameObject spawn;
-        private GameObject sspawn;
-        private GameObject cspawn;
-        private GameObject rspawn;
-        private GameObject bspawn;
-        private GameObject pspawn;
-        private GameObject mspawn;
+        private GameObject pizzaSpawnPosition;
+        private GameObject sauceSpawnPosition;
+        private GameObject cheeseSpawnPosition;
+        private GameObject roniSpawnPosition;
+        private GameObject baconSpawnPosition;
+        private GameObject pepperSpawnPosition;
+        private GameObject mushSpawnPosition;
         private GameObject pizzaObjForSpawner;
         private GameObject sauceObjForSpawner;
         private GameObject cheeseObjForSpawner;
@@ -21,29 +21,31 @@ namespace PizzaTime
         private GameObject baconObjForSpawner;
         private GameObject pepperObjForSpawner;
         private GameObject mushObjForSpawner;
-        private ResourceLoader resourceLoader = new ResourceLoader();
+        private ResourceLoader resourceLoader;
         public bool reset = false;
-
-        public Transform position;
-        Transform oldposition;
 
         void Start()
         {
-            oldposition = position;
-            // ------------------- Object Initalization ------------------------ \\
-            
-            pizzaObjForSpawner = resourceLoader.pizza;
-            sauceObjForSpawner = resourceLoader.sauce;
-            cheeseObjForSpawner = resourceLoader.cheese;
-            roniObjForSpawner = resourceLoader.roni;
-            baconObjForSpawner = resourceLoader.bacon;
-            pepperObjForSpawner = resourceLoader.pepper;
+            resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
+            // ------------------- Topping Object Initalization ------------------------ \\
+            pizzaObjForSpawner = resourceLoader.pizzaObj;
+            sauceObjForSpawner = resourceLoader.sauceObj;
+            cheeseObjForSpawner = resourceLoader.cheeseObj;
+            roniObjForSpawner = resourceLoader.roniObj;
+            baconObjForSpawner = resourceLoader.baconObj;
+            pepperObjForSpawner = resourceLoader.pepperObj;
+            mushObjForSpawner = resourceLoader.mushObj;
+            // ------------------------------------------------------------------------- \\
 
-            // ------------------------------------------------------------------ \\
-        }
-
-        void Update()
-        {
+            // ------------------- Topping Spawn Initalization ------------------------- \\
+            pizzaSpawnPosition = GameObject.Find("Dough_Spawn");
+            sauceSpawnPosition = GameObject.Find("Sauce_Spawn");
+            cheeseSpawnPosition = GameObject.Find("Cheese_Spawn");
+            roniSpawnPosition = GameObject.Find("Roni_Spawn");
+            baconSpawnPosition = GameObject.Find("Bacon_Spawn");
+            pepperSpawnPosition = GameObject.Find("Pepper_Spawn");
+            mushSpawnPosition = GameObject.Find("Mushroom_Spawn");
+            // ------------------------------------------------------------------------- \\
         }
 
         void OnCollisionEnter(Collision col)
@@ -51,7 +53,7 @@ namespace PizzaTime
             GameObject coll = col.gameObject;
             if (coll.tag == "dbutton")
             {
-                Instantiate(pizzaObjForSpawner, spawn.transform.position, spawn.transform.rotation);
+                Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
             }
             if (coll.tag == "tbutton")
             {
@@ -67,12 +69,12 @@ namespace PizzaTime
                 for (int i = 0; i < p.Length; i++) Destroy(p[i].gameObject);
                 GameObject[] m = GameObject.FindGameObjectsWithTag("mushrooms");
                 for (int i = 0; i < m.Length; i++) Destroy(m[i].gameObject);
-                for (int i = 0; i < 2; i++) Instantiate(sauceObjForSpawner, sspawn.transform.position, sspawn.transform.rotation);
-                for (int i = 0; i < 2; i++) Instantiate(cheeseObjForSpawner, cspawn.transform.position, cspawn.transform.rotation);
-                for (int i = 0; i < 4; i++) Instantiate(baconObjForSpawner, bspawn.transform.position, bspawn.transform.rotation);
-                for (int i = 0; i < 4; i++) Instantiate(roniObjForSpawner, rspawn.transform.position, rspawn.transform.rotation);
-                for (int i = 0; i < 4; i++) Instantiate(pepperObjForSpawner, pspawn.transform.position, pspawn.transform.rotation);
-                for (int i = 0; i < 2; i++) Instantiate(mushObjForSpawner, mspawn.transform.position, mspawn.transform.rotation);
+                for (int i = 0; i < 2; i++) Instantiate(sauceObjForSpawner, sauceSpawnPosition.transform.position, sauceSpawnPosition.transform.rotation);
+                for (int i = 0; i < 2; i++) Instantiate(cheeseObjForSpawner, cheeseSpawnPosition.transform.position, cheeseSpawnPosition.transform.rotation);
+                for (int i = 0; i < 4; i++) Instantiate(baconObjForSpawner, baconSpawnPosition.transform.position, baconSpawnPosition.transform.rotation);
+                for (int i = 0; i < 4; i++) Instantiate(roniObjForSpawner, roniSpawnPosition.transform.position, roniSpawnPosition.transform.rotation);
+                for (int i = 0; i < 4; i++) Instantiate(pepperObjForSpawner, pepperSpawnPosition.transform.position, pepperSpawnPosition.transform.rotation);
+                for (int i = 0; i < 2; i++) Instantiate(mushObjForSpawner, mushSpawnPosition.transform.position, mushSpawnPosition.transform.rotation);
             }
             if (coll.tag == "button")
             {
