@@ -19,7 +19,7 @@ namespace PizzaTime
         public GameObject mushObj;
         // -------------------------------------------------------- \\
 
-        // -------------- Material Variables ---------------------- \\
+        // -------------- Base Material Variables ---------------------- \\
         public Material pizzaDoughMaterial;
         public Material sauceMaterial;
         public Material cheeseMaterial;
@@ -27,7 +27,11 @@ namespace PizzaTime
         public Material baconMaterial;
         public Material peppersMaterial;
         public Material mushMaterial;
-        // -------------------------------------------------------- \\
+        // ------------------------------------------------------------- \\
+
+        // -------------- Two-Topping Material Variables ---------------------- \\
+        
+        // -------------------------------------------------------------------- \\
 
         // Loads Game Objects / Materials
         void Start()
@@ -43,13 +47,13 @@ namespace PizzaTime
             // -------------------------------------------------------------------- \\
 
             // -------------- Load Materials Into Variables ---------------------- \\
-            //pizzaDoughMaterial = Resources.Load("Pizza_Dough") as Material;
-            //sauceMaterial = Resources.Load("Pizza_Sauce") as Material;
-            //cheeseMaterial = Resources.Load("Pizza_Cheese") as Material;
-            //roniMaterial = Resources.Load("Pizza_Roni") as Material;
-            //baconMaterial = Resources.Load("Pizza_Bacon") as Material;
-            //peppersMaterial = Resources.Load("Pizza_Pepper") as Material;
-            //mushMaterial = Resources.Load("Pizza_Mush") as Material;
+            pizzaDoughMaterial = Resources.Load("ToppingMaterial/Uncooked/Materials/Pizza_Dough") as Material;
+            sauceMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Sauce") as Material;
+            cheeseMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Cheese") as Material;
+            roniMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Roni") as Material;
+            baconMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Bacon") as Material;
+            peppersMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Pepper") as Material;
+            mushMaterial = Resources.Load("ToppingMaterial/Uncooked/Pizza_Mush") as Material;
             // ------------------------------------------------------------------- \\
         }
     }
