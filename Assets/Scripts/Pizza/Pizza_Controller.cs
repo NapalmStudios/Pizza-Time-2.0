@@ -13,7 +13,7 @@ namespace PizzaTime
         public bool isCooked = false;
         public bool isBurned = false;
 
-        public Pizza_Controller S;
+        public Pizza_Controller pizzaController;
 
         public Material active;
         private Material doughMaterialForObj;
@@ -34,27 +34,25 @@ namespace PizzaTime
         private Material roniAndPeppersAndMushMaterialForObj;
         private Material mushAndBaconAndPeppersMaterialForObj;
         private Material theWorksMaterialForObj;
-        
-        public Material cookedDough;
-        public Material burnt;
-        public Material cooked;
-        public Material cookedSauce;
-        public Material cookedCheese;
-        public Material cookedRoni;
-        public Material cookedPeppers;
-        public Material cookedMushrooms;
-        public Material cookedBacon;
-        public Material cookedroniandbacon;
-        public Material cookedroniandpeppers;
-        public Material cookedroniandmush;
-        public Material cookedpeppersandmush;
-        public Material cookedpeppersandbacon;
-        public Material cookedbaconandmush;
-        public Material cookedroniandbaconandpep;
-        public Material cookedroniandbaconandmush;
-        public Material cookedroniandPepandmush;
-        public Material cookedmushandbaconandpep;
-        public Material cookedtheworks;
+        private Material cookedDoughMaterialForObj;
+        private Material cookedSauceMaterialForObj;
+        private Material cookedCheeseMaterialForObj;
+        private Material cookedRoniMaterialForObj;
+        private Material cookedPeppersMaterialForObj;
+        private Material cookedMushroomsMaterialForObj;
+        private Material cookedBaconMaterialForObj;
+        private Material cookedRoniAndBaconMaterialForObj;
+        private Material cookedRoniAndPeppersMaterialForObj;
+        private Material cookedRoniAndMushMaterialForObj;
+        private Material cookedPeppersAndMushMaterialForObj;
+        private Material cookedPeppersAndBaconMaterialForObj;
+        private Material cookedBaconAndMushMaterialForObj;
+        private Material cookedRoniAndBaconAndPeppersMaterialForObj;
+        private Material cookedRoniAndBaconAndMushMaterialForObj;
+        private Material cookedRoniAndPeppersAndMushMaterialForObj;
+        private Material cookedMushAndBaconAndPeppersMaterialForObj;
+        private Material cookedTheWorksMaterialForObj;
+        private Material burntMaterialForObj;
 
         public GameObject pizza;
         public bool psauce = false;
@@ -71,6 +69,13 @@ namespace PizzaTime
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
+
+            pizzaController = this;
+            active = doughMaterialForObj;
+        }
+
+        private void LoadMaterialVars()
+        {
             // ------------------------ Base Material Initalization --------------------------- \\
             doughMaterialForObj = resourceLoader.pizzaDoughMaterial;
             sauceMaterialForObj = resourceLoader.sauceMaterial;
@@ -79,6 +84,7 @@ namespace PizzaTime
             baconMaterialForObj = resourceLoader.baconMaterial;
             peppersMaterialForObj = resourceLoader.peppersMaterial;
             mushroomsMaterialForObj = resourceLoader.mushMaterial;
+            burntMaterialForObj = resourceLoader.cookedBurnt;
             // -------------------------------------------------------------------------------- \\
 
             // ------------------------ Two-Topping Material Initalization --------------------------- \\
@@ -97,12 +103,39 @@ namespace PizzaTime
             mushAndBaconAndPeppersMaterialForObj = resourceLoader.mushAndBaconAndPeppers;
             // ---------------------------------------------------------------------------------------- \\
 
-            // -------------- Load Specialty Material Variables ------------------------------------------------------------- \\
+            // -------------- Specialty Material Variables --------------------------- \\
             theWorksMaterialForObj = resourceLoader.theWorksMaterial;
-            // -------------------------------------------------------------------------------------------------------------- \\
+            // ----------------------------------------------------------------------- \\
 
-            S = this;
-            active = doughMaterialForObj;
+            // --------------- Cooked Single Topping Material Variables --------------------------------------------- \\
+            cookedDoughMaterialForObj = resourceLoader.cookedDoughMaterial;
+            cookedSauceMaterialForObj = resourceLoader.cookedSauceMaterial;
+            cookedCheeseMaterialForObj = resourceLoader.cookedCheeseMaterial;
+            cookedRoniMaterialForObj = resourceLoader.cookedRoniMaterial;
+            cookedBaconMaterialForObj = resourceLoader.cookedBaconMaterial;
+            cookedPeppersMaterialForObj = resourceLoader.cookedPeppersMaterial;
+            cookedMushroomsMaterialForObj = resourceLoader.cookedMushMaterial;
+            // ------------------------------------------------------------------------------------------------------ \\
+
+            // --------------- Cooked Two-Topping Material Variables --------------------------------------------- \\
+            cookedRoniAndBaconMaterialForObj = resourceLoader.cookedRoniAndBaconMaterial;
+            cookedRoniAndPeppersMaterialForObj = resourceLoader.cookedRoniAndPeppersMaterial;
+            cookedRoniAndMushMaterialForObj = resourceLoader.cookedRoniAndMushMaterial;
+            cookedPeppersAndMushMaterialForObj = resourceLoader.cookedPeppersAndMushMaterial;
+            cookedPeppersAndBaconMaterialForObj = resourceLoader.cookedPeppersAndBaconMaterial;
+            cookedBaconAndMushMaterialForObj = resourceLoader.cookedBaconAndMushMaterial;
+            // --------------------------------------------------------------------------------------------------- \\
+
+            // --------------- Cooked Three-Topping Material Variables --------------------------------------------- \\
+            cookedRoniAndBaconAndPeppersMaterialForObj = resourceLoader.cookedRoniAndBaconAndPeppersMaterial;
+            cookedRoniAndBaconAndMushMaterialForObj = resourceLoader.cookedRoniAndBaconAndMushMaterial;
+            cookedRoniAndPeppersAndMushMaterialForObj = resourceLoader.cookedRoniAndPeppersAndMushMaterial;
+            cookedMushAndBaconAndPeppersMaterialForObj = resourceLoader.cookedMushAndBaconAndPeppersMaterial;
+            // ----------------------------------------------------------------------------------------------------- \\
+
+            // -------------- Specialty Material Variables --------------------------- \\
+            cookedTheWorksMaterialForObj = resourceLoader.theWorksMaterial;
+            // ----------------------------------------------------------------------- \\
         }
 
         void ToppingChange()
@@ -203,96 +236,96 @@ namespace PizzaTime
                 case 2:
                     if (psauce != true && pcheese != true && proni != true && pmush != true && pbacon != true && ppeppers != true)
                     {
-                        active = cookedDough;
+                        active = cookedDoughMaterialForObj;
                     }
                     else if (psauce == true && pcheese != true && proni != true && pmush != true && pbacon != true && ppeppers != true)
                     {
-                        active = cookedSauce;
+                        active = cookedSauceMaterialForObj;
                         pizzatype = "sauce";
                     }
                     else if (psauce == true && pcheese == true && proni != true && pmush != true && pbacon != true && ppeppers != true)
                     {
-                        active = cookedCheese;
+                        active = cookedCheeseMaterialForObj;
                         pizzatype = "cheese";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush != true && pbacon != true && ppeppers != true)
                     {
-                        active = cookedRoni;
+                        active = cookedRoniMaterialForObj;
                         pizzatype = "roni";
                     }
                     else if (psauce == true && pcheese == true && ppeppers == true && pmush != true && pbacon != true && proni != true)
                     {
-                        active = cookedPeppers;
+                        active = cookedPeppersMaterialForObj;
                         pizzatype = "peppers";
                     }
                     else if (psauce == true && pcheese == true && pmush == true && proni != true && pbacon != true && ppeppers != true)
                     {
-                        active = cookedMushrooms;
+                        active = cookedMushroomsMaterialForObj;
                         pizzatype = "mushrooms";
                     }
                     else if (psauce == true && pcheese == true && pbacon == true && pmush != true && proni != true && ppeppers != true)
                     {
-                        active = cookedBacon;
+                        active = cookedBaconMaterialForObj;
                         pizzatype = "bacon";
                     }
                     else if (psauce == true && pcheese == true && proni == true && ppeppers == true && pbacon != true && pmush != true)
                     {
-                        active = cookedroniandpeppers;
+                        active = cookedRoniAndPeppersMaterialForObj;
                         pizzatype = "roniandpeppers";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush == true && ppeppers != true && ppeppers != true)
                     {
-                        active = cookedroniandmush;
+                        active = cookedRoniAndMushMaterialForObj;
                         pizzatype = "roniandmush";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pbacon == true && pmush != true && ppeppers != true)
                     {
-                        active = cookedroniandbacon;
+                        active = cookedRoniAndBaconMaterialForObj;
                         pizzatype = "roniandbacon";
                     }
                     else if (psauce == true && pcheese == true && pmush == true && ppeppers == true && pbacon != true && proni != true)
                     {
-                        active = cookedpeppersandmush;
+                        active = cookedPeppersAndMushMaterialForObj;
                         pizzatype = "peppersandmush";
                     }
                     else if (psauce == true && pcheese == true && pbacon == true && ppeppers == true && proni != true && pmush != true)
                     {
-                        active = cookedpeppersandbacon;
+                        active = cookedPeppersAndBaconMaterialForObj;
                         pizzatype = "peppersandbacon";
                     }
                     else if (psauce == true && pcheese == true && pmush == true && pbacon == true && proni != true && ppeppers != true)
                     {
-                        active = cookedbaconandmush;
+                        active = cookedBaconAndMushMaterialForObj;
                         pizzatype = "baconandmush";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pbacon == true && ppeppers == true && pmush != true)
                     {
-                        active = cookedroniandbaconandpep;
+                        active = cookedRoniAndBaconAndPeppersMaterialForObj;
                         pizzatype = "roniandbaconandpep";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush == true && pbacon == true && ppeppers != true)
                     {
-                        active = cookedroniandbaconandmush;
+                        active = cookedRoniAndBaconAndMushMaterialForObj;
                         pizzatype = "roniandbaconandmush";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush == true && ppeppers == true && pbacon != true)
                     {
-                        active = cookedroniandPepandmush;
+                        active = cookedRoniAndPeppersAndMushMaterialForObj;
                         pizzatype = "roniandPepandmush";
                     }
                     else if (psauce == true && pcheese == true && pmush == true && pbacon == true && ppeppers == true && proni != true)
                     {
-                        active = cookedmushandbaconandpep;
+                        active = cookedMushAndBaconAndPeppersMaterialForObj;
                         pizzatype = "mushandbaconandpep";
                     }
                     else if (psauce == true && pcheese == true && proni == true && pmush == true && pbacon == true && ppeppers == true)
                     {
-                        active = cookedtheworks;
+                        active = cookedTheWorksMaterialForObj;
                         pizzatype = "theworks";
                     }
                     break;
                 case 3:
-                    active = burnt;
+                    active = burntMaterialForObj;
                     break;
             }
         }
