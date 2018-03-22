@@ -78,7 +78,7 @@ namespace PizzaTime
 
         // -------------- Cooked Specialty Material Variables ---------------------- \\
         public Material cookedTheWorksMaterial;
-        // ------------------------------------------------------------------ \\
+        // ------------------------------------------------------------------------- \\
 
         // Loads Game Objects / Materials
         void Start()

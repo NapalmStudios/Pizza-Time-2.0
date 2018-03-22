@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 54129474241043316}
   - component: {fileID: 114748495612320218}
   - component: {fileID: 114268900517900448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sauce2.0
   m_TagString: sauce
   m_Icon: {fileID: 0}

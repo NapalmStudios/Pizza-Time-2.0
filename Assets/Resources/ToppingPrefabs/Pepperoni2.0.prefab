@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114310795677738630}
   - component: {fileID: 54617300079475708}
   - component: {fileID: 114091880111605778}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pepperoni2.0
   m_TagString: roni
   m_Icon: {fileID: 0}
