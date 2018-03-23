@@ -4,6 +4,17 @@ using UnityEngine;
 using Valve.VR;
 namespace PizzaTime
 {
+    public enum PIZZA
+    {
+        Dough,
+        Sauce,
+        Cheese,
+        Roni,
+        Bacon,
+        Peppers,
+        Mushrooms
+    };
+    
     // TODO: Refactor in a way that it could be expaneded later
     public class Pizza_Controller : MonoBehaviour
     {
@@ -53,8 +64,10 @@ namespace PizzaTime
         private Material cookedMushAndBaconAndPeppersMaterialForObj;
         private Material cookedTheWorksMaterialForObj;
         private Material burntMaterialForObj;
-        private int pizzaCase = 0;
-        private int oneToppingCase = 0;
+
+        private Material currentPizzaTexture;
+        private PIZZA pizzaCase;
+        private PIZZA oneToppingCase;
 
         public GameObject pizza;
         public bool psauce = false;
@@ -83,37 +96,112 @@ namespace PizzaTime
         private void OnCollisionEnter(Collision col)
         {
             GameObject topping = col.gameObject;
-            var currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
+            currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
             //Sets Case Value for switch Statement
             if(currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial))
             {
-                pizzaCase = 1;
+                pizzaCase = PIZZA.Dough;
             }
             else if(currentPizzaTexture.Equals(resourceLoader.sauceMaterial))
             {
-                pizzaCase = 2;
+                pizzaCase = PIZZA.Sauce;
             }
             else if(currentPizzaTexture.Equals(resourceLoader.cheeseMaterial))
             {
-                pizzaCase = 3;
+                pizzaCase = PIZZA.Cheese;
             }
+            else if(currentPizzaTexture.Equals(resourceLoader.roniMaterial))
+            {
+                pizzaCase = PIZZA.Roni;
+            }
+            else if(currentPizzaTexture.Equals(resourceLoader.baconMaterial))
+            {
+                pizzaCase = PIZZA.Bacon;
+            }
+            else if(currentPizzaTexture.Equals(resourceLoader.peppersMaterial))
+            {
+                pizzaCase = PIZZA.Peppers;
+            }
+            else if(currentPizzaTexture.Equals(resourceLoader.mushMaterial))
+            {
+                pizzaCase = PIZZA.Mushrooms;
+            }
+
 
             switch(pizzaCase)
             {
-                case 1:
+                case PIZZA.Dough:
                     pizzaAddSauceTopping(topping);
                     break;
-                case 2:
+                case PIZZA.Sauce:
                     pizzaAddCheeseTopping(topping);
                     break;
-                case 3:
-                    pizzaOneToppingSelector(topping);
+                case PIZZA.Cheese:
+                    ToppingSelector(topping);
+                    break;
+                case PIZZA.Roni:
+                    ToppingSelector(topping);
+                    break;
+                case PIZZA.Bacon:
+                    ToppingSelector(topping);
+                    break;
+                case PIZZA.Peppers:
+                    ToppingSelector(topping);
+                    break;
+                case PIZZA.Mushrooms:
+                    ToppingSelector(topping);
                     break;
                 default:
                     break;
             }
 
+        }
+
+        /// <summary>
+        /// Selects the Single Topping Case
+        /// </summary>
+        /// <param name="topping"></param>
+        private void ToppingSelector(GameObject topping)
+        {
+            if (topping.tag.Equals(resourceLoader.roniObj.tag))
+            {
+                oneToppingCase = PIZZA.Roni;
+            }
+            else if (topping.tag.Equals(resourceLoader.baconObj.tag))
+            {
+                oneToppingCase = PIZZA.Bacon;
+            }
+            else if (topping.tag.Equals(resourceLoader.pepperObj.tag))
+            {
+                oneToppingCase = PIZZA.Peppers;
+            }
+            else if (topping.tag.Equals(resourceLoader.mushObj.tag))
+            {
+                oneToppingCase = PIZZA.Mushrooms;
+            }
+            else
+            {
+                Destroy(topping);
+            }
+
+            switch (oneToppingCase)
+            {
+                case PIZZA.Roni:
+                    pizzaAddRoniTopping(topping);
+                    break;
+                case PIZZA.Bacon:
+                    pizzaAddBaconTopping(topping);
+                    break;
+                case PIZZA.Peppers:
+                    pizzaAddPeppersTopping(topping);
+                    break;
+                case PIZZA.Mushrooms:
+                    pizzaAddMushroomsTopping(topping);
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
@@ -151,65 +239,77 @@ namespace PizzaTime
         }
 
         /// <summary>
-        /// Selects the Single Topping Case
-        /// </summary>
-        /// <param name="topping"></param>
-        private void pizzaOneToppingSelector(GameObject topping)
-        {
-            if (topping.tag.Equals(resourceLoader.roniObj.tag))
-            {
-                oneToppingCase = 1;
-            }
-            else if (topping.tag.Equals(resourceLoader.baconObj.tag))
-            {
-                oneToppingCase = 2;
-            }
-            else if (topping.tag.Equals(resourceLoader.pepperObj.tag))
-            {
-                oneToppingCase = 3;
-            }
-            else if (topping.tag.Equals(resourceLoader.mushObj.tag))
-            {
-                oneToppingCase = 4;
-            }
-            else
-            {
-                Destroy(topping);
-            }
-
-            switch (oneToppingCase)
-            {
-                case 1:
-                    pizzaAddRoniTopping(topping);
-                    break;
-                case 2:
-                    pizzaAddBaconTopping(topping);
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        /// <summary>
         /// Adds Roni To the Current Pizza
         /// </summary>
         /// <param name="topping"></param>
         private void pizzaAddRoniTopping(GameObject topping)
         {
             //Will need case statement # of toppings
-            activePizzaTexture = resourceLoader.roniMaterial;
-            Destroy(topping);
+            switch(pizzaCase)
+            {
+                case PIZZA.Cheese:
+                    activePizzaTexture = resourceLoader.roniMaterial;
+                    Destroy(topping);
+                    break;
+                case PIZZA.Bacon:
+                    activePizzaTexture = resourceLoader.roniAndBaconMaterial;
+                    Destroy(topping);
+                    break;
+                case PIZZA.Peppers:
+                    activePizzaTexture = resourceLoader.roniAndPeppersMaterial;
+                    Destroy(topping);
+                    break;
+                case PIZZA.Mushrooms:
+                    activePizzaTexture = resourceLoader.roniAndMushMaterial;
+                    Destroy(topping);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void pizzaAddBaconTopping(GameObject topping)
         {
-            //Will need case statement
-            activePizzaTexture = resourceLoader.baconMaterial;
-            Destroy(topping);
+            switch(pizzaCase)
+            {
+                case PIZZA.Cheese:
+                    activePizzaTexture = resourceLoader.baconMaterial;
+                    Destroy(topping);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void pizzaAddPeppersTopping(GameObject topping)
+        {
+            switch(pizzaCase)
+            {
+                case PIZZA.Cheese:
+                    activePizzaTexture = resourceLoader.peppersMaterial;
+                    Destroy(topping);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        private void pizzaAddMushroomsTopping(GameObject topping)
+        {
+            switch(pizzaCase)
+            {
+                case PIZZA.Cheese:
+                    activePizzaTexture = resourceLoader.mushMaterial;
+                    Destroy(topping);
+                    break;
+                case PIZZA.Roni:
+                    activePizzaTexture = resourceLoader.roniAndMushMaterial;
+                    Destroy(topping);
+                    break;
+                default:
+                    break;
+            }
         }
 
         //void OnCollisionEnter(Collision col)
