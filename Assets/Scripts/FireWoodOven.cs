@@ -1,48 +1,70 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
-public class FireWoodOven : MonoBehaviour
+namespace PizzaTime
 {
-    public float tempature;
-    public int upperBoundTemp;
-    public int lowerBoundTemp;
-    public float tempatureDecreaseSpeed;
-    public int logTempIncrease;
-    public int CookTimer;
-
-    private void Update()
+    public class FireWoodOven : MonoBehaviour
     {
-        tempature -= Time.deltaTime * tempatureDecreaseSpeed;
+        public float tempature;
+        public int upperBoundTemp;
+        public int lowerBoundTemp;
+        public float tempatureDecreaseSpeed;
+        public int logTempIncrease;
+        public int CookTime;
+        public int BurnTimme;
 
-        if (tempature > upperBoundTemp)
+        private void Update()
         {
 
         }
-        else if (tempature < lowerBoundTemp)
+
+        private void OnCollisionEnter(Collision collision)
         {
 
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "WoodLog")
+        private void TempControl()
         {
-            tempature += logTempIncrease;
-            Destroy(collision.gameObject, 3f);
-        }
-        else if(collision.gameObject.GetComponent<Pizza_Controller>() != null)
-        {
-            /*
-             * collision.gameObject.GetComponent<Pizza_Controller>().isCooked = true;
-             * collision.gameObject.GetComponent<Pizza_Controller>().burnt = true;
-             * 
-            */
-        }
-        else
-        {
-            Destroy(collision.gameObject, 2f);
-        }
-    }
+            tempature -= Time.deltaTime * tempatureDecreaseSpeed;
 
+            if (tempature > upperBoundTemp)
+            {
 
+            }
+            else if (tempature < lowerBoundTemp)
+            {
+
+            }
+        }
+
+        private IEnumerator CookPizza(Collision collision)
+        {
+            if (collision.gameObject.tag == "WoodLog")
+            {
+                tempature += logTempIncrease;
+                Destroy(collision.gameObject, 3f);
+            }
+            else if (collision.gameObject.GetComponent<Pizza_Controller>() != null)
+            {
+                /*var timer += Time.deltaTime;
+                 * 
+                 * if (timer > cookTime && timer < burnTime)
+                 * {
+                 *      collision.gameObject.GetComponent<Pizza_Controller>().isCooked = true;
+                 * } 
+                 * else if (timer > burnTime)
+                 * {
+                 *      collision.gameObject.GetComponent<Pizza_Controller>().isBurnt = true;
+                 * }
+                 * 
+                */
+            }
+            else
+            {
+                Destroy(collision.gameObject, 2f);
+            }
+
+            return null;
+        }
+    }       
 }
