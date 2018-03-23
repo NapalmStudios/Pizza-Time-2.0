@@ -34,6 +34,7 @@ TagManager:
   - t5
   - t6
   - reset
+  - Pizza
   layers:
   - Default
   - TransparentFX
