@@ -18,6 +18,8 @@ namespace PizzaTime
         public GameObject pepperObj;
         public GameObject mushObj;
         public GameObject ovenObj;
+        public GameObject pieSpawnTrigger;
+        public GameObject toppingSpawnTrigger;
         // -------------------------------------------------------- \\
 
         // -------------- Base Material Variables ---------------------- \\
@@ -89,7 +91,7 @@ namespace PizzaTime
 
         private void LoadResources()
         {
-            // -------------- Load GameObject Into Variables ---------------------- \\
+            // -------------- Load GameObject Into Variables --------------------------------------- \\
             pizzaObj = Resources.Load("ToppingPrefabs/Pie2.0") as GameObject;
             sauceObj = Resources.Load("ToppingPrefabs/Sauce2.0") as GameObject;
             cheeseObj = Resources.Load("ToppingPrefabs/Cheese2.0") as GameObject;
@@ -98,7 +100,9 @@ namespace PizzaTime
             pepperObj = Resources.Load("ToppingPrefabs/Pepper2.0") as GameObject;
             mushObj = Resources.Load("ToppingPrefabs/Mushroom2.0") as GameObject;
             ovenObj = Resources.Load("GamePrefabs/Oven") as GameObject;
-            // -------------------------------------------------------------------- \\
+            pieSpawnTrigger = Resources.Load("GamePrefabs/PieSpawnTrigger") as GameObject;
+            toppingSpawnTrigger = Resources.Load("GamePrefabs/ToppingSpawnTrigger") as GameObject;
+            // ------------------------------------------------------------------------------------- \\
 
             // -------------- Load Base Materials Into Variables ---------------------------------------------- \\
             pizzaDoughMaterial = Resources.Load("ToppingMaterial/Uncooked/Materials/Pizza_Dough") as Material;

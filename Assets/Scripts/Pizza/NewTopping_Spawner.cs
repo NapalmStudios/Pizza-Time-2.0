@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 namespace PizzaTime
 {
     public class NewTopping_Spawner : MonoBehaviour
     {
-
+        // ------------------------- Class Variables -------------------------- \\
+        public bool reset = false;
+        public int maxSauceObjs;
+        public int maxCheeseObjs;
+        public int maxRoniObjs;
+        public int maxBaconObjs;
+        public int maxPepperObjs;
+        public int maxMushroomObjs;
         private GameObject pizzaSpawnPosition;
         private GameObject sauceSpawnPosition;
         private GameObject cheeseSpawnPosition;
@@ -22,7 +30,13 @@ namespace PizzaTime
         private GameObject pepperObjForSpawner;
         private GameObject mushObjForSpawner;
         private ResourceLoader resourceLoader;
-        public bool reset = false;
+        private GameObject[] sauceObjects;
+        private GameObject[] cheeseObjects;
+        private GameObject[] roniObjects;
+        private GameObject[] baconObjects;
+        private GameObject[] pepperObjects;
+        private GameObject[] mushroomObjects;
+        // -------------------------------------------------------------------- \\
 
         void Start()
         {
@@ -48,42 +62,56 @@ namespace PizzaTime
             // ------------------------------------------------------------------------- \\
         }
 
-        void OnCollisionEnter(Collision col)
+        private void OnCollisionEnter(Collision col)
         {
-            GameObject coll = col.gameObject;
-            if (coll.tag == "dbutton")
+            GameObject trigger = col.gameObject;
+            if(trigger.tag.Equals(resourceLoader.pieSpawnTrigger.tag))
             {
                 Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
             }
-            if (coll.tag == "tbutton")
+            else if(trigger.tag.Equals(resourceLoader.toppingSpawnTrigger.tag))
             {
-                GameObject[] s = GameObject.FindGameObjectsWithTag("sauce");
-                for (int i = 0; i < s.Length; i++) Destroy(s[i].gameObject);
-                GameObject[] c = GameObject.FindGameObjectsWithTag("cheese");
-                for (int i = 0; i < c.Length; i++) Destroy(c[i].gameObject);
-                GameObject[] r = GameObject.FindGameObjectsWithTag("roni");
-                for (int i = 0; i < r.Length; i++) Destroy(r[i].gameObject);
-                GameObject[] b = GameObject.FindGameObjectsWithTag("bacon");
-                for (int i = 0; i < b.Length; i++) Destroy(b[i].gameObject);
-                GameObject[] p = GameObject.FindGameObjectsWithTag("peppers");
-                for (int i = 0; i < p.Length; i++) Destroy(p[i].gameObject);
-                GameObject[] m = GameObject.FindGameObjectsWithTag("mushrooms");
-                for (int i = 0; i < m.Length; i++) Destroy(m[i].gameObject);
-                for (int i = 0; i < 2; i++) Instantiate(sauceObjForSpawner, sauceSpawnPosition.transform.position, sauceSpawnPosition.transform.rotation);
-                for (int i = 0; i < 2; i++) Instantiate(cheeseObjForSpawner, cheeseSpawnPosition.transform.position, cheeseSpawnPosition.transform.rotation);
-                for (int i = 0; i < 4; i++) Instantiate(baconObjForSpawner, baconSpawnPosition.transform.position, baconSpawnPosition.transform.rotation);
-                for (int i = 0; i < 4; i++) Instantiate(roniObjForSpawner, roniSpawnPosition.transform.position, roniSpawnPosition.transform.rotation);
-                for (int i = 0; i < 4; i++) Instantiate(pepperObjForSpawner, pepperSpawnPosition.transform.position, pepperSpawnPosition.transform.rotation);
-                for (int i = 0; i < 2; i++) Instantiate(mushObjForSpawner, mushSpawnPosition.transform.position, mushSpawnPosition.transform.rotation);
-            }
-            if (coll.tag == "button")
-            {
-                SceneManager.LoadScene("Level_GreyBox");
-            }
-            if (coll.tag == "reset")
-            {
-                SceneManager.LoadScene("Level_GreyBox");
+                sauceObjects = GameObject.FindGameObjectsWithTag(resourceLoader.sauceObj.tag);
+                cheeseObjects = GameObject.FindGameObjectsWithTag(resourceLoader.cheeseObj.tag);
+                roniObjects = GameObject.FindGameObjectsWithTag(resourceLoader.roniObj.tag);
+                baconObjects = GameObject.FindGameObjectsWithTag(resourceLoader.baconObj.tag);
+                pepperObjects = GameObject.FindGameObjectsWithTag(resourceLoader.pepperObj.tag);
+                mushroomObjects = GameObject.FindGameObjectsWithTag(resourceLoader.mushObj.tag);
+                spawnTopping(sauceObjects, sauceObjForSpawner, sauceSpawnPosition, maxSauceObjs);
+                spawnTopping(cheeseObjects, cheeseObjForSpawner, cheeseSpawnPosition, maxCheeseObjs);
+                spawnTopping(roniObjects, roniObjForSpawner, roniSpawnPosition, maxRoniObjs);
+                spawnTopping(baconObjects, baconObjForSpawner, baconSpawnPosition, maxBaconObjs);
+                spawnTopping(pepperObjects, pepperObjForSpawner, pepperSpawnPosition, maxPepperObjs);
+                spawnTopping(mushroomObjects, mushObjForSpawner, mushSpawnPosition, maxMushroomObjs);
             }
         }
+
+        /// <summary>
+        /// Spawns Toppings for the Specified max amount
+        /// </summary>
+        /// <param name="toppingArray">Topping Array</param>
+        /// <param name="topping">Topping GameObject to Spawn</param>
+        /// <param name="toppingSpawner">Topping Spawn Location</param>
+        /// <param name="maxToppingAmount">Max Amount of Toppings to Spawn</param>
+        private void spawnTopping(GameObject[] toppingArray, GameObject topping, GameObject toppingSpawner, int maxToppingAmount)
+        {
+            var length = toppingArray.Length;
+            while(length != maxToppingAmount)
+            {
+                Instantiate(topping, toppingSpawner.transform.position, toppingSpawner.transform.rotation);
+            }
+        }
+        
+        
+        //NOT SURE IF WILL BE NEEDED
+        //    if (coll.tag == "button")
+        //    {
+        //        SceneManager.LoadScene("Level_GreyBox");
+        //    }
+        //    if (coll.tag == "reset")
+        //    {
+        //        SceneManager.LoadScene("Level_GreyBox");
+        //    }
+        //}
     }
 }
