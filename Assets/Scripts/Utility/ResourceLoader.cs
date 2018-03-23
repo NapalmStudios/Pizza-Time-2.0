@@ -17,6 +17,7 @@ namespace PizzaTime
         public GameObject baconObj;
         public GameObject pepperObj;
         public GameObject mushObj;
+        public GameObject ovenObj;
         // -------------------------------------------------------- \\
 
         // -------------- Base Material Variables ---------------------- \\
@@ -96,6 +97,7 @@ namespace PizzaTime
             baconObj = Resources.Load("ToppingPrefabs/Bacon2.0") as GameObject;
             pepperObj = Resources.Load("ToppingPrefabs/Pepper2.0") as GameObject;
             mushObj = Resources.Load("ToppingPrefabs/Mushroom2.0") as GameObject;
+            ovenObj = Resources.Load("GamePrefabs/Oven") as GameObject;
             // -------------------------------------------------------------------- \\
 
             // -------------- Load Base Materials Into Variables ---------------------------------------------- \\
