@@ -24,13 +24,14 @@ namespace PizzaTime
 
         void Update()
         {
-            TempatureDecreaseOverTime();
+            StartCoroutine(TempatureDecreaseOverTime());
+
         }
 
         /// <summary>
         /// Decreases the Oven tempature after a certain amount of time has passed
         /// </summary>
-        private void TempatureDecreaseOverTime()
+        private IEnumerator TempatureDecreaseOverTime()
         {
             heatTime += Time.deltaTime;
             //Decreases the tempature of the oven over time
@@ -45,6 +46,8 @@ namespace PizzaTime
                 heatTime = 0;
                 newLogAdded = false;
             }
+
+            yield return null;
         }
 
     }

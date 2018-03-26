@@ -59,6 +59,7 @@ namespace PizzaTime
         public void Update()
         {
             pizza.GetComponent<Renderer>().material = activePizzaTexture;
+            StartCoroutine(Cooking(isCooking, cookingSpeed));
         }
 
         private void OnCollisionEnter(Collision col)
@@ -420,6 +421,9 @@ namespace PizzaTime
             {
                 switch (pizzaCase)
                 {
+                    case PIZZA.Dough:
+                        activePizzaTexture = resourceLoader.cookedDoughMaterial;
+                        break;
                     case PIZZA.Cheese:
                         activePizzaTexture = resourceLoader.cookedCheeseMaterial;
                         break;
@@ -498,21 +502,28 @@ namespace PizzaTime
                 isCooking = true;
                 cookingSpeed = 3;
             }
+        }
 
+        private IEnumerator Cooking(bool isCooking, float cookingSpeed)
+        {
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
-            while(isCooking)
+            while (isCooking)
             {
+                Debug.Log(cookTime);
                 cookTime += Time.deltaTime * cookingSpeed;
-                if(cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
+                if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
                     isCooked = true;
                     CookedPizzas(isCooked);
+                    isCooking = false;
                 }
-                else if(cookTime >= burnTime)
+                else if (cookTime >= totalCookTime + burnTime)
                 {
                     activePizzaTexture = resourceLoader.cookedBurnt;
+                    isCooking = false;
                 }
             }
+            yield return null;
         }
     }
 }
