@@ -16,7 +16,6 @@ namespace PizzaTime
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
         }
 
-
         //Adds Tempature to the Oven When Wood is added
         void OnCollisionEnter(Collision col)
         {

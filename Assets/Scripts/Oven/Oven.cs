@@ -25,7 +25,6 @@ namespace PizzaTime
         void Update()
         {
             StartCoroutine(TempatureDecreaseOverTime());
-
         }
 
         /// <summary>
@@ -46,7 +45,6 @@ namespace PizzaTime
                 heatTime = 0;
                 newLogAdded = false;
             }
-
             yield return null;
         }
 
