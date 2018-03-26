@@ -40,7 +40,7 @@ namespace PizzaTime
 
         private float cookTime;
         private float cookingSpeed;
-        private bool isCooking = false;
+        public bool isCooking = false;
         private float maxCookTempature;
 
         private Material currentPizzaTexture;
@@ -509,7 +509,6 @@ namespace PizzaTime
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
             while (isCooking)
             {
-                Debug.Log(cookTime);
                 cookTime += Time.deltaTime * cookingSpeed;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
