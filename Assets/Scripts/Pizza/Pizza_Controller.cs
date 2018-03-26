@@ -39,7 +39,7 @@ namespace PizzaTime
         public Material activePizzaTexture;
         private Material currentPizzaTexture;
         private PIZZA pizzaCase;
-        private PIZZA oneToppingCase;
+        private PIZZA toppingCase;
         private ResourceLoader resourceLoader;
         // -------------------------------------------------- \\
         void Start()
@@ -162,22 +162,22 @@ namespace PizzaTime
         {
             if (topping.tag.Equals(resourceLoader.roniObj.tag))
             {
-                oneToppingCase = PIZZA.Roni;
+                toppingCase = PIZZA.Roni;
             }
             else if (topping.tag.Equals(resourceLoader.baconObj.tag))
             {
-                oneToppingCase = PIZZA.Bacon;
+                toppingCase = PIZZA.Bacon;
             }
             else if (topping.tag.Equals(resourceLoader.pepperObj.tag))
             {
-                oneToppingCase = PIZZA.Peppers;
+                toppingCase = PIZZA.Peppers;
             }
             else if (topping.tag.Equals(resourceLoader.mushObj.tag))
             {
-                oneToppingCase = PIZZA.Mushrooms;
+                toppingCase = PIZZA.Mushrooms;
             }
 
-            switch (oneToppingCase)
+            switch (toppingCase)
             {
                 case PIZZA.Roni:
                     pizzaAddRoniTopping(topping);
