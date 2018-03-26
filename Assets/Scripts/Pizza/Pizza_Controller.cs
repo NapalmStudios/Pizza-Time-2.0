@@ -29,14 +29,20 @@ namespace PizzaTime
     public class Pizza_Controller : MonoBehaviour
     {
         // ----------------- Class Variables ---------------- \\
-        public float cookTime = 0;
-        public float doneTime = 10;
-        public float burntTime = 20;
+        public float minCookTempature;
+        public float midCookTempature;
+        public float totalCookTime;
+        public float burnTime;
         public bool isCooked = false;
-        public bool isBurned = false;
         public GameObject pizza;
         public Pizza_Controller pizzaController;
         public Material activePizzaTexture;
+
+        private float cookTime;
+        private float cookingSpeed;
+        private bool isCooking = false;
+        private float maxCookTempature;
+
         private Material currentPizzaTexture;
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
@@ -46,6 +52,7 @@ namespace PizzaTime
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
 
+            maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
             activePizzaTexture = resourceLoader.pizzaDoughMaterial;
         }
@@ -150,7 +157,7 @@ namespace PizzaTime
             GameObject oven = col.gameObject;
             if (oven.tag.Equals(resourceLoader.ovenObj.tag))
             {
-                Cook();
+                Cook(oven.GetComponent<Oven>().tempature);
             }
         }
 
@@ -468,20 +475,44 @@ namespace PizzaTime
         /// <summary>
         /// Timer for Determining whether the pizza is cooked/burned
         /// </summary>
-        private void Cook()
+        /// <param name="currentOvenTempature">Current Tempature of the Oven</param>
+        private void Cook(float currentOvenTempature)
         {
-            cookTime += Time.deltaTime;
-            if (cookTime >= doneTime && cookTime <= burntTime)
+            //Sets isCooking bool and cookingSpeed based upon the current oven tempature
+            if (currentOvenTempature < minCookTempature)
             {
-                isCooked = true;
-                CookedPizzas(isCooked);
-            }   
-            else if (cookTime >= burntTime)
-            {
-                isBurned = true;
-                activePizzaTexture = resourceLoader.cookedBurnt;
+                isCooking = false;
             }
-                
+            else if(currentOvenTempature >= minCookTempature && currentOvenTempature < midCookTempature)
+            {
+                isCooking = true;
+                cookingSpeed = 1;
+            }
+            else if(currentOvenTempature >= midCookTempature && currentOvenTempature < maxCookTempature)
+            {
+                isCooking = true;
+                cookingSpeed = 2;
+            }
+            else
+            {
+                isCooking = true;
+                cookingSpeed = 3;
+            }
+
+            //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
+            while(isCooking)
+            {
+                cookTime += Time.deltaTime * cookingSpeed;
+                if(cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
+                {
+                    isCooked = true;
+                    CookedPizzas(isCooked);
+                }
+                else if(cookTime >= burnTime)
+                {
+                    activePizzaTexture = resourceLoader.cookedBurnt;
+                }
+            }
         }
     }
 }

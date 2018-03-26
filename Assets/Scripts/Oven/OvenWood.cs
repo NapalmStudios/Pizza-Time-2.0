@@ -23,7 +23,13 @@ namespace PizzaTime
             GameObject oven = col.gameObject;
             if(oven.tag.Equals(resourceLoader.ovenObj.tag))
             {
-                oven.GetComponent<Oven>().tempature += woodAddTemp;
+                var ovenComp = oven.GetComponent<Oven>();
+                ovenComp.newLogAdded = true;
+                ovenComp.tempature += woodAddTemp;
+                if (ovenComp.tempature >= ovenComp.maxTempature)
+                {
+                    ovenComp.tempature = ovenComp.maxTempature;
+                }
                 Destroy(this.gameObject);
             }
         }
