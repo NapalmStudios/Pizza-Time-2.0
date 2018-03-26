@@ -25,7 +25,7 @@ namespace PizzaTime
         RoniPeppersMush
     };
     
-    // TODO: Refactor in a way that it could be expaneded later
+    // TODO: Refactor in a way that it could be expaneded laters
     public class Pizza_Controller : MonoBehaviour
     {
         // ----------------- Class Variables ---------------- \\
