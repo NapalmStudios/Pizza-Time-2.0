@@ -261,48 +261,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &699148840
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4594851502572924, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -7.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594851502572924, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.78999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594851502572924, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -3.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594851502572924, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594851502572924, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594851502572924, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594851502572924, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594851502572924, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 437cf7decac30964ebc570a8018e437b, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &824245429
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +573,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -680,7 +638,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271823107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.45, y: 2.03, z: -4.52}
+  m_LocalPosition: {x: -0.69, y: 2.03, z: -4.52}
   m_LocalScale: {x: 1, y: 0.04628823, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -780,7 +738,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1659552555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.82, y: 4.41, z: -4.52}
+  m_LocalPosition: {x: 2.7, y: 4.41, z: -4.52}
   m_LocalScale: {x: 1, y: 0.04628823, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -893,7 +851,7 @@ GameObject:
   - component: {fileID: 1807692913}
   - component: {fileID: 1807692912}
   m_Layer: 0
-  m_Name: cheese pizza
+  m_Name: Cheese Pizza
   m_TagString: Pizza
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -909,7 +867,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -974,7 +932,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807692911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23, y: 3.14, z: -4.52}
+  m_LocalPosition: {x: 2.44, y: 3.14, z: -4.52}
   m_LocalScale: {x: 1, y: 0.04628823, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1211,6 +1169,7 @@ MonoBehaviour:
   time: 0
   index: 0
   spawnTicket: 100
+  ticketspawning: {fileID: 0}
 --- !u!4 &1922862982
 Transform:
   m_ObjectHideFlags: 0

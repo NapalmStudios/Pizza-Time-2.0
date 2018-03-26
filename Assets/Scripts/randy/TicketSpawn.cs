@@ -10,7 +10,8 @@ public class TicketSpawn : MonoBehaviour {
     public int index;
     private GameObject currentTicket;
     public int spawnTicket;
-    
+    public GameObject ticketspawning;
+
 	void Start ()
     {
       
@@ -27,7 +28,7 @@ public class TicketSpawn : MonoBehaviour {
                 index = Random.Range(0, listOfTickets.Length);
                 currentTicket = listOfTickets[index];
 
-                Instantiate(currentTicket, points[pointIndex].position, Quaternion.identity);
+              ticketspawning =  Instantiate(currentTicket, points[pointIndex].position, Quaternion.identity);
                 time = 0;           
         }
 	}

@@ -31,13 +31,34 @@ public class Goal : MonoBehaviour
     }
     void Update()
     {
+        // if orange name doesnt work check tag for spaces
+        roniPepBaconMushTicket = GameObject.FindGameObjectWithTag("roniPepBaconMushTicket");
+        roniPepTicket = GameObject.FindGameObjectWithTag("roniPepTicket");
+        roniMushPepTicket = GameObject.FindGameObjectWithTag("roniMushPepTicket");
+        roniMushTicket = GameObject.FindGameObjectWithTag("roniMushTicket");
+        roniBaconPepTicket = GameObject.FindGameObjectWithTag("roniBaconPepTicket");
+        roniBaconMushTicket = GameObject.FindGameObjectWithTag("roniBaconMushTicket");
+        roniBaconTicket = GameObject.FindGameObjectWithTag("roniBaconTicket");
+        roniTicket = GameObject.FindGameObjectWithTag("roniTicket");
+        pepTicket = GameObject.FindGameObjectWithTag("pepTicket");
+        mushPepTicket = GameObject.FindGameObjectWithTag("mushPepTicket");
+        mushTicket = GameObject.FindGameObjectWithTag("mushTicket");
+        baconPepTicket = GameObject.FindGameObjectWithTag("baconPepTicket");
+        baconMushPepTicket = GameObject.FindGameObjectWithTag("baconMushPepTicket");
+        baconMushTicket = GameObject.FindGameObjectWithTag("baconMushTicket");
+        baconTicket = GameObject.FindGameObjectWithTag("baconTicket");
+        cheeseTicket = GameObject.FindGameObjectWithTag("cheeseTicket");
+
         tipTimer++;
     }
 
     private void OnCollisionEnter(Collision col)
     {
+     
+         
 
-        if (col.gameObject.name == "Cheese Pizza" && cheeseTicket.activeInHierarchy)
+
+        if (col.gameObject.name == "Cheese Pizza" && cheeseTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -48,7 +69,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Bacon Pizza" && baconTicket.activeInHierarchy)
+        if (col.gameObject.name == "Bacon Pizza" && baconTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -59,7 +80,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Bacon Mushroom Pizza" && baconMushTicket.activeInHierarchy)
+        if (col.gameObject.name == "Bacon Mushroom Pizza" && baconMushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -70,7 +91,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Bacon Mushroom Pepper Pizza" && baconMushPepTicket.activeInHierarchy)
+        if (col.gameObject.name == "Bacon Mushroom Pepper Pizza" && baconMushPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -81,7 +102,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Bacon Pepper Pizza" && baconPepTicket.activeInHierarchy)
+        if (col.gameObject.name == "Bacon Pepper Pizza" && baconPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -92,7 +113,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Mushroom Pizza" && mushTicket.activeInHierarchy == true)
+        if (col.gameObject.name == "Mushroom Pizza" && mushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -104,7 +125,7 @@ public class Goal : MonoBehaviour
             }
         }
 
-        if (col.gameObject.name == "Mushroom Pepper Pizza" && mushPepTicket.activeInHierarchy)
+        if (col.gameObject.name == "Mushroom Pepper Pizza" && mushPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -115,7 +136,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepper Pizza" && pepTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepper Pizza" && pepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -126,7 +147,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Pizza" && roniTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepperoni Pizza" && roniTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -137,7 +158,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Bacon Pizza" && roniBaconTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepperoni Bacon Pizza" && roniBaconTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -148,7 +169,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Bacon Mushroom Pizza" && roniBaconMushTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepperoni Bacon Mushroom Pizza" && roniBaconMushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -159,7 +180,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Bacon Pepper Pizza" && roniBaconPepTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepperoni Bacon Pepper Pizza" && roniBaconPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -170,7 +191,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Mushroom Pizza" && roniMushTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepperoni Mushroom Pizza" && roniMushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -181,7 +202,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Mushroom Pepper Pizza" && roniMushPepTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepperoni Mushroom Pepper Pizza" && roniMushPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -192,7 +213,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Pepper Pizza" && roniPepTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepperoni Pepper Pizza" && roniPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -203,7 +224,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Pepper Bacon Pizza" && roniPepBaconMushTicket.activeInHierarchy)
+        if (col.gameObject.name == "Pepperoni Pepper Bacon Pizza" && roniPepBaconMushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {

@@ -35,6 +35,22 @@ TagManager:
   - t6
   - reset
   - Pizza
+  - roniPepBaconMushTicket
+  - roniPepTicket
+  - roniMushPepTicket
+  - roniMushTicket
+  - roniBaconPepTicket
+  - roniBaconMushTicket
+  - roniBaconTicket
+  - roniTicket
+  - pepTicket
+  - mushPepTicket
+  - mushTicket
+  - baconPepTicket
+  - baconMushPepTicket
+  - baconMushTicket
+  - baconTicket
+  - cheeseTicket
   layers:
   - Default
   - TransparentFX
