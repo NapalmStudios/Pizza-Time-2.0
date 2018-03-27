@@ -52,31 +52,42 @@ namespace PizzaTime
             // ------------------------------------------------------------------------- \\
 
             // ------------------- Topping Spawn Initalization ------------------------- \\
-            pizzaSpawnPosition = GameObject.Find("Dough_Spawn");
-            sauceSpawnPosition = GameObject.Find("Sauce_Spawn");
-            cheeseSpawnPosition = GameObject.Find("Cheese_Spawn");
+            pizzaSpawnPosition = GameObject.Find("dough_Spawn");
+            sauceSpawnPosition = GameObject.Find("Sauce_spawn");
+            cheeseSpawnPosition = GameObject.Find("cheese_Spawn");
             roniSpawnPosition = GameObject.Find("Roni_Spawn");
-            baconSpawnPosition = GameObject.Find("Bacon_Spawn");
-            pepperSpawnPosition = GameObject.Find("Pepper_Spawn");
-            mushSpawnPosition = GameObject.Find("Mushroom_Spawn");
+            baconSpawnPosition = GameObject.Find("Bacon_spawn");
+            pepperSpawnPosition = GameObject.Find("pepper_spawn");
+            mushSpawnPosition = GameObject.Find("mushroom_spawn");
             // ------------------------------------------------------------------------- \\
+
+            sauceObjects = new GameObject[maxSauceObjs];
+            cheeseObjects = new GameObject[maxCheeseObjs];
+            roniObjects = new GameObject[maxRoniObjs];
+            baconObjects = new GameObject[maxBaconObjs];
+            pepperObjects = new GameObject[maxPepperObjs];
+            mushroomObjects = new GameObject[maxMushroomObjs];
+        }
+
+        void Update()
+        {
+            sauceObjects = GameObject.FindGameObjectsWithTag(resourceLoader.sauceObj.tag);
+            cheeseObjects = GameObject.FindGameObjectsWithTag(resourceLoader.cheeseObj.tag);
+            roniObjects = GameObject.FindGameObjectsWithTag(resourceLoader.roniObj.tag);
+            baconObjects = GameObject.FindGameObjectsWithTag(resourceLoader.baconObj.tag);
+            pepperObjects = GameObject.FindGameObjectsWithTag(resourceLoader.pepperObj.tag);
+            mushroomObjects = GameObject.FindGameObjectsWithTag(resourceLoader.mushObj.tag);
         }
 
         private void OnCollisionEnter(Collision col)
         {
             GameObject trigger = col.gameObject;
-            if(trigger.tag.Equals(resourceLoader.pieSpawnTrigger.tag))
+            if (trigger.tag.Equals(resourceLoader.pieSpawnTrigger.tag))
             {
                 Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
             }
-            else if(trigger.tag.Equals(resourceLoader.toppingSpawnTrigger.tag))
+            else if (trigger.tag.Equals(resourceLoader.toppingSpawnTrigger.tag))
             {
-                sauceObjects = GameObject.FindGameObjectsWithTag(resourceLoader.sauceObj.tag);
-                cheeseObjects = GameObject.FindGameObjectsWithTag(resourceLoader.cheeseObj.tag);
-                roniObjects = GameObject.FindGameObjectsWithTag(resourceLoader.roniObj.tag);
-                baconObjects = GameObject.FindGameObjectsWithTag(resourceLoader.baconObj.tag);
-                pepperObjects = GameObject.FindGameObjectsWithTag(resourceLoader.pepperObj.tag);
-                mushroomObjects = GameObject.FindGameObjectsWithTag(resourceLoader.mushObj.tag);
                 spawnTopping(sauceObjects, sauceObjForSpawner, sauceSpawnPosition, maxSauceObjs);
                 spawnTopping(cheeseObjects, cheeseObjForSpawner, cheeseSpawnPosition, maxCheeseObjs);
                 spawnTopping(roniObjects, roniObjForSpawner, roniSpawnPosition, maxRoniObjs);
@@ -96,13 +107,20 @@ namespace PizzaTime
         private void spawnTopping(GameObject[] toppingArray, GameObject topping, GameObject toppingSpawner, int maxToppingAmount)
         {
             var length = toppingArray.Length;
-            while(length != maxToppingAmount)
+            var toppingsToAdd = 0;
+
+            toppingsToAdd = maxToppingAmount - length;
+
+            if (toppingsToAdd != 0)
             {
-                Instantiate(topping, toppingSpawner.transform.position, toppingSpawner.transform.rotation);
+                for (int count = 0; count < toppingsToAdd; count++)
+                {
+                    Instantiate(topping, toppingSpawner.transform.position, toppingSpawner.transform.rotation);
+                }
             }
         }
-        
-        
+
+
         //NOT SURE IF WILL BE NEEDED
         //    if (coll.tag == "button")
         //    {

@@ -40,7 +40,7 @@ namespace PizzaTime
 
         private float cookTime;
         private float cookingSpeed;
-        public bool isCooking = false;
+        private bool isCooking = false;
         private float maxCookTempature;
         private bool onOven = false;
 
