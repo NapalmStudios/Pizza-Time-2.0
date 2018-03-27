@@ -37,7 +37,7 @@ namespace PizzaTime
         public GameObject pizza;
         public Pizza_Controller pizzaController;
         public Material activePizzaTexture;
-        private Material currentPizzaTexture;
+        public Material currentPizzaTexture;
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
         private ResourceLoader resourceLoader;
