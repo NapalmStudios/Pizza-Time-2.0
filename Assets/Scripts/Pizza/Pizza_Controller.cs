@@ -33,6 +33,7 @@ namespace PizzaTime
         public float midCookTempature;
         public float totalCookTime;
         public float burnTime;
+        public float initialLowestCookSpeedValue;
         public bool isCooked = false;
         public GameObject pizza;
         public Pizza_Controller pizzaController;
@@ -490,18 +491,28 @@ namespace PizzaTime
             else if(currentOvenTempature >= minCookTempature && currentOvenTempature < midCookTempature)
             {
                 isCooking = true;
-                cookingSpeed = 1;
+                cookingSpeed = SetCookingSpeed(currentOvenTempature, minCookTempature, midCookTempature, initialLowestCookSpeedValue);
             }
             else if(currentOvenTempature >= midCookTempature && currentOvenTempature < maxCookTempature)
             {
                 isCooking = true;
-                cookingSpeed = 2;
+                cookingSpeed = SetCookingSpeed(currentOvenTempature, midCookTempature, maxCookTempature, initialLowestCookSpeedValue + 1);
             }
             else
             {
                 isCooking = true;
-                cookingSpeed = 3;
+                cookingSpeed = initialLowestCookSpeedValue + 2;
             }
+        }
+
+        private float SetCookingSpeed(float currentOvenTempature, float tempatureOne, float tempatureTwo, float startingValue)
+        {
+            var value = currentOvenTempature - tempatureOne;
+            var divder = tempatureTwo - tempatureOne;
+
+            var calculation = startingValue + (value / divder);
+
+            return calculation;
         }
 
         private IEnumerator Cooking(bool isCooking, float cookingSpeed)
