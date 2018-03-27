@@ -23,8 +23,9 @@ public class Goal : MonoBehaviour
 
     public int multiplier = 2;
     public int maxTipTime = 500;
-    public int tipTimer;
+    private int tipTimer;
     public int correctPizza = 10;
+
     private void Start()
     {
         // tipTimer = 600;
@@ -54,10 +55,6 @@ public class Goal : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-     
-         
-
-
         if (col.gameObject.name == "Cheese Pizza" && cheeseTicket == true)
         {
             if (tipTimer < maxTipTime)
@@ -241,5 +238,4 @@ public class Goal : MonoBehaviour
             Destroy(col.gameObject);
         }
     }
-
 }

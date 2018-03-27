@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TicketSpawn : MonoBehaviour {
+public class TicketSpawn : MonoBehaviour
+{
 
     public Transform[] points;
     public GameObject[] listOfTickets;
@@ -12,24 +13,23 @@ public class TicketSpawn : MonoBehaviour {
     public int spawnTicket;
     public GameObject ticketspawning;
 
-	void Start ()
+    void Start()
     {
-      
-	}
-		
-	void Update ()
+
+    }
+
+    void Update()
     {
         time++;
-		if (time >= spawnTicket)
+        if (time >= spawnTicket)
         {
-       
             int pointIndex = Random.Range(0, points.Length);
-            
-                index = Random.Range(0, listOfTickets.Length);
-                currentTicket = listOfTickets[index];
 
-              ticketspawning =  Instantiate(currentTicket, points[pointIndex].position, Quaternion.identity);
-                time = 0;           
+            index = Random.Range(0, listOfTickets.Length);
+            currentTicket = listOfTickets[index];
+
+            ticketspawning = Instantiate(currentTicket, points[pointIndex].position, Quaternion.identity);
+            time = 0;
         }
-	}
+    }
 }
