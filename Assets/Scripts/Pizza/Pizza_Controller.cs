@@ -25,7 +25,6 @@ namespace PizzaTime
         RoniPeppersMush
     };
     
-    // TODO: Refactor in a way that it could be expaneded laters
     public class Pizza_Controller : MonoBehaviour
     {
         // ----------------- Class Variables ---------------- \\
@@ -141,10 +140,10 @@ namespace PizzaTime
             switch(pizzaCase)
             {
                 case PIZZA.Dough:
-                    pizzaAddSauceTopping(topping);
+                    PizzaAddSauceTopping(topping);
                     break;
                 case PIZZA.Sauce:
-                    pizzaAddCheeseTopping(topping);
+                    PizzaAddCheeseTopping(topping);
                     break;
                 default:
                     ToppingSelector(topping);
@@ -189,16 +188,16 @@ namespace PizzaTime
             switch (toppingCase)
             {
                 case PIZZA.Roni:
-                    pizzaAddRoniTopping(topping);
+                    PizzaAddRoniTopping(topping);
                     break;
                 case PIZZA.Bacon:
-                    pizzaAddBaconTopping(topping);
+                    PizzaAddBaconTopping(topping);
                     break;
                 case PIZZA.Peppers:
-                    pizzaAddPeppersTopping(topping);
+                    PizzaAddPeppersTopping(topping);
                     break;
                 case PIZZA.Mushrooms:
-                    pizzaAddMushroomsTopping(topping);
+                    PizzaAddMushroomsTopping(topping);
                     break;
                 default:
                     break;
@@ -209,7 +208,7 @@ namespace PizzaTime
         /// If-Else Statment for Beginning the Pizza with Sauce
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddSauceTopping(GameObject topping)
+        private void PizzaAddSauceTopping(GameObject topping)
         {
             if (topping.tag.Equals(resourceLoader.sauceObj.tag))
             {
@@ -222,7 +221,7 @@ namespace PizzaTime
         /// If-Else Statement for Adding Cheese Before Able to Add Other Toppings
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddCheeseTopping(GameObject topping)
+        private void PizzaAddCheeseTopping(GameObject topping)
         {
             if (topping.tag.Equals(resourceLoader.cheeseObj.tag))
             {
@@ -235,7 +234,7 @@ namespace PizzaTime
         /// Adds Roni To the Current Pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddRoniTopping(GameObject topping)
+        private void PizzaAddRoniTopping(GameObject topping)
         {
             switch(pizzaCase)
             {
@@ -280,7 +279,7 @@ namespace PizzaTime
         /// Adds Bacon to the Crrent Pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddBaconTopping(GameObject topping)
+        private void PizzaAddBaconTopping(GameObject topping)
         {
             switch(pizzaCase)
             {
@@ -325,7 +324,7 @@ namespace PizzaTime
         /// Adds Peppers to the Current Pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddPeppersTopping(GameObject topping)
+        private void PizzaAddPeppersTopping(GameObject topping)
         {
             switch(pizzaCase)
             {
@@ -371,7 +370,7 @@ namespace PizzaTime
         /// Adds Mushrooms to the Current Pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddMushroomsTopping(GameObject topping)
+        private void PizzaAddMushroomsTopping(GameObject topping)
         {
             switch(pizzaCase)
             {

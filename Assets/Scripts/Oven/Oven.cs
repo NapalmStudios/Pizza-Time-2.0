@@ -14,7 +14,7 @@ namespace PizzaTime
 
         private GameObject pizzaOven;
         private ResourceLoader resourceLoader;
-        private float heatTime = 0;
+        private float heatDissipationTime = 0;
 
         void Start()
         {
@@ -32,17 +32,17 @@ namespace PizzaTime
         /// </summary>
         private IEnumerator TempatureDecreaseOverTime()
         {
-            heatTime += Time.deltaTime;
+            heatDissipationTime += Time.deltaTime;
             //Decreases the tempature of the oven over time
-            if (heatTime > decreaseHeatTime && tempature != 0)
+            if (heatDissipationTime > decreaseHeatTime && tempature != 0)
             {
                 tempature -= tempatureDecrease;
-                heatTime = 0;
+                heatDissipationTime = 0;
             }
             //Reset the warmTime if a new log is added
             if (newLogAdded)
             {
-                heatTime = 0;
+                heatDissipationTime = 0;
                 newLogAdded = false;
             }
             yield return null;
