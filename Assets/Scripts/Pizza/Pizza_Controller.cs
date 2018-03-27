@@ -505,6 +505,14 @@ namespace PizzaTime
             }
         }
 
+        /// <summary>
+        /// Sets the Cooking Speed to the correct multiplier base upon the tempatures set for tempOne and tempTwo and the value of currentOvenTempature
+        /// </summary>
+        /// <param name="currentOvenTempature">Current Temapture of the Oven</param>
+        /// <param name="tempatureOne">Min or Mid tempature value</param>
+        /// <param name="tempatureTwo">Mid or Max tempature value</param>
+        /// <param name="startingValue">Starting cooking speed multiplier</param>
+        /// <returns></returns>
         private float SetCookingSpeed(float currentOvenTempature, float tempatureOne, float tempatureTwo, float startingValue)
         {
             var value = currentOvenTempature - tempatureOne;
