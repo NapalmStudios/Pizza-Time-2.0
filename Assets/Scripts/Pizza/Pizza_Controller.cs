@@ -42,6 +42,7 @@ namespace PizzaTime
         private float cookingSpeed;
         public bool isCooking = false;
         private float maxCookTempature;
+        private bool onOven = false;
 
         private Material currentPizzaTexture;
         private PIZZA pizzaCase;
@@ -158,7 +159,12 @@ namespace PizzaTime
             GameObject oven = col.gameObject;
             if (oven.tag.Equals(resourceLoader.ovenObj.tag))
             {
+                onOven = true;
                 Cook(oven.GetComponent<Oven>().tempature);
+            }
+            else
+            {
+                onOven = false;
             }
         }
 
@@ -525,9 +531,9 @@ namespace PizzaTime
         private IEnumerator Cooking(bool isCooking, float cookingSpeed)
         {
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
-            while (isCooking)
+            if(isCooking && onOven)
             {
-                cookTime += Time.deltaTime * cookingSpeed;
+                cookTime += Time.deltaTime;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
                     isCooked = true;
