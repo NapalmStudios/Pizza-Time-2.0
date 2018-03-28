@@ -25,18 +25,24 @@ namespace PizzaTime
         RoniPeppersMush
     };
     
-    // TODO: Refactor in a way that it could be expaneded later
     public class Pizza_Controller : MonoBehaviour
     {
         // ----------------- Class Variables ---------------- \\
-        public float cookTime = 0;
-        public float doneTime = 10;
-        public float burntTime = 20;
+        public float minCookTempature;
+        public float midCookTempature;
+        public float totalCookTime;
+        public float burnTime;
+        public float initialLowestCookSpeedValue;
         public bool isCooked = false;
-        public bool isBurned = false;
         public GameObject pizza;
         public Pizza_Controller pizzaController;
         public Material activePizzaTexture;
+
+        private float cookTime;
+        private float cookingSpeed;
+        private bool isCooking = false;
+        private float maxCookTempature;
+        private bool onOven = false;
         public Material currentPizzaTexture;
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
@@ -46,12 +52,14 @@ namespace PizzaTime
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
 
+            maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
             activePizzaTexture = resourceLoader.pizzaDoughMaterial;
         }
         public void Update()
         {
             pizza.GetComponent<Renderer>().material = activePizzaTexture;
+            StartCoroutine(Cooking(isCooking, cookingSpeed));
         }
 
         private void OnCollisionEnter(Collision col)
@@ -132,10 +140,10 @@ namespace PizzaTime
             switch(pizzaCase)
             {
                 case PIZZA.Dough:
-                    pizzaAddSauceTopping(topping);
+                    PizzaAddSauceTopping(topping);
                     break;
                 case PIZZA.Sauce:
-                    pizzaAddCheeseTopping(topping);
+                    PizzaAddCheeseTopping(topping);
                     break;
                 default:
                     ToppingSelector(topping);
@@ -150,7 +158,12 @@ namespace PizzaTime
             GameObject oven = col.gameObject;
             if (oven.tag.Equals(resourceLoader.ovenObj.tag))
             {
-                Cook();
+                onOven = true;
+                Cook(oven.GetComponent<Oven>().tempature);
+            }
+            else
+            {
+                onOven = false;
             }
         }
 
@@ -180,16 +193,16 @@ namespace PizzaTime
             switch (toppingCase)
             {
                 case PIZZA.Roni:
-                    pizzaAddRoniTopping(topping);
+                    PizzaAddRoniTopping(topping);
                     break;
                 case PIZZA.Bacon:
-                    pizzaAddBaconTopping(topping);
+                    PizzaAddBaconTopping(topping);
                     break;
                 case PIZZA.Peppers:
-                    pizzaAddPeppersTopping(topping);
+                    PizzaAddPeppersTopping(topping);
                     break;
                 case PIZZA.Mushrooms:
-                    pizzaAddMushroomsTopping(topping);
+                    PizzaAddMushroomsTopping(topping);
                     break;
                 default:
                     break;
@@ -200,7 +213,7 @@ namespace PizzaTime
         /// If-Else Statment for Beginning the Pizza with Sauce
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddSauceTopping(GameObject topping)
+        private void PizzaAddSauceTopping(GameObject topping)
         {
             if (topping.tag.Equals(resourceLoader.sauceObj.tag))
             {
@@ -213,7 +226,7 @@ namespace PizzaTime
         /// If-Else Statement for Adding Cheese Before Able to Add Other Toppings
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddCheeseTopping(GameObject topping)
+        private void PizzaAddCheeseTopping(GameObject topping)
         {
             if (topping.tag.Equals(resourceLoader.cheeseObj.tag))
             {
@@ -226,7 +239,7 @@ namespace PizzaTime
         /// Adds Roni To the Current Pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddRoniTopping(GameObject topping)
+        private void PizzaAddRoniTopping(GameObject topping)
         {
             switch(pizzaCase)
             {
@@ -271,7 +284,7 @@ namespace PizzaTime
         /// Adds Bacon to the Crrent Pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddBaconTopping(GameObject topping)
+        private void PizzaAddBaconTopping(GameObject topping)
         {
             switch(pizzaCase)
             {
@@ -316,7 +329,7 @@ namespace PizzaTime
         /// Adds Peppers to the Current Pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddPeppersTopping(GameObject topping)
+        private void PizzaAddPeppersTopping(GameObject topping)
         {
             switch(pizzaCase)
             {
@@ -362,7 +375,7 @@ namespace PizzaTime
         /// Adds Mushrooms to the Current Pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void pizzaAddMushroomsTopping(GameObject topping)
+        private void PizzaAddMushroomsTopping(GameObject topping)
         {
             switch(pizzaCase)
             {
@@ -413,6 +426,9 @@ namespace PizzaTime
             {
                 switch (pizzaCase)
                 {
+                    case PIZZA.Dough:
+                        activePizzaTexture = resourceLoader.cookedDoughMaterial;
+                        break;
                     case PIZZA.Cheese:
                         activePizzaTexture = resourceLoader.cookedCheeseMaterial;
                         break;
@@ -468,20 +484,68 @@ namespace PizzaTime
         /// <summary>
         /// Timer for Determining whether the pizza is cooked/burned
         /// </summary>
-        private void Cook()
+        /// <param name="currentOvenTempature">Current Tempature of the Oven</param>
+        private void Cook(float currentOvenTempature)
         {
-            cookTime += Time.deltaTime;
-            if (cookTime >= doneTime && cookTime <= burntTime)
+            //Sets isCooking bool and cookingSpeed based upon the current oven tempature
+            if (currentOvenTempature < minCookTempature)
             {
-                isCooked = true;
-                CookedPizzas(isCooked);
-            }   
-            else if (cookTime >= burntTime)
-            {
-                isBurned = true;
-                activePizzaTexture = resourceLoader.cookedBurnt;
+                isCooking = false;
             }
-                
+            else if(currentOvenTempature >= minCookTempature && currentOvenTempature < midCookTempature)
+            {
+                isCooking = true;
+                cookingSpeed = SetCookingSpeed(currentOvenTempature, minCookTempature, midCookTempature, initialLowestCookSpeedValue);
+            }
+            else if(currentOvenTempature >= midCookTempature && currentOvenTempature < maxCookTempature)
+            {
+                isCooking = true;
+                cookingSpeed = SetCookingSpeed(currentOvenTempature, midCookTempature, maxCookTempature, initialLowestCookSpeedValue + 1);
+            }
+            else
+            {
+                isCooking = true;
+                cookingSpeed = initialLowestCookSpeedValue + 2;
+            }
+        }
+
+        /// <summary>
+        /// Sets the Cooking Speed to the correct multiplier base upon the tempatures set for tempOne and tempTwo and the value of currentOvenTempature
+        /// </summary>
+        /// <param name="currentOvenTempature">Current Temapture of the Oven</param>
+        /// <param name="tempatureOne">Min or Mid tempature value</param>
+        /// <param name="tempatureTwo">Mid or Max tempature value</param>
+        /// <param name="startingValue">Starting cooking speed multiplier</param>
+        /// <returns></returns>
+        private float SetCookingSpeed(float currentOvenTempature, float tempatureOne, float tempatureTwo, float startingValue)
+        {
+            var value = currentOvenTempature - tempatureOne;
+            var divder = tempatureTwo - tempatureOne;
+
+            var calculation = startingValue + (value / divder);
+
+            return calculation;
+        }
+
+        private IEnumerator Cooking(bool isCooking, float cookingSpeed)
+        {
+            //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
+            if(isCooking && onOven)
+            {
+                cookTime += Time.deltaTime;
+                if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
+                {
+                    isCooked = true;
+                    CookedPizzas(isCooked);
+                    isCooking = false;
+                }
+                else if (cookTime >= totalCookTime + burnTime)
+                {
+                    activePizzaTexture = resourceLoader.cookedBurnt;
+                    isCooking = false;
+                }
+            }
+            yield return null;
         }
     }
 }
