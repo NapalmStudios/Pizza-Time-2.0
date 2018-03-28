@@ -22,7 +22,8 @@ namespace PizzaTime
         RoniPeppersBacon,
         PeppersBaconMush,
         RoniBaconMush,
-        RoniPeppersMush
+        RoniPeppersMush,
+        TheWorks
     };
     
     public class Pizza_Controller : MonoBehaviour
@@ -136,6 +137,10 @@ namespace PizzaTime
             else if(currentPizzaTexture.Equals(resourceLoader.roniAndPeppersAndMushMaterial))
             {
                 pizzaCase = PIZZA.RoniPeppersMush;
+            }
+            else if(currentPizzaTexture.Equals(resourceLoader.theWorksMaterial))
+            {
+                pizzaCase = PIZZA.TheWorks;
             }
 
             switch(pizzaCase)
