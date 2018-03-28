@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 54129474241043316}
   - component: {fileID: 114748495612320218}
   - component: {fileID: 114268900517900448}
+  - component: {fileID: 114752879242351482}
   m_Layer: 8
   m_Name: Sauce2.0
   m_TagString: sauce
@@ -208,3 +209,15 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114752879242351482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790070787649102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa02f184c7d29924a995fb1cc675a6f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sauceBottle: {fileID: 0}
