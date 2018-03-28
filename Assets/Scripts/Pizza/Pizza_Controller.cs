@@ -43,8 +43,7 @@ namespace PizzaTime
         private bool isCooking = false;
         private float maxCookTempature;
         private bool onOven = false;
-
-        private Material currentPizzaTexture;
+        public Material currentPizzaTexture;
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
         private ResourceLoader resourceLoader;

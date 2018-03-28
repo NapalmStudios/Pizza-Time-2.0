@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PizzaTime;
 
 public class Goal : MonoBehaviour
 {
+    private ResourceLoader resourceLoader;
+    public Pizza_Controller pizzaController;
     public GameObject roniPepBaconMushTicket;
     public GameObject roniPepTicket;
     public GameObject roniMushPepTicket;
@@ -28,6 +31,7 @@ public class Goal : MonoBehaviour
 
     private void Start()
     {
+        resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
         // tipTimer = 600;
     }
     void Update()
@@ -55,7 +59,11 @@ public class Goal : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Cheese Pizza" && cheeseTicket == true)
+        var pizzaObj = col.gameObject.GetComponent<Pizza_Controller>();
+        
+       // Debug.Log(pizzaObj.activePizzaTexture);
+
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedCheeseMaterial) && cheeseTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -66,7 +74,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Bacon Pizza" && baconTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedBaconMaterial) && baconTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -77,7 +85,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Bacon Mushroom Pizza" && baconMushTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedBaconAndMushMaterial) && baconMushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -88,7 +96,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Bacon Mushroom Pepper Pizza" && baconMushPepTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedMushAndBaconAndPeppersMaterial) && baconMushPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -99,7 +107,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Bacon Pepper Pizza" && baconPepTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedPeppersAndBaconMaterial) && baconPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -110,7 +118,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Mushroom Pizza" && mushTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedMushMaterial) && mushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -122,7 +130,7 @@ public class Goal : MonoBehaviour
             }
         }
 
-        if (col.gameObject.name == "Mushroom Pepper Pizza" && mushPepTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedPeppersAndMushMaterial) && mushPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -133,7 +141,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepper Pizza" && pepTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedPeppersMaterial) && pepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -144,7 +152,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Pizza" && roniTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniMaterial) && roniTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -155,7 +163,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Bacon Pizza" && roniBaconTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndBaconMaterial) && roniBaconTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -166,7 +174,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Bacon Mushroom Pizza" && roniBaconMushTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndBaconAndMushMaterial) && roniBaconMushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -177,7 +185,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Bacon Pepper Pizza" && roniBaconPepTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndBaconAndPeppersMaterial) && roniBaconPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -188,7 +196,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Mushroom Pizza" && roniMushTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndMushMaterial) && roniMushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -199,7 +207,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Mushroom Pepper Pizza" && roniMushPepTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndPeppersAndMushMaterial) && roniMushPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -210,7 +218,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Pepper Pizza" && roniPepTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndPeppersMaterial) && roniPepTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
@@ -221,7 +229,7 @@ public class Goal : MonoBehaviour
                 Score.score += correctPizza;
             }
         }
-        if (col.gameObject.name == "Pepperoni Pepper Bacon Pizza" && roniPepBaconMushTicket == true)
+        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedTheWorksMaterial) && roniPepBaconMushTicket == true)
         {
             if (tipTimer < maxTipTime)
             {
