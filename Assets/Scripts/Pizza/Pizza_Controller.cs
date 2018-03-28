@@ -34,7 +34,9 @@ namespace PizzaTime
         public float totalCookTime;
         public float burnTime;
         public float initialLowestCookSpeedValue;
+        public float timeBeforeDirty;
         public bool isCooked = false;
+        public bool isDirty = false;
         public GameObject pizza;
         public Pizza_Controller pizzaController;
         public Material activePizzaTexture;
@@ -161,15 +163,21 @@ namespace PizzaTime
 
         void OnTriggerStay(Collider col)
         {
-            GameObject oven = col.gameObject;
-            if (oven.tag.Equals(resourceLoader.ovenObj.tag))
+            GameObject objectPizzaIsTouching = col.gameObject;
+            if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
             {
                 onOven = true;
-                Cook(oven.GetComponent<Oven>().tempature);
+                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+            }
+            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
+            {
+                StartCoroutine(PizzaWait());
+                isDirty = true;
             }
             else
             {
                 onOven = false;
+                isDirty = false;
             }
         }
 
@@ -552,6 +560,11 @@ namespace PizzaTime
                 }
             }
             yield return null;
+        }
+
+        public IEnumerator PizzaWait()
+        {
+            yield return new WaitForSeconds(timeBeforeDirty);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace PizzaTime
         public GameObject ovenObj;
         public GameObject pieSpawnTrigger;
         public GameObject toppingSpawnTrigger;
+        public GameObject floorObj;
         // ------------------------------------------------------------------------------------------------------------------------------ \\
 
         // -------------- Base Material Variables --------------------------------------------------------------------------------------- \\
@@ -102,6 +103,7 @@ namespace PizzaTime
             ovenObj = Resources.Load("GamePrefabs/Oven") as GameObject;
             pieSpawnTrigger = Resources.Load("GamePrefabs/PieSpawnTrigger") as GameObject;
             toppingSpawnTrigger = Resources.Load("GamePrefabs/ToppingSpawnTrigger") as GameObject;
+            floorObj = Resources.Load("GamePrefabs/Floor") as GameObject;
             // -------------------------------------------------------------------------------------------------------------------------- \\
 
             // -------------- Load Base Materials Into Variables ------------------------------------------------------------------------ \\

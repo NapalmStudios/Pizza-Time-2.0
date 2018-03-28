@@ -15,6 +15,7 @@ namespace PizzaTime
         public int maxBaconObjs;
         public int maxPepperObjs;
         public int maxMushroomObjs;
+        public float timeInBetweenPizzaPieSpawns;
         private GameObject pizzaSpawnPosition;
         private GameObject sauceSpawnPosition;
         private GameObject cheeseSpawnPosition;
@@ -85,6 +86,7 @@ namespace PizzaTime
             if (trigger.tag.Equals(resourceLoader.pieSpawnTrigger.tag))
             {
                 Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
+                StartCoroutine(PizzaWait());
             }
             else if (trigger.tag.Equals(resourceLoader.toppingSpawnTrigger.tag))
             {
@@ -95,6 +97,15 @@ namespace PizzaTime
                 spawnTopping(pepperObjects, pepperObjForSpawner, pepperSpawnPosition, maxPepperObjs);
                 spawnTopping(mushroomObjects, mushObjForSpawner, mushSpawnPosition, maxMushroomObjs);
             }
+        }
+
+        /// <summary>
+        /// Waits For Set amount of seconds
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator PizzaWait()
+        {
+            yield return new WaitForSeconds(timeInBetweenPizzaPieSpawns);
         }
 
         /// <summary>
