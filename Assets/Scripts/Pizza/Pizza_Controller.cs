@@ -38,6 +38,7 @@ namespace PizzaTime
         public bool isCooked = false;
         public bool isDirty = false;
         public bool isGlutenFree = false;
+        public bool hasSauce = false;
         public GameObject pizza;
         public Pizza_Controller pizzaController;
         public Material activePizzaTexture;
@@ -63,8 +64,18 @@ namespace PizzaTime
         }
         public void Update()
         {
-            pizza.GetComponent<Renderer>().material = activePizzaTexture;
-            StartCoroutine(Cooking(isCooking, cookingSpeed));
+            pizza.GetComponentInParent<Renderer>().material = activePizzaTexture;
+            StartCoroutine(AddSauce());
+        }
+
+        private IEnumerator AddSauce()
+        {
+            if (hasSauce && activePizzaTexture.Equals(resourceLoader.pizzaDoughMaterial))
+            {
+                activePizzaTexture = resourceLoader.sauceMaterial;
+            }
+
+            yield return null;
         }
 
         private void OnCollisionEnter(Collision col)
@@ -153,7 +164,7 @@ namespace PizzaTime
             switch(pizzaCase)
             {
                 case PIZZA.Dough:
-                    PizzaAddSauceTopping(topping);
+                    //PizzaAddSauceTopping(topping);
                     break;
                 case PIZZA.Sauce:
                     PizzaAddCheeseTopping(topping);
@@ -235,14 +246,14 @@ namespace PizzaTime
         /// If-Else Statment for Beginning the Pizza with Sauce
         /// </summary>
         /// <param name="topping"></param>
-        private void PizzaAddSauceTopping(GameObject topping)
-        {
-            if (topping.tag.Equals(resourceLoader.sauceObj.tag))
-            {
-                activePizzaTexture = resourceLoader.sauceMaterial;
-                Destroy(topping);
-            }
-        }
+        //private void PizzaAddSauceTopping(GameObject topping)
+        //{
+        //    if (topping.tag.Equals(resourceLoader.sauceObj.tag))
+        //    {
+        //        activePizzaTexture = resourceLoader.sauceMaterial;
+        //        Destroy(topping);
+        //    }
+        //}
 
         /// <summary>
         /// If-Else Statement for Adding Cheese Before Able to Add Other Toppings
