@@ -174,6 +174,10 @@ namespace PizzaTime
                 StartCoroutine(PizzaWait());
                 isDirty = true;
             }
+            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
+            {
+                Destroy(this.gameObject);
+            }
             else
             {
                 onOven = false;
