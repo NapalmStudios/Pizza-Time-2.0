@@ -37,6 +37,7 @@ namespace PizzaTime
         public float timeBeforeDirty;
         public bool isCooked = false;
         public bool isDirty = false;
+        public bool isGlutenFree = false;
         public GameObject pizza;
         public Pizza_Controller pizzaController;
         public Material activePizzaTexture;
@@ -72,8 +73,12 @@ namespace PizzaTime
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
             //Looks at the current pizza texture and then sets pizzaCase to the correct value
-            if (currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial))
+            if (currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial) || currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial))
             {
+                if(currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial))
+                {
+                    isGlutenFree = true;
+                }
                 pizzaCase = PIZZA.Dough;
             }
             else if (currentPizzaTexture.Equals(resourceLoader.sauceMaterial))
@@ -159,7 +164,6 @@ namespace PizzaTime
             }
 
         }
-
 
         void OnTriggerStay(Collider col)
         {

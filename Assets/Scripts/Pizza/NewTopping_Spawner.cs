@@ -17,6 +17,7 @@ namespace PizzaTime
         public int maxMushroomObjs;
         public float timeInBetweenPizzaPieSpawns;
         private GameObject pizzaSpawnPosition;
+        private GameObject pizzaGFSpawnPosition;
         private GameObject sauceSpawnPosition;
         private GameObject cheeseSpawnPosition;
         private GameObject roniSpawnPosition;
@@ -24,6 +25,7 @@ namespace PizzaTime
         private GameObject pepperSpawnPosition;
         private GameObject mushSpawnPosition;
         private GameObject pizzaObjForSpawner;
+        private GameObject gfPizzaObjForSpawner;
         private GameObject sauceObjForSpawner;
         private GameObject cheeseObjForSpawner;
         private GameObject roniObjForSpawner;
@@ -44,6 +46,7 @@ namespace PizzaTime
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
             // ------------------- Topping Object Initalization ------------------------ \\
             pizzaObjForSpawner = resourceLoader.pizzaObj;
+            gfPizzaObjForSpawner = resourceLoader.gfPizzaObj;
             sauceObjForSpawner = resourceLoader.sauceObj;
             cheeseObjForSpawner = resourceLoader.cheeseObj;
             roniObjForSpawner = resourceLoader.roniObj;
@@ -54,6 +57,7 @@ namespace PizzaTime
 
             // ------------------- Topping Spawn Initalization ------------------------- \\
             pizzaSpawnPosition = GameObject.Find("dough_Spawn");
+            pizzaGFSpawnPosition = GameObject.Find("Gf_Dough_Spawn");
             sauceSpawnPosition = GameObject.Find("Sauce_spawn");
             cheeseSpawnPosition = GameObject.Find("cheese_Spawn");
             roniSpawnPosition = GameObject.Find("Roni_Spawn");
@@ -86,6 +90,11 @@ namespace PizzaTime
             if (trigger.tag.Equals(resourceLoader.pieSpawnTrigger.tag))
             {
                 Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
+                StartCoroutine(PizzaWait());
+            }
+            else if (trigger.tag.Equals(resourceLoader.glutenFreeSpawnTrigger.tag))
+            {
+                Instantiate(gfPizzaObjForSpawner, pizzaGFSpawnPosition.transform.position, pizzaGFSpawnPosition.transform.rotation);
                 StartCoroutine(PizzaWait());
             }
             else if (trigger.tag.Equals(resourceLoader.toppingSpawnTrigger.tag))
