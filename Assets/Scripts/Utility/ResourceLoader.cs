@@ -22,9 +22,11 @@ namespace PizzaTime
         public GameObject pieSpawnTrigger;
         public GameObject glutenFreeSpawnTrigger;
         public GameObject toppingSpawnTrigger;
+        public GameObject woodSpawnTrigger;
         public GameObject floorObj;
         public GameObject trashCanObj;
         public GameObject gameStartObj;
+        public GameObject woodObj;
         // ------------------------------------------------------------------------------------------------------------------------------ \\
 
         // -------------- Base Material Variables --------------------------------------------------------------------------------------- \\
@@ -107,12 +109,14 @@ namespace PizzaTime
             pepperObj = Resources.Load("ToppingPrefabs/Pepper2.0") as GameObject;
             mushObj = Resources.Load("ToppingPrefabs/Mushroom2.0") as GameObject;
             ovenObj = Resources.Load("GamePrefabs/Oven") as GameObject;
-            pieSpawnTrigger = Resources.Load("GamePrefabs/PieSpawnTrigger") as GameObject;
-            toppingSpawnTrigger = Resources.Load("GamePrefabs/ToppingSpawnTrigger") as GameObject;
-            glutenFreeSpawnTrigger = Resources.Load("GamePrefabs/GlutenFreeSpawnTrigger") as GameObject;
             floorObj = Resources.Load("GamePrefabs/Floor") as GameObject;
             trashCanObj = Resources.Load("GamePrefabs/TrashCan") as GameObject;
             gameStartObj = Resources.Load("GamePrefabs/GameStarter") as GameObject;
+            woodObj = Resources.Load("GamePrefabs/Wood") as GameObject;
+            pieSpawnTrigger = Resources.Load("GamePrefabs/PieSpawnTrigger") as GameObject;
+            toppingSpawnTrigger = Resources.Load("GamePrefabs/ToppingSpawnTrigger") as GameObject;
+            glutenFreeSpawnTrigger = Resources.Load("GamePrefabs/GlutenFreeSpawnTrigger") as GameObject;
+            woodSpawnTrigger = Resources.Load("GamePrefabs/WoodSpawnTrigger") as GameObject;
             // -------------------------------------------------------------------------------------------------------------------------- \\
 
             // -------------- Load Base Materials Into Variables ------------------------------------------------------------------------ \\
