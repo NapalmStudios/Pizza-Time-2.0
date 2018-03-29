@@ -27,6 +27,7 @@ namespace PizzaTime
         public GameObject trashCanObj;
         public GameObject gameStartObj;
         public GameObject woodObj;
+        public GameObject punchCardObj;
         // ------------------------------------------------------------------------------------------------------------------------------ \\
 
         // -------------- Base Material Variables --------------------------------------------------------------------------------------- \\
@@ -113,6 +114,7 @@ namespace PizzaTime
             trashCanObj = Resources.Load("GamePrefabs/TrashCan") as GameObject;
             gameStartObj = Resources.Load("GamePrefabs/GameStarter") as GameObject;
             woodObj = Resources.Load("GamePrefabs/Wood") as GameObject;
+            punchCardObj = Resources.Load("GamePrefabs/PunchCard") as GameObject;
             pieSpawnTrigger = Resources.Load("GamePrefabs/PieSpawnTrigger") as GameObject;
             toppingSpawnTrigger = Resources.Load("GamePrefabs/ToppingSpawnTrigger") as GameObject;
             glutenFreeSpawnTrigger = Resources.Load("GamePrefabs/GlutenFreeSpawnTrigger") as GameObject;

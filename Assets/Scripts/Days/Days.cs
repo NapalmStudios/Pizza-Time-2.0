@@ -4,20 +4,32 @@ using UnityEngine;
 
 namespace PizzaTime
 {
+    //Should Go Onto Ticket Machine
     public class Days : MonoBehaviour
     {
         public int currentDay;
         public int dayTimerAmount;
         public bool outOfTime = false;
 
+        private ResourceLoader resourceLoader;
+
         void Start()
         {
+            resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
             currentDay = 0;
         }
 
         void Update()
         {
             StartCoroutine(CheckDay());
+        }
+
+        void OnCollisionEnter(Collision col)
+        {
+            if(col.gameObject.tag.Equals(resourceLoader.punchCardObj.tag))
+            {
+                ClockOut();
+            }
         }
         /*
          * Day 1: Cheese Pizzas
@@ -36,6 +48,7 @@ namespace PizzaTime
         {
             currentDay++;
             outOfTime = false;
+            //Need to add Scene Reset to this function aka clear the scene of all topping objects, pizza objects and **reset score** <- not sure
         }
 
         //Checks Current Day value to see if timer should be enabled
@@ -52,7 +65,11 @@ namespace PizzaTime
         //Timer Based on seconds variable
         private IEnumerator DayTimer(int seconds)
         {
-            yield return new WaitForSeconds(seconds);
+            if(!outOfTime)
+            {
+                yield return new WaitForSeconds(seconds);
+            }
+            yield return null;
         }
 
     }
