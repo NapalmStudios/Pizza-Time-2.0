@@ -242,6 +242,7 @@ public class Goal : MonoBehaviour
         }
         if (col.gameObject.tag == "Pizza")
         {
+            Delivered.score++;
             tipTimer = 0;
             Destroy(col.gameObject);
         }
