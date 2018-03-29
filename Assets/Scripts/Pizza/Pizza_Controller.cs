@@ -22,7 +22,8 @@ namespace PizzaTime
         RoniPeppersBacon,
         PeppersBaconMush,
         RoniBaconMush,
-        RoniPeppersMush
+        RoniPeppersMush,
+        TheWorks
     };
     
     public class Pizza_Controller : MonoBehaviour
@@ -33,7 +34,11 @@ namespace PizzaTime
         public float totalCookTime;
         public float burnTime;
         public float initialLowestCookSpeedValue;
+        public float timeBeforeDirty;
         public bool isCooked = false;
+        public bool isDirty = false;
+        public bool isGlutenFree = false;
+        public bool hasSauce = false;
         public GameObject pizza;
         public Pizza_Controller pizzaController;
         public Material activePizzaTexture;
@@ -58,8 +63,18 @@ namespace PizzaTime
         }
         public void Update()
         {
-            pizza.GetComponent<Renderer>().material = activePizzaTexture;
-            StartCoroutine(Cooking(isCooking, cookingSpeed));
+            pizza.GetComponentInParent<Renderer>().material = activePizzaTexture;
+            StartCoroutine(AddSauce());
+        }
+
+        private IEnumerator AddSauce()
+        {
+            if (hasSauce && activePizzaTexture.Equals(resourceLoader.pizzaDoughMaterial))
+            {
+                activePizzaTexture = resourceLoader.sauceMaterial;
+            }
+
+            yield return null;
         }
 
         private void OnCollisionEnter(Collision col)
@@ -68,8 +83,12 @@ namespace PizzaTime
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
             //Looks at the current pizza texture and then sets pizzaCase to the correct value
-            if (currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial))
+            if (currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial) || currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial))
             {
+                if(currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial))
+                {
+                    isGlutenFree = true;
+                }
                 pizzaCase = PIZZA.Dough;
             }
             else if (currentPizzaTexture.Equals(resourceLoader.sauceMaterial))
@@ -136,11 +155,14 @@ namespace PizzaTime
             {
                 pizzaCase = PIZZA.RoniPeppersMush;
             }
+            else if(currentPizzaTexture.Equals(resourceLoader.theWorksMaterial))
+            {
+                pizzaCase = PIZZA.TheWorks;
+            }
 
             switch(pizzaCase)
             {
                 case PIZZA.Dough:
-                    PizzaAddSauceTopping(topping);
                     break;
                 case PIZZA.Sauce:
                     PizzaAddCheeseTopping(topping);
@@ -152,18 +174,27 @@ namespace PizzaTime
 
         }
 
-
         void OnTriggerStay(Collider col)
         {
-            GameObject oven = col.gameObject;
-            if (oven.tag.Equals(resourceLoader.ovenObj.tag))
+            GameObject objectPizzaIsTouching = col.gameObject;
+            if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
             {
                 onOven = true;
-                Cook(oven.GetComponent<Oven>().tempature);
+                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+            }
+            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
+            {
+                StartCoroutine(PizzaWait());
+                isDirty = true;
+            }
+            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
+            {
+                Destroy(this.gameObject);
             }
             else
             {
                 onOven = false;
+                isDirty = false;
             }
         }
 
@@ -206,19 +237,6 @@ namespace PizzaTime
                     break;
                 default:
                     break;
-            }
-        }
-
-        /// <summary>
-        /// If-Else Statment for Beginning the Pizza with Sauce
-        /// </summary>
-        /// <param name="topping"></param>
-        private void PizzaAddSauceTopping(GameObject topping)
-        {
-            if (topping.tag.Equals(resourceLoader.sauceObj.tag))
-            {
-                activePizzaTexture = resourceLoader.sauceMaterial;
-                Destroy(topping);
             }
         }
 
@@ -546,6 +564,11 @@ namespace PizzaTime
                 }
             }
             yield return null;
+        }
+
+        public IEnumerator PizzaWait()
+        {
+            yield return new WaitForSeconds(timeBeforeDirty);
         }
     }
 }
