@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PizzaTime
 {
-    //Should Go Onto Ticket Machine
+    //Should Go Onto Ticket Punch Out
     public class Days : MonoBehaviour
     {
         public int currentDay;
@@ -16,7 +16,6 @@ namespace PizzaTime
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
-            currentDay = 0;
         }
 
         void Update()
@@ -38,17 +37,15 @@ namespace PizzaTime
          * Day 4: 3-Topping Pizzas
          * Day 5: Oven Mechanics Introduced
          */
-        //TODO: Tickets will need to spawn based on day value
+        //TODO: Certain Tickets will need to spawn based on day value
         //TODO: Change Day with Recipt Punch Card which will collide with an object
-        //TODO: Keep Oven Off Until Day 5 which Mechanic is Introduced (keep wood from spawning)
-
 
         //Increases the value of currentDay and resets outOfTime bool
         private void ClockOut()
         {
             currentDay++;
             outOfTime = false;
-            //Need to add Scene Reset to this function aka clear the scene of all topping objects, pizza objects and **reset score** <- not sure
+            //Need to add Scene Reset to this function aka clear the scene of all topping objects, pizza objects and **reset score** <- not sure if i save
         }
 
         //Checks Current Day value to see if timer should be enabled
@@ -57,7 +54,6 @@ namespace PizzaTime
             if(currentDay >= 5)
             {
                 StartCoroutine(DayTimer(dayTimerAmount));
-                outOfTime = true;
             }
             yield return null;
         }
@@ -65,9 +61,10 @@ namespace PizzaTime
         //Timer Based on seconds variable
         private IEnumerator DayTimer(int seconds)
         {
-            if(!outOfTime)
+            while(!outOfTime)
             {
                 yield return new WaitForSeconds(seconds);
+                outOfTime = true;
             }
             yield return null;
         }
