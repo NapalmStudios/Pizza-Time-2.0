@@ -7,10 +7,17 @@ namespace PizzaTime
     public class Days : MonoBehaviour
     {
         public int currentDay;
+        public int dayTimerAmount;
+        public bool outOfTime = false;
 
         void Start()
         {
             currentDay = 0;
+        }
+
+        void Update()
+        {
+            StartCoroutine(CheckDay());
         }
         /*
          * Day 1: Cheese Pizzas
@@ -24,10 +31,28 @@ namespace PizzaTime
         //TODO: Keep Oven Off Until Day 5 which Mechanic is Introduced (keep wood from spawning)
 
 
-        //Increases the value of currentDay
+        //Increases the value of currentDay and resets outOfTime bool
         private void ClockOut()
         {
             currentDay++;
+            outOfTime = false;
+        }
+
+        //Checks Current Day value to see if timer should be enabled
+        private IEnumerator CheckDay()
+        {
+            if(currentDay >= 5)
+            {
+                StartCoroutine(DayTimer(dayTimerAmount));
+                outOfTime = true;
+            }
+            yield return null;
+        }
+
+        //Timer Based on seconds variable
+        private IEnumerator DayTimer(int seconds)
+        {
+            yield return new WaitForSeconds(seconds);
         }
 
     }
