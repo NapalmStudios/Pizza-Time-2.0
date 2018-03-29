@@ -13679,11 +13679,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f6563d0aedcb2f842af05ef4b90af455, type: 3}
   m_PrefabInternal: {fileID: 391500252}
---- !u!4 &393028134 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1539790936}
 --- !u!1 &394820791 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: fedd027c74a16134aa81df0d633336cd, type: 3}
@@ -17690,6 +17685,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f6563d0aedcb2f842af05ef4b90af455, type: 3}
   m_PrefabInternal: {fileID: 537024295}
+--- !u!4 &541443659 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
+    type: 2}
+  m_PrefabInternal: {fileID: 2040594959}
 --- !u!1001 &542953565
 Prefab:
   m_ObjectHideFlags: 0
@@ -18015,11 +18015,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f6563d0aedcb2f842af05ef4b90af455, type: 3}
   m_PrefabInternal: {fileID: 549660331}
---- !u!4 &553718854 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
-    type: 2}
-  m_PrefabInternal: {fileID: 2120260494}
 --- !u!1001 &554087091
 Prefab:
   m_ObjectHideFlags: 0
@@ -20450,32 +20445,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc1cef4538a94545b5729120de8012d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points:
-  - {fileID: 1046985361}
-  - {fileID: 393028134}
-  - {fileID: 1602436257}
-  - {fileID: 776200734}
-  - {fileID: 553718854}
-  listOfTickets:
-  - {fileID: 1009335497339242, guid: a73d2101f8347c046b03177939d447c2, type: 2}
-  - {fileID: 1156863789327212, guid: 15baaa4ccbfca034da1351e3b45ab89f, type: 2}
-  - {fileID: 1697723851434718, guid: 1723be6f6369b0843a3b16375a53450f, type: 2}
-  - {fileID: 1744336654365652, guid: 420b4e45909b3cb46bff42065b767ec0, type: 2}
-  - {fileID: 1663453123916150, guid: 608fe67dc98e2314eac713901d439e6d, type: 2}
-  - {fileID: 1534008366051070, guid: fb93254fc97f4f541ae69ed8b500327d, type: 2}
-  - {fileID: 1093050811271288, guid: 9d572a366ea303247b69ea1808f9fcd5, type: 2}
-  - {fileID: 1600937883868602, guid: 432a4e24977b84442b48892cb1f900fe, type: 2}
-  - {fileID: 1983091084697888, guid: f1856604e5a856f48a829b60c3dee235, type: 2}
-  - {fileID: 1057684437841240, guid: d3369f9aba8d26e458b261fd26134783, type: 2}
-  - {fileID: 1061169104015932, guid: c40942f4f37d1b244b5d46f6fc4de10b, type: 2}
-  - {fileID: 1027671051525356, guid: e5ece2e9a108d6c46b298df3121ab833, type: 2}
-  - {fileID: 1128904885752534, guid: 07b4c70a291cd3d42ab93b88e4479d0d, type: 2}
-  - {fileID: 1528771686007288, guid: e4b7867e6d5e02c48b55e764920d805f, type: 2}
-  - {fileID: 1082627621513132, guid: 7614d85bcf99ddc429ab8e8de8b76beb, type: 2}
-  time: 0
-  index: 0
-  spawnTicket: 100
-  ticketspawning: {fileID: 0}
+  spawnPoints:
+  - {fileID: 1721840686}
+  - {fileID: 2116937206}
+  - {fileID: 541443659}
+  - {fileID: 1233535469}
+  - {fileID: 1805541702}
+  ticket:
+  - {fileID: 114278189194730548, guid: a73d2101f8347c046b03177939d447c2, type: 2}
+  - {fileID: 114398415226334270, guid: 15baaa4ccbfca034da1351e3b45ab89f, type: 2}
+  - {fileID: 114301698601348162, guid: 1723be6f6369b0843a3b16375a53450f, type: 2}
+  - {fileID: 114702029893173362, guid: 420b4e45909b3cb46bff42065b767ec0, type: 2}
+  - {fileID: 114509822195115764, guid: 608fe67dc98e2314eac713901d439e6d, type: 2}
+  - {fileID: 114075688496123236, guid: fb93254fc97f4f541ae69ed8b500327d, type: 2}
+  - {fileID: 114654198689988274, guid: 9d572a366ea303247b69ea1808f9fcd5, type: 2}
+  - {fileID: 114298999929276248, guid: 432a4e24977b84442b48892cb1f900fe, type: 2}
+  - {fileID: 114234615293993930, guid: f1856604e5a856f48a829b60c3dee235, type: 2}
+  - {fileID: 114788352420324224, guid: d3369f9aba8d26e458b261fd26134783, type: 2}
+  - {fileID: 114095620894729744, guid: c40942f4f37d1b244b5d46f6fc4de10b, type: 2}
+  - {fileID: 114962695490602628, guid: e5ece2e9a108d6c46b298df3121ab833, type: 2}
+  - {fileID: 114771766195123086, guid: 07b4c70a291cd3d42ab93b88e4479d0d, type: 2}
+  - {fileID: 114427436842694802, guid: e4b7867e6d5e02c48b55e764920d805f, type: 2}
+  - {fileID: 114686889850042664, guid: 7614d85bcf99ddc429ab8e8de8b76beb, type: 2}
+  TimeBetweenSpawn: 3
+  randomTicket: 0
+  Day: 0
+  ticketToSpawn: {fileID: 0}
+  currentTickets: []
 --- !u!4 &646932961
 Transform:
   m_ObjectHideFlags: 0
@@ -24602,11 +24598,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 773202837}
---- !u!4 &776200734 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
-    type: 2}
-  m_PrefabInternal: {fileID: 401807319}
 --- !u!1 &779921610
 GameObject:
   m_ObjectHideFlags: 0
@@ -32235,11 +32226,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f6563d0aedcb2f842af05ef4b90af455, type: 3}
   m_PrefabInternal: {fileID: 1046910614}
---- !u!4 &1046985361 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1095210986}
 --- !u!1 &1050115293
 GameObject:
   m_ObjectHideFlags: 0
@@ -37191,6 +37177,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fedd027c74a16134aa81df0d633336cd, type: 3}
   m_PrefabInternal: {fileID: 1231866957}
+--- !u!4 &1233535469 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
+    type: 2}
+  m_PrefabInternal: {fileID: 401807319}
 --- !u!1 &1234073546
 GameObject:
   m_ObjectHideFlags: 0
@@ -44967,6 +44958,7 @@ MonoBehaviour:
   maxBaconObjs: 0
   maxPepperObjs: 0
   maxMushroomObjs: 0
+  timeInBetweenPizzaPieSpawns: 0
 --- !u!114 &1378694200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45908,6 +45900,7 @@ MonoBehaviour:
   maxBaconObjs: 0
   maxPepperObjs: 0
   maxMushroomObjs: 0
+  timeInBetweenPizzaPieSpawns: 0
 --- !u!114 &1412667803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52604,11 +52597,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5ccef01090c0f0f40929c1ba42929b8f, type: 3}
   m_PrefabInternal: {fileID: 1599527464}
---- !u!4 &1602436257 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
-    type: 2}
-  m_PrefabInternal: {fileID: 2040594959}
 --- !u!1 &1602718807
 GameObject:
   m_ObjectHideFlags: 0
@@ -56333,6 +56321,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5ccef01090c0f0f40929c1ba42929b8f, type: 3}
   m_PrefabInternal: {fileID: 1720737369}
+--- !u!4 &1721840686 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1095210986}
 --- !u!1001 &1723672311
 Prefab:
   m_ObjectHideFlags: 0
@@ -59405,6 +59398,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1803929667}
   m_Mesh: {fileID: 4300002, guid: 1c84abdd199d3ea469daf857c7d9e380, type: 3}
+--- !u!4 &1805541702 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
+    type: 2}
+  m_PrefabInternal: {fileID: 2120260494}
 --- !u!1001 &1816607062
 Prefab:
   m_ObjectHideFlags: 0
@@ -60186,6 +60184,7 @@ MonoBehaviour:
   maxBaconObjs: 0
   maxPepperObjs: 0
   maxMushroomObjs: 0
+  timeInBetweenPizzaPieSpawns: 0
 --- !u!114 &1843079103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66531,26 +66530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538fa384690687640a6ee925f74639e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pizzaController: {fileID: 0}
-  roniPepBaconMushTicket: {fileID: 0}
-  roniPepTicket: {fileID: 0}
-  roniMushPepTicket: {fileID: 0}
-  roniMushTicket: {fileID: 0}
-  roniBaconPepTicket: {fileID: 0}
-  roniBaconMushTicket: {fileID: 0}
-  roniBaconTicket: {fileID: 0}
-  roniTicket: {fileID: 0}
-  pepTicket: {fileID: 0}
-  mushPepTicket: {fileID: 0}
-  mushTicket: {fileID: 0}
-  baconPepTicket: {fileID: 0}
-  baconMushPepTicket: {fileID: 0}
-  baconMushTicket: {fileID: 0}
-  baconTicket: {fileID: 0}
-  cheeseTicket: {fileID: 0}
-  multiplier: 2
-  maxTipTime: 500
-  correctPizza: 10
+  tip: 0
 --- !u!4 &2034900717
 Transform:
   m_ObjectHideFlags: 0
@@ -69584,6 +69564,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fedd027c74a16134aa81df0d633336cd, type: 3}
   m_PrefabInternal: {fileID: 2115338885}
+--- !u!4 &2116937206 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4572837349843712, guid: 53de63e81ed05924794fb77ac56d5bd7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1539790936}
 --- !u!1001 &2119617906
 Prefab:
   m_ObjectHideFlags: 0

@@ -6,245 +6,146 @@ using PizzaTime;
 public class Goal : MonoBehaviour
 {
     private ResourceLoader resourceLoader;
-    public Pizza_Controller pizzaController;
-    public GameObject roniPepBaconMushTicket;
-    public GameObject roniPepTicket;
-    public GameObject roniMushPepTicket;
-    public GameObject roniMushTicket;
-    public GameObject roniBaconPepTicket;
-    public GameObject roniBaconMushTicket;
-    public GameObject roniBaconTicket;
-    public GameObject roniTicket;
-    public GameObject pepTicket;
-    public GameObject mushPepTicket;
-    public GameObject mushTicket;
-    public GameObject baconPepTicket;
-    public GameObject baconMushPepTicket;
-    public GameObject baconMushTicket;
-    public GameObject baconTicket;
-    public GameObject cheeseTicket;
+    //public GameObject[] roniPepBaconMushTicket;
+    //public GameObject[] roniPepTicket;
+    //public GameObject[] roniMushPepTicket;
+    //public GameObject[] roniMushTicket;
+    //public GameObject[] roniBaconPepTicket;
+    //public GameObject[] roniBaconMushTicket;
+    //public GameObject[] roniBaconTicket;
+    //public GameObject[] roniTicket;
+    //public GameObject[] pepTicket;
+    //public GameObject[] mushPepTicket;
+    //public GameObject[] mushTicket;
+    //public GameObject[] baconPepTicket;
+    //public GameObject[] baconMushPepTicket;
+    //public GameObject[] baconMushTicket;
+    //public GameObject[] baconTicket;
+    //public GameObject[] cheeseTicket;
 
-    public int multiplier = 2;
-    public int maxTipTime = 500;
-    private int tipTimer;
-    public int correctPizza = 10;
+    TicketSpawn ticketSpawner;
+
+    //public int multiplier = 2;
+    //public int maxTipTime = 500;
+    //private int tipTimer;
+    //public int correctPizza = 10;
+
+    public int tip;
 
     private void Start()
     {
         resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
-        // tipTimer = 600;
+        
     }
     void Update()
     {
-        // if orange name doesnt work check tag for spaces
-        roniPepBaconMushTicket = GameObject.FindGameObjectWithTag("roniPepBaconMushTicket");
-        roniPepTicket = GameObject.FindGameObjectWithTag("roniPepTicket");
-        roniMushPepTicket = GameObject.FindGameObjectWithTag("roniMushPepTicket");
-        roniMushTicket = GameObject.FindGameObjectWithTag("roniMushTicket");
-        roniBaconPepTicket = GameObject.FindGameObjectWithTag("roniBaconPepTicket");
-        roniBaconMushTicket = GameObject.FindGameObjectWithTag("roniBaconMushTicket");
-        roniBaconTicket = GameObject.FindGameObjectWithTag("roniBaconTicket");
-        roniTicket = GameObject.FindGameObjectWithTag("roniTicket");
-        pepTicket = GameObject.FindGameObjectWithTag("pepTicket");
-        mushPepTicket = GameObject.FindGameObjectWithTag("mushPepTicket");
-        mushTicket = GameObject.FindGameObjectWithTag("mushTicket");
-        baconPepTicket = GameObject.FindGameObjectWithTag("baconPepTicket");
-        baconMushPepTicket = GameObject.FindGameObjectWithTag("baconMushPepTicket");
-        baconMushTicket = GameObject.FindGameObjectWithTag("baconMushTicket");
-        baconTicket = GameObject.FindGameObjectWithTag("baconTicket");
-        cheeseTicket = GameObject.FindGameObjectWithTag("cheeseTicket");
+        ticketSpawner = FindObjectOfType<TicketSpawn>();
 
-        tipTimer++;
+        //roniPepBaconMushTicket = GameObject.FindGameObjectsWithTag("roniPepBaconMushTicket");
+        //roniPepTicket = GameObject.FindGameObjectsWithTag("roniPepTicket");
+        //roniMushPepTicket = GameObject.FindGameObjectsWithTag("roniMushPepTicket");
+        //roniMushTicket = GameObject.FindGameObjectsWithTag("roniMushTicket");
+        //roniBaconPepTicket = GameObject.FindGameObjectsWithTag("roniBaconPepTicket");
+        //roniBaconMushTicket = GameObject.FindGameObjectsWithTag("roniBaconMushTicket");
+        //roniBaconTicket = GameObject.FindGameObjectsWithTag("roniBaconTicket");
+        //roniTicket = GameObject.FindGameObjectsWithTag("roniTicket");
+        //pepTicket = GameObject.FindGameObjectsWithTag("pepTicket");
+        //mushPepTicket = GameObject.FindGameObjectsWithTag("mushPepTicket");
+        //mushTicket = GameObject.FindGameObjectsWithTag("mushTicket");
+        //baconPepTicket = GameObject.FindGameObjectsWithTag("baconPepTicket");
+        //baconMushPepTicket = GameObject.FindGameObjectsWithTag("baconMushPepTicket");
+        //baconMushTicket = GameObject.FindGameObjectsWithTag("baconMushTicket");
+        //baconTicket = GameObject.FindGameObjectsWithTag("baconTicket");
+        //cheeseTicket = GameObject.FindGameObjectsWithTag("cheeseTicket");
     }
 
     private void OnCollisionEnter(Collision col)
     {
         var pizzaObj = col.gameObject.GetComponent<Pizza_Controller>();
-        
-       // Debug.Log(pizzaObj.activePizzaTexture);
 
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedCheeseMaterial) && cheeseTicket == true)
+        for (int i = 0; i < ticketSpawner.currentTickets.Count; i++)
         {
-            if (tipTimer < maxTipTime)
+            var ticket = ticketSpawner.currentTickets[i];
+
+            if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedCheeseMaterial) && ticket.isActive == true)
             {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedBaconMaterial) && baconTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedBaconAndMushMaterial) && baconMushTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedMushAndBaconAndPeppersMaterial) && baconMushPepTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedPeppersAndBaconMaterial) && baconPepTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedMushMaterial) && mushTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
+                if (pizzaObj.isDirty)
+                {
+                    Score.score += (ticket.ticketWorth + (tip * (int)ticket.tipTime)) - ticket.dirtyNeg;
+                }
+                else
+                {
+                    Score.score += ticket.ticketWorth + (tip * (int)ticket.tipTime);
+                }
+
+                ticket.isActive = false;
+
+                break;
             }
         }
 
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedPeppersAndMushMaterial) && mushPepTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedPeppersMaterial) && pepTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniMaterial) && roniTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndBaconMaterial) && roniBaconTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndBaconAndMushMaterial) && roniBaconMushTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndBaconAndPeppersMaterial) && roniBaconPepTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndMushMaterial) && roniMushTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndPeppersAndMushMaterial) && roniMushPepTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedRoniAndPeppersMaterial) && roniPepTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedTheWorksMaterial) && roniPepBaconMushTicket == true)
-        {
-            if (tipTimer < maxTipTime)
-            {
-                Score.score += correctPizza * multiplier;
-            }
-            else
-            {
-                Score.score += correctPizza;
-            }
-        }
-        if (col.gameObject.tag == "Pizza")
-        {
-            Delivered.score++;
-            tipTimer = 0;
-            Destroy(col.gameObject);
-        }
+        //for (int i = 0; i<cheeseTicket.Length; i++)
+        //{
+        //    var cheese = cheeseTicket[i].GetComponent<Ticket>();
+
+        //    if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedCheeseMaterial) && cheese.isActive == true)
+        //    {
+        //        if (pizzaObj.isDirty)
+        //        {
+        //            Score.score += (cheese.ticketWorth + (tip * cheese.tipTime)) - cheese.dirtyNeg;
+        //        }
+        //        else
+        //        {
+        //            Score.score += cheese.ticketWorth + (tip * cheese.tipTime);
+        //        }
+            
+        //        cheese.isActive = false;
+
+        //        break;
+        //    }
+        //}
+
+        //for (int i = 0; i < baconTicket.Length; i++)
+        //{
+        //    var bacon = baconTicket[i].GetComponent<Ticket>();
+
+        //    if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedBaconMaterial) && bacon.isActive == true)
+        //    {
+        //        if (pizzaObj.isDirty)
+        //        {
+        //            Score.score += (bacon.ticketWorth + (tip * bacon.tipTime)) - bacon.dirtyNeg;
+        //        }
+        //        else
+        //        {
+        //            Score.score += bacon.ticketWorth + (tip * bacon.tipTime);
+        //        }
+
+        //        bacon.isActive = false;
+
+        //        break;
+        //    }
+        //}
+
+        //for (int i = 0; i < cheeseTicket.Length; i++)
+        //{
+        //    var cheese = cheeseTicket[i].GetComponent<Ticket>();
+
+        //    if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedCheeseMaterial) && cheese.isActive == true)
+        //    {
+        //        if (pizzaObj.isDirty)
+        //        {
+        //            Score.score += (cheese.ticketWorth + (tip * cheese.tipTime)) - cheese.dirtyNeg;
+        //        }
+        //        else
+        //        {
+        //            Score.score += cheese.ticketWorth + (tip * cheese.tipTime);
+        //        }
+
+        //        cheese.isActive = false;
+
+        //        break;
+        //    }
+        //}
+
     }
 }

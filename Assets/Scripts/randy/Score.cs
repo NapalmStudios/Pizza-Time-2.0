@@ -6,20 +6,20 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public static int score;
-    Text text;
+    //Text text;
     
-    //test
-    void Awake()
-    {
-        text = GetComponent<Text>();
-        score = 10;
-    }
+    ////test
+    //void Awake()
+    //{
+    //    text = GetComponent<Text>();
+    //    score = 10;
+    //}
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {           
-            text.text = "Score: " + score;
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.Space))
+    //    {           
+    //        text.text = "Score: " + score;
+    //    }
+    //}
 }

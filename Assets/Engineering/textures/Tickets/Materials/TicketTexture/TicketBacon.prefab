@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4235659282934720}
   - component: {fileID: 33099457081840800}
   - component: {fileID: 23844387256765960}
+  - component: {fileID: 114278189194730548}
   - component: {fileID: 54672033492050870}
   - component: {fileID: 65559079305454806}
   - component: {fileID: 65154194786107548}
@@ -153,6 +154,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114278189194730548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009335497339242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6393e3f2196cd43bdcf2e00abe5515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticketType: 1
+  isActive: 0
+  ticketTime: 0
+  tipTime: 0
+  ticketWorth: 0
+  dirtyNeg: 0
 --- !u!114 &114400718747447396
 MonoBehaviour:
   m_ObjectHideFlags: 1
