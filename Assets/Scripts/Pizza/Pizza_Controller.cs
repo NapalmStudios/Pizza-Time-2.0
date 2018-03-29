@@ -164,7 +164,6 @@ namespace PizzaTime
             switch(pizzaCase)
             {
                 case PIZZA.Dough:
-                    //PizzaAddSauceTopping(topping);
                     break;
                 case PIZZA.Sauce:
                     PizzaAddCheeseTopping(topping);
@@ -241,19 +240,6 @@ namespace PizzaTime
                     break;
             }
         }
-
-        /// <summary>
-        /// If-Else Statment for Beginning the Pizza with Sauce
-        /// </summary>
-        /// <param name="topping"></param>
-        //private void PizzaAddSauceTopping(GameObject topping)
-        //{
-        //    if (topping.tag.Equals(resourceLoader.sauceObj.tag))
-        //    {
-        //        activePizzaTexture = resourceLoader.sauceMaterial;
-        //        Destroy(topping);
-        //    }
-        //}
 
         /// <summary>
         /// If-Else Statement for Adding Cheese Before Able to Add Other Toppings

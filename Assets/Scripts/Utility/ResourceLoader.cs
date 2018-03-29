@@ -24,6 +24,7 @@ namespace PizzaTime
         public GameObject toppingSpawnTrigger;
         public GameObject floorObj;
         public GameObject trashCanObj;
+        public GameObject gameStartObj;
         // ------------------------------------------------------------------------------------------------------------------------------ \\
 
         // -------------- Base Material Variables --------------------------------------------------------------------------------------- \\
@@ -111,6 +112,7 @@ namespace PizzaTime
             glutenFreeSpawnTrigger = Resources.Load("GamePrefabs/GlutenFreeSpawnTrigger") as GameObject;
             floorObj = Resources.Load("GamePrefabs/Floor") as GameObject;
             trashCanObj = Resources.Load("GamePrefabs/TrashCan") as GameObject;
+            gameStartObj = Resources.Load("GamePrefabs/GameStarter") as GameObject;
             // -------------------------------------------------------------------------------------------------------------------------- \\
 
             // -------------- Load Base Materials Into Variables ------------------------------------------------------------------------ \\

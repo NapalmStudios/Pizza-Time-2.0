@@ -23,7 +23,6 @@ namespace PizzaTime
             SquirtSauce();
         }
 
-        //TODO: Add Raycast for Sauce Bottle
         public void SquirtSauce()
         {
             RaycastHit hit;
