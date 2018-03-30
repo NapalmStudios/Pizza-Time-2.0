@@ -13,22 +13,17 @@ public enum TicketType
 
 public class Ticket : MonoBehaviour
 {
-
     public TicketType ticketType;
     public bool isActive;
     public float ticketTime;
-    public float tipTime; // counts down not up
+    public float tipTime;
     public int ticketWorth;
     public int dirtyNeg;
-
-    private ResourceLoader resourceLoader;
     public Material pizzaMat;
-
 
     private void Start()
     {
         isActive = true;
-        resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
     }
 
     private void Update()
@@ -51,8 +46,6 @@ public class Ticket : MonoBehaviour
         if (ticketTime <= 0)
         {
             isActive = false;
-            //failed ticket
         }
     }
-
 }
