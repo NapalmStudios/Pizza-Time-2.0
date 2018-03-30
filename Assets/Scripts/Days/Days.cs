@@ -10,6 +10,7 @@ namespace PizzaTime
         public int currentDay;
         public int dayTimerAmount;
         public bool outOfTime = false;
+        private bool clearSceneOfToppings = false;
 
         private ResourceLoader resourceLoader;
 
@@ -27,6 +28,7 @@ namespace PizzaTime
         {
             if(col.gameObject.tag.Equals(resourceLoader.punchCardObj.tag))
             {
+                Destroy(col.gameObject);
                 ClockOut();
             }
         }
@@ -38,15 +40,16 @@ namespace PizzaTime
          * Day 5: Oven Mechanics Introduced
          */
         //TODO: Certain Tickets will need to spawn based on day value
-        //TODO: Change Day with Recipt Punch Card which will collide with an object
-        //TODO: Create Punch Card Class
 
         //Increases the value of currentDay and resets outOfTime bool
         private void ClockOut()
         {
             currentDay++;
             outOfTime = false;
-            //Need to add Scene Reset to this function aka clear the scene of all topping objects, pizza objects and **reset score** <- not sure if i save
+            clearSceneOfToppings = true;
+            //**reset score** <- not sure if i save
+            StartCoroutine(ClearSceneOfToppings());
+            clearSceneOfToppings = false;
         }
 
         //Checks Current Day value to see if timer should be enabled
@@ -55,6 +58,10 @@ namespace PizzaTime
             if(currentDay >= 5)
             {
                 StartCoroutine(DayTimer(dayTimerAmount));
+            }
+            else
+            {
+                StartCoroutine(Tutorials());
             }
             yield return null;
         }
@@ -68,6 +75,46 @@ namespace PizzaTime
                 outOfTime = true;
             }
             yield return null;
+        }
+
+        private IEnumerator Tutorials()
+        {
+            //Should Change Out of Time in Tutorials when all tickets have despawned
+            if (GameObject.FindObjectsOfType<Ticket>().Length == 0)
+            {
+                outOfTime = true;
+            }
+            yield return null;
+        }
+
+        //Clears Scene of Toppings at End of Day
+        private IEnumerator ClearSceneOfToppings()
+        {
+            if(clearSceneOfToppings)
+            {
+                var sauceObjs = GameObject.FindGameObjectsWithTag(resourceLoader.sauceObj.tag);
+                var cheeseObjs = GameObject.FindGameObjectsWithTag(resourceLoader.cheeseObj.tag);
+                var roniObjs = GameObject.FindGameObjectsWithTag(resourceLoader.roniObj.tag);
+                var baconObjs = GameObject.FindGameObjectsWithTag(resourceLoader.baconObj.tag);
+                var pepperObjs = GameObject.FindGameObjectsWithTag(resourceLoader.pepperObj.tag);
+                var mushObjs = GameObject.FindGameObjectsWithTag(resourceLoader.mushObj.tag);
+                DestoryObjects(sauceObjs);
+                DestoryObjects(cheeseObjs);
+                DestoryObjects(roniObjs);
+                DestoryObjects(baconObjs);
+                DestoryObjects(pepperObjs);
+                DestoryObjects(mushObjs);
+            }
+            yield return null;
+        }
+
+        //Destorys Specified Gameobjects in given array
+        private void DestoryObjects(GameObject[] objects)
+        {
+            foreach(GameObject obj in objects)
+            {
+                Destroy(obj);
+            }
         }
 
     }
