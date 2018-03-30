@@ -5,7 +5,7 @@ using PizzaTime;
 
 public class Goal : MonoBehaviour
 {
-    private ResourceLoader resourceLoader;
+    //private ResourceLoader resourceLoader;
     //public GameObject[] roniPepBaconMushTicket;
     //public GameObject[] roniPepTicket;
     //public GameObject[] roniMushPepTicket;
@@ -34,7 +34,7 @@ public class Goal : MonoBehaviour
 
     private void Start()
     {
-        resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
+       // resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
         
     }
     void Update()
@@ -59,7 +59,7 @@ public class Goal : MonoBehaviour
         //cheeseTicket = GameObject.FindGameObjectsWithTag("cheeseTicket");
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider col)
     {
         var pizzaObj = col.gameObject.GetComponent<Pizza_Controller>();
 
@@ -67,7 +67,7 @@ public class Goal : MonoBehaviour
         {
             var ticket = ticketSpawner.currentTickets[i];
 
-            if (pizzaObj.activePizzaTexture.Equals(resourceLoader.cookedCheeseMaterial) && ticket.isActive == true)
+            if (pizzaObj.activePizzaTexture.Equals(ticket.pizzaMat) && ticket.isActive == true)
             {
                 if (pizzaObj.isDirty)
                 {
@@ -79,9 +79,11 @@ public class Goal : MonoBehaviour
                 }
 
                 ticket.isActive = false;
-
+                Destroy(col.gameObject);
                 break;
             }
+
+           // Destroy(col.gameObject);
         }
 
         //for (int i = 0; i<cheeseTicket.Length; i++)

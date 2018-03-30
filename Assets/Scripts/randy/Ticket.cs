@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PizzaTime;
 
 public enum TicketType
 {
@@ -14,18 +15,20 @@ public class Ticket : MonoBehaviour
 {
 
     public TicketType ticketType;
-   
     public bool isActive;
-
     public float ticketTime;
     public float tipTime; // counts down not up
     public int ticketWorth;
     public int dirtyNeg;
 
+    private ResourceLoader resourceLoader;
+    public Material pizzaMat;
+
 
     private void Start()
     {
         isActive = true;
+        resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
     }
 
     private void Update()

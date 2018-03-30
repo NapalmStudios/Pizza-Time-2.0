@@ -253,3 +253,4 @@ MonoBehaviour:
   tipTime: 0
   ticketWorth: 0
   dirtyNeg: 0
+  pizzaMat: {fileID: 2100000, guid: d21867a8844fe9e48a40995fa53ab2b9, type: 2}

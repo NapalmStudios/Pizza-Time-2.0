@@ -171,6 +171,7 @@ MonoBehaviour:
   tipTime: 0
   ticketWorth: 0
   dirtyNeg: 0
+  pizzaMat: {fileID: 2100000, guid: 4a0a4e94350792046acadcb68f7ba130, type: 2}
 --- !u!114 &114502037651914476
 MonoBehaviour:
   m_ObjectHideFlags: 1
