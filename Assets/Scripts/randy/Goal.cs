@@ -6,6 +6,9 @@ using PizzaTime;
 public class Goal : MonoBehaviour
 {  
     public int tip;
+    public int score;
+    public int pizzasMade;
+
     TicketSpawn ticketSpawner;
 
     void Update()
@@ -25,17 +28,20 @@ public class Goal : MonoBehaviour
             {
                 if (pizzaObj.isDirty)
                 {
-                    Score.score += (ticket.ticketWorth + (tip * (int)ticket.tipTime)) - ticket.dirtyNeg;
+                    score += (ticket.ticketWorth + (tip * (int)ticket.tipTime)) - ticket.dirtyNeg;
                 }
                 else
                 {
-                    Score.score += ticket.ticketWorth + (tip * (int)ticket.tipTime);
+                    score += ticket.ticketWorth + (tip * (int)ticket.tipTime);
                 }
 
                 ticket.isActive = false;
+                pizzasMade++;
                 Destroy(col.gameObject);
                 break;
             }
         }
+
+        //TODO maybe lose money if wrong pizza
     }
 }
