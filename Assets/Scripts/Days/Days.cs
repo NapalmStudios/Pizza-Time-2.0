@@ -39,6 +39,7 @@ namespace PizzaTime
          */
         //TODO: Certain Tickets will need to spawn based on day value
         //TODO: Change Day with Recipt Punch Card which will collide with an object
+        //TODO: Create Punch Card Class
 
         //Increases the value of currentDay and resets outOfTime bool
         private void ClockOut()
