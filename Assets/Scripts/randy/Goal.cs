@@ -11,9 +11,14 @@ public class Goal : MonoBehaviour
 
     TicketSpawn ticketSpawner;
 
-    void Update()
+    void Start()
     {
         ticketSpawner = FindObjectOfType<TicketSpawn>();
+    }
+
+    void Update()
+    {
+        //ticketSpawner = FindObjectOfType<TicketSpawn>();
     }
 
     private void OnTriggerEnter(Collider col)
