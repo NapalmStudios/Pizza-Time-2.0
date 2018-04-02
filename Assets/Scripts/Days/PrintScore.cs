@@ -26,6 +26,7 @@ namespace PizzaTime
         void Update()
         {
             StartCoroutine(PrintPunchTicket());
+            StartCoroutine(CheckForPunchCard());
         }
 
         private IEnumerator PrintPunchTicket()
@@ -37,6 +38,19 @@ namespace PizzaTime
                 Instantiate(punchCardObjForSpawner, printerPunchCardSpawn.transform.position, printerPunchCardSpawn.transform.rotation);
                 yield return null;
                 
+            }
+            yield return null;
+        }
+
+        private IEnumerator CheckForPunchCard()
+        {
+            if(GameObject.FindGameObjectWithTag(resourceLoader.punchCardObj.tag))
+            {
+                punchCardSpawned = true;
+            }
+            else
+            {
+                punchCardSpawned = false;
             }
             yield return null;
         }
