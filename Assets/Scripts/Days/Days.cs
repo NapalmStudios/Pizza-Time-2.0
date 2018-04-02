@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PizzaTime
 {
-    //Should Go Onto Ticket Punch Out
+    //Should Go Onto Ticket Punch Out Machine
     public class Days : MonoBehaviour
     {
         public int currentDay;
@@ -13,10 +13,12 @@ namespace PizzaTime
         private bool clearSceneOfToppings = false;
 
         private ResourceLoader resourceLoader;
+        private Goal scorer;
 
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
+            scorer = GameObject.FindObjectOfType<Goal>();
         }
 
         void Update()
@@ -32,14 +34,6 @@ namespace PizzaTime
                 ClockOut();
             }
         }
-        /*
-         * Day 1: Cheese Pizzas
-         * Day 2: 1-Topping Pizzas
-         * Day 3: 2-Topping Pizzas
-         * Day 4: 3-Topping Pizzas
-         * Day 5: Oven Mechanics Introduced
-         */
-        //TODO: Certain Tickets will need to spawn based on day value
 
         //Increases the value of currentDay and resets outOfTime bool
         private void ClockOut()
@@ -47,9 +41,8 @@ namespace PizzaTime
             currentDay++;
             outOfTime = false;
             clearSceneOfToppings = true;
-            //**reset score** <- not sure if i save
             StartCoroutine(ClearSceneOfToppings());
-            clearSceneOfToppings = false;
+            scorer.score = 0;
         }
 
         //Checks Current Day value to see if timer should be enabled
@@ -63,6 +56,7 @@ namespace PizzaTime
             {
                 StartCoroutine(Tutorials());
             }
+
             yield return null;
         }
 
@@ -92,18 +86,23 @@ namespace PizzaTime
         {
             if(clearSceneOfToppings)
             {
+                var pieObjs = GameObject.FindGameObjectsWithTag(resourceLoader.pizzaObj.tag);
+                var gfPieObjs = GameObject.FindGameObjectsWithTag(resourceLoader.gfPizzaObj.tag);
                 var sauceObjs = GameObject.FindGameObjectsWithTag(resourceLoader.sauceObj.tag);
                 var cheeseObjs = GameObject.FindGameObjectsWithTag(resourceLoader.cheeseObj.tag);
                 var roniObjs = GameObject.FindGameObjectsWithTag(resourceLoader.roniObj.tag);
                 var baconObjs = GameObject.FindGameObjectsWithTag(resourceLoader.baconObj.tag);
                 var pepperObjs = GameObject.FindGameObjectsWithTag(resourceLoader.pepperObj.tag);
                 var mushObjs = GameObject.FindGameObjectsWithTag(resourceLoader.mushObj.tag);
+                DestoryObjects(pieObjs);
+                DestoryObjects(gfPieObjs);
                 DestoryObjects(sauceObjs);
                 DestoryObjects(cheeseObjs);
                 DestoryObjects(roniObjs);
                 DestoryObjects(baconObjs);
                 DestoryObjects(pepperObjs);
                 DestoryObjects(mushObjs);
+                clearSceneOfToppings = false;
             }
             yield return null;
         }
