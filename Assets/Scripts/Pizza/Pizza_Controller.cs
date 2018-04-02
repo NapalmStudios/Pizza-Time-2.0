@@ -185,7 +185,6 @@ namespace PizzaTime
             else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
             {
                 StartCoroutine(PizzaWait());
-                isDirty = true;
             }
             else if(objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
             {
@@ -569,6 +568,7 @@ namespace PizzaTime
         public IEnumerator PizzaWait()
         {
             yield return new WaitForSeconds(timeBeforeDirty);
+            isDirty = true;
         }
     }
 }
