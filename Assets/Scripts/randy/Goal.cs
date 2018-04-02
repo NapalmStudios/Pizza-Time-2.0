@@ -4,7 +4,8 @@ using UnityEngine;
 using PizzaTime;
 
 public class Goal : MonoBehaviour
-{  
+{
+    //
     public int tip;
     public int score;
     public int pizzasMade;
