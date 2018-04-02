@@ -15,21 +15,27 @@ namespace PizzaTime
         public int maxBaconObjs;
         public int maxPepperObjs;
         public int maxMushroomObjs;
+        public float timeInBetweenPizzaPieSpawns;
         private GameObject pizzaSpawnPosition;
+        private GameObject pizzaGFSpawnPosition;
         private GameObject sauceSpawnPosition;
         private GameObject cheeseSpawnPosition;
         private GameObject roniSpawnPosition;
         private GameObject baconSpawnPosition;
         private GameObject pepperSpawnPosition;
         private GameObject mushSpawnPosition;
+        private GameObject woodSpawnPosition;
         private GameObject pizzaObjForSpawner;
+        private GameObject gfPizzaObjForSpawner;
         private GameObject sauceObjForSpawner;
         private GameObject cheeseObjForSpawner;
         private GameObject roniObjForSpawner;
         private GameObject baconObjForSpawner;
         private GameObject pepperObjForSpawner;
         private GameObject mushObjForSpawner;
+        private GameObject woodObjForSpawner;
         private ResourceLoader resourceLoader;
+        private Days days;
         private GameObject[] sauceObjects;
         private GameObject[] cheeseObjects;
         private GameObject[] roniObjects;
@@ -41,24 +47,29 @@ namespace PizzaTime
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
+            days = GameObject.FindObjectOfType<Days>();
             // ------------------- Topping Object Initalization ------------------------ \\
             pizzaObjForSpawner = resourceLoader.pizzaObj;
+            gfPizzaObjForSpawner = resourceLoader.gfPizzaObj;
             sauceObjForSpawner = resourceLoader.sauceObj;
             cheeseObjForSpawner = resourceLoader.cheeseObj;
             roniObjForSpawner = resourceLoader.roniObj;
             baconObjForSpawner = resourceLoader.baconObj;
             pepperObjForSpawner = resourceLoader.pepperObj;
             mushObjForSpawner = resourceLoader.mushObj;
+            woodObjForSpawner = resourceLoader.woodObj;
             // ------------------------------------------------------------------------- \\
 
             // ------------------- Topping Spawn Initalization ------------------------- \\
             pizzaSpawnPosition = GameObject.Find("dough_Spawn");
+            pizzaGFSpawnPosition = GameObject.Find("Gf_Dough_Spawn");
             sauceSpawnPosition = GameObject.Find("Sauce_spawn");
             cheeseSpawnPosition = GameObject.Find("cheese_Spawn");
             roniSpawnPosition = GameObject.Find("Roni_Spawn");
             baconSpawnPosition = GameObject.Find("Bacon_spawn");
             pepperSpawnPosition = GameObject.Find("pepper_spawn");
             mushSpawnPosition = GameObject.Find("mushroom_spawn");
+            woodSpawnPosition = GameObject.Find("Wood_Spawn");
             // ------------------------------------------------------------------------- \\
 
             sauceObjects = new GameObject[maxSauceObjs];
@@ -85,16 +96,30 @@ namespace PizzaTime
             if (trigger.tag.Equals(resourceLoader.pieSpawnTrigger.tag))
             {
                 Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
+                StartCoroutine(PizzaWait());
+            }
+            else if (trigger.tag.Equals(resourceLoader.glutenFreeSpawnTrigger.tag))
+            {
+                Instantiate(gfPizzaObjForSpawner, pizzaGFSpawnPosition.transform.position, pizzaGFSpawnPosition.transform.rotation);
+                StartCoroutine(PizzaWait());
             }
             else if (trigger.tag.Equals(resourceLoader.toppingSpawnTrigger.tag))
             {
-                spawnTopping(sauceObjects, sauceObjForSpawner, sauceSpawnPosition, maxSauceObjs);
-                spawnTopping(cheeseObjects, cheeseObjForSpawner, cheeseSpawnPosition, maxCheeseObjs);
-                spawnTopping(roniObjects, roniObjForSpawner, roniSpawnPosition, maxRoniObjs);
-                spawnTopping(baconObjects, baconObjForSpawner, baconSpawnPosition, maxBaconObjs);
-                spawnTopping(pepperObjects, pepperObjForSpawner, pepperSpawnPosition, maxPepperObjs);
-                spawnTopping(mushroomObjects, mushObjForSpawner, mushSpawnPosition, maxMushroomObjs);
+                MechanicsSelector();
             }
+            else if(trigger.tag.Equals(resourceLoader.woodSpawnTrigger.tag) && days.currentDay >= 5)
+            {
+                Instantiate(woodObjForSpawner, woodSpawnPosition.transform.position, woodSpawnPosition.transform.rotation);
+            }
+        }
+
+        /// <summary>
+        /// Waits For Set amount of seconds
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator PizzaWait()
+        {
+            yield return new WaitForSeconds(timeInBetweenPizzaPieSpawns);
         }
 
         /// <summary>
@@ -120,6 +145,27 @@ namespace PizzaTime
             }
         }
 
+        //Selects the Available Mechanics for Pizzas for the Days
+        private void MechanicsSelector()
+        {
+            switch(days.currentDay)
+            {
+                //Day 1
+                case 0:
+                    spawnTopping(sauceObjects, sauceObjForSpawner, sauceSpawnPosition, maxSauceObjs);
+                    spawnTopping(cheeseObjects, cheeseObjForSpawner, cheeseSpawnPosition, maxCheeseObjs);
+                    break;
+                //Day 2 and Up
+                default:
+                    spawnTopping(sauceObjects, sauceObjForSpawner, sauceSpawnPosition, maxSauceObjs);
+                    spawnTopping(cheeseObjects, cheeseObjForSpawner, cheeseSpawnPosition, maxCheeseObjs);
+                    spawnTopping(roniObjects, roniObjForSpawner, roniSpawnPosition, maxRoniObjs);
+                    spawnTopping(baconObjects, baconObjForSpawner, baconSpawnPosition, maxBaconObjs);
+                    spawnTopping(pepperObjects, pepperObjForSpawner, pepperSpawnPosition, maxPepperObjs);
+                    spawnTopping(mushroomObjects, mushObjForSpawner, mushSpawnPosition, maxMushroomObjs);
+                    break;
+            }
+        }
 
         //NOT SURE IF WILL BE NEEDED
         //    if (coll.tag == "button")

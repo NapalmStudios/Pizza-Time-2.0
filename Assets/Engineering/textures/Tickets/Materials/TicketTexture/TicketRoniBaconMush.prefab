@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4151272507908732}
   - component: {fileID: 33112553096799928}
   - component: {fileID: 23928201208525050}
+  - component: {fileID: 114095620894729744}
   - component: {fileID: 54281420503389600}
   - component: {fileID: 65154229836442844}
   - component: {fileID: 65124486411726576}
@@ -142,6 +143,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0075, y: 0.001, z: 0.001}
   m_Center: {x: -0.0215, y: -1.2650834e-17, z: -0.00275}
+--- !u!114 &114095620894729744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061169104015932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6393e3f2196cd43bdcf2e00abe5515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticketType: 3
+  isActive: 0
+  ticketTime: 0
+  tipTime: 0
+  ticketWorth: 0
+  dirtyNeg: 0
+  pizzaMat: {fileID: 2100000, guid: 3c71a6855581161499224f64f89bc997, type: 2}
 --- !u!114 &114185014496171094
 MonoBehaviour:
   m_ObjectHideFlags: 1

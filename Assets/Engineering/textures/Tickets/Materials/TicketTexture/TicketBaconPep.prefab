@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4973849208140386}
   - component: {fileID: 33376248449546176}
   - component: {fileID: 23831221219528238}
+  - component: {fileID: 114702029893173362}
   - component: {fileID: 54142739791572786}
   - component: {fileID: 65543491188236554}
   - component: {fileID: 65820692214910034}
@@ -218,6 +219,24 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114702029893173362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1744336654365652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6393e3f2196cd43bdcf2e00abe5515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticketType: 2
+  isActive: 0
+  ticketTime: 0
+  tipTime: 0
+  ticketWorth: 0
+  dirtyNeg: 0
+  pizzaMat: {fileID: 2100000, guid: 5fd68bd05f8e27f4a90bd370e1a5b424, type: 2}
 --- !u!114 &114910273431704014
 MonoBehaviour:
   m_ObjectHideFlags: 1
