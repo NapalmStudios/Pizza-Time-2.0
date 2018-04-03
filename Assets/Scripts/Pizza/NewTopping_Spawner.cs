@@ -61,15 +61,15 @@ namespace PizzaTime
             // ------------------------------------------------------------------------- \\
 
             // ------------------- Topping Spawn Initalization ------------------------- \\
-            pizzaSpawnPosition = GameObject.Find("dough_Spawn");
+            pizzaSpawnPosition = GameObject.Find("DoughSpawn");
             pizzaGFSpawnPosition = GameObject.Find("Gf_Dough_Spawn");
-            sauceSpawnPosition = GameObject.Find("Sauce_spawn");
-            cheeseSpawnPosition = GameObject.Find("cheese_Spawn");
-            roniSpawnPosition = GameObject.Find("Roni_Spawn");
-            baconSpawnPosition = GameObject.Find("Bacon_spawn");
-            pepperSpawnPosition = GameObject.Find("pepper_spawn");
-            mushSpawnPosition = GameObject.Find("mushroom_spawn");
-            woodSpawnPosition = GameObject.Find("Wood_Spawn");
+            sauceSpawnPosition = GameObject.Find("SauceSpawn");
+            cheeseSpawnPosition = GameObject.Find("CheeseSpawn");
+            roniSpawnPosition = GameObject.Find("RoniSpawn");
+            baconSpawnPosition = GameObject.Find("BaconSpawn");
+            pepperSpawnPosition = GameObject.Find("PepperSpawn");
+            mushSpawnPosition = GameObject.Find("MushroomSpawn");
+            woodSpawnPosition = GameObject.Find("WoodSpawn");
             // ------------------------------------------------------------------------- \\
 
             sauceObjects = new GameObject[maxSauceObjs];
@@ -105,6 +105,10 @@ namespace PizzaTime
             else if(trigger.tag.Equals(resourceLoader.woodSpawnTrigger.tag) && days.currentDay >= 5)
             {
                 Instantiate(woodObjForSpawner, woodSpawnPosition.transform.position, woodSpawnPosition.transform.rotation);
+            }
+            else if(trigger.tag.Equals(resourceLoader.resetTrigger.tag))
+            {
+
             }
         }
 
