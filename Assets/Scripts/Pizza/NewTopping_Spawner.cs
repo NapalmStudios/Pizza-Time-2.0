@@ -93,22 +93,22 @@ namespace PizzaTime
                 Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
                 StartCoroutine(PizzaWait());
             }
-            else if (trigger.tag.Equals(resourceLoader.glutenFreeSpawnTrigger.tag))
-            {
-                Instantiate(gfPizzaObjForSpawner, pizzaGFSpawnPosition.transform.position, pizzaGFSpawnPosition.transform.rotation);
-                StartCoroutine(PizzaWait());
-            }
+            //else if (trigger.tag.Equals(resourceLoader.glutenFreeSpawnTrigger.tag))
+            //{
+            //    Instantiate(gfPizzaObjForSpawner, pizzaGFSpawnPosition.transform.position, pizzaGFSpawnPosition.transform.rotation);
+            //    StartCoroutine(PizzaWait());
+            //}
             else if (trigger.tag.Equals(resourceLoader.toppingSpawnTrigger.tag))
             {
                 MechanicsSelector();
             }
-            else if(trigger.tag.Equals(resourceLoader.woodSpawnTrigger.tag) && days.currentDay >= 5)
-            {
-                Instantiate(woodObjForSpawner, woodSpawnPosition.transform.position, woodSpawnPosition.transform.rotation);
-            }
+            //else if(trigger.tag.Equals(resourceLoader.woodSpawnTrigger.tag) && days.currentDay >= 5)
+            //{
+            //    Instantiate(woodObjForSpawner, woodSpawnPosition.transform.position, woodSpawnPosition.transform.rotation);
+            //}
             else if(trigger.tag.Equals(resourceLoader.resetTrigger.tag))
             {
-
+                SceneManager.LoadScene("Level_GreyBox");
             }
         }
 
