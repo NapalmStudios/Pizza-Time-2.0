@@ -220,7 +220,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.15, z: 0}
 --- !u!65 &65505962781245054
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -361,7 +361,11 @@ MonoBehaviour:
   totalCookTime: 0
   burnTime: 0
   initialLowestCookSpeedValue: 0
+  timeBeforeDirty: 0
   isCooked: 0
+  isDirty: 0
+  isGlutenFree: 0
+  hasSauce: 0
   pizza: {fileID: 1730480822578348}
   pizzaController: {fileID: 0}
   activePizzaTexture: {fileID: 0}

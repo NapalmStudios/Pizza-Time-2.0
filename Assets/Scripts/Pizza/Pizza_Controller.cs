@@ -42,6 +42,7 @@ namespace PizzaTime
         public GameObject pizza;
         public Pizza_Controller pizzaController;
         public Material activePizzaTexture;
+        public Material currentPizzaTexture;
 
         private float cookTime;
         private float cookingSpeed;
@@ -49,7 +50,6 @@ namespace PizzaTime
         private bool textureChange = false;
         private float maxCookTempature;
         private bool onOven = false;
-        public Material currentPizzaTexture;
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
         private ResourceLoader resourceLoader;
@@ -96,12 +96,12 @@ namespace PizzaTime
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
             //Looks at the current pizza texture and then sets pizzaCase to the correct value
-            if (currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial) || currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial))
+            if (currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial) /*|| currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial)*/)
             {
-                if(currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial))
-                {
-                    isGlutenFree = true;
-                }
+                //if(currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial))
+                //{
+                //    isGlutenFree = true;
+                //}
                 pizzaCase = PIZZA.Dough;
             }
             else if (currentPizzaTexture.Equals(resourceLoader.sauceMaterial))
