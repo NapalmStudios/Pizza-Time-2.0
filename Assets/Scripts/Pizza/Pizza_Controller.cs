@@ -46,6 +46,7 @@ namespace PizzaTime
         private float cookTime;
         private float cookingSpeed;
         private bool isCooking = false;
+        private bool textureChange = false;
         private float maxCookTempature;
         private bool onOven = false;
         public Material currentPizzaTexture;
@@ -57,14 +58,25 @@ namespace PizzaTime
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
 
-            maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
+            //maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
             activePizzaTexture = resourceLoader.pizzaDoughMaterial;
+            textureChange = true;
         }
         public void Update()
         {
-            pizza.GetComponentInParent<Renderer>().material = activePizzaTexture;
+            StartCoroutine(TextureChanger());
             StartCoroutine(AddSauce());
+        }
+
+        private IEnumerator TextureChanger()
+        {
+            if(textureChange)
+            {
+                pizza.GetComponent<Renderer>().material = activePizzaTexture;
+                textureChange = false;
+            }
+            yield return null;
         }
 
         private IEnumerator AddSauce()
@@ -72,6 +84,7 @@ namespace PizzaTime
             if (hasSauce && activePizzaTexture.Equals(resourceLoader.pizzaDoughMaterial))
             {
                 activePizzaTexture = resourceLoader.sauceMaterial;
+                textureChange = true;
             }
 
             yield return null;
@@ -248,6 +261,7 @@ namespace PizzaTime
             if (topping.tag.Equals(resourceLoader.cheeseObj.tag))
             {
                 activePizzaTexture = resourceLoader.cheeseMaterial;
+                textureChange = true;
                 Destroy(topping);
             }
         }
@@ -262,34 +276,42 @@ namespace PizzaTime
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.roniMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Bacon:
                     activePizzaTexture = resourceLoader.roniAndBaconMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Peppers:
                     activePizzaTexture = resourceLoader.roniAndPeppersMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Mushrooms:
                     activePizzaTexture = resourceLoader.roniAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.PeppersBacon:
                     activePizzaTexture = resourceLoader.roniAndBaconAndPeppersMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.PeppersMush:
                     activePizzaTexture = resourceLoader.roniAndPeppersAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.BaconMush:
                     activePizzaTexture = resourceLoader.roniAndBaconAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.PeppersBaconMush:
                     activePizzaTexture = resourceLoader.theWorksMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 default:
@@ -307,34 +329,42 @@ namespace PizzaTime
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.baconMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Roni:
                     activePizzaTexture = resourceLoader.roniAndBaconMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Peppers:
                     activePizzaTexture = resourceLoader.peppersAndBaconMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Mushrooms:
                     activePizzaTexture = resourceLoader.baconAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniMush:
                     activePizzaTexture = resourceLoader.roniAndBaconAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniPepper: 
                     activePizzaTexture = resourceLoader.roniAndBaconAndPeppersMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.PeppersMush:
                     activePizzaTexture = resourceLoader.mushAndBaconAndPeppers;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniPeppersMush:
                     activePizzaTexture = resourceLoader.theWorksMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 default:
@@ -352,34 +382,42 @@ namespace PizzaTime
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.peppersMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Roni:
                     activePizzaTexture = resourceLoader.roniAndPeppersMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Bacon:
                     activePizzaTexture = resourceLoader.peppersAndBaconMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Mushrooms:
                     activePizzaTexture = resourceLoader.peppersAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniBacon:
                     activePizzaTexture = resourceLoader.roniAndBaconAndPeppersMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniMush:
                     activePizzaTexture = resourceLoader.roniAndPeppersAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.BaconMush:
                     activePizzaTexture = resourceLoader.mushAndBaconAndPeppers;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniBaconMush:
                     activePizzaTexture = resourceLoader.theWorksMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 default:
@@ -398,34 +436,42 @@ namespace PizzaTime
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.mushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Roni:
                     activePizzaTexture = resourceLoader.roniAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Bacon:
                     activePizzaTexture = resourceLoader.baconAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.Peppers:
                     activePizzaTexture = resourceLoader.peppersAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniBacon:
                     activePizzaTexture = resourceLoader.roniAndBaconAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniPepper:
                     activePizzaTexture = resourceLoader.roniAndPeppersAndMushMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.PeppersBacon:
                     activePizzaTexture = resourceLoader.mushAndBaconAndPeppers;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 case PIZZA.RoniPeppersBacon:
                     activePizzaTexture = resourceLoader.theWorksMaterial;
+                    textureChange = true;
                     Destroy(topping);
                     break;
                 default:
@@ -445,54 +491,71 @@ namespace PizzaTime
                 {
                     case PIZZA.Dough:
                         activePizzaTexture = resourceLoader.cookedDoughMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.Cheese:
                         activePizzaTexture = resourceLoader.cookedCheeseMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.Roni:
                         activePizzaTexture = resourceLoader.cookedRoniMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.Bacon:
                         activePizzaTexture = resourceLoader.cookedBaconMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.Peppers:
                         activePizzaTexture = resourceLoader.cookedPeppersMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.Mushrooms:
                         activePizzaTexture = resourceLoader.cookedMushMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.RoniPepper:
                         activePizzaTexture = resourceLoader.cookedRoniAndPeppersMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.RoniBacon:
                         activePizzaTexture = resourceLoader.cookedRoniAndBaconMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.RoniMush:
                         activePizzaTexture = resourceLoader.cookedRoniAndMushMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.PeppersBacon:
                         activePizzaTexture = resourceLoader.cookedPeppersAndBaconMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.PeppersMush:
                         activePizzaTexture = resourceLoader.cookedPeppersAndMushMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.BaconMush:
                         activePizzaTexture = resourceLoader.cookedBaconAndMushMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.RoniPeppersBacon:
                         activePizzaTexture = resourceLoader.cookedRoniAndBaconAndPeppersMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.PeppersBaconMush:
                         activePizzaTexture = resourceLoader.cookedMushAndBaconAndPeppersMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.RoniBaconMush:
                         activePizzaTexture = resourceLoader.cookedRoniAndBaconAndMushMaterial;
+                        textureChange = true;
                         break;
                     case PIZZA.RoniPeppersMush:
                         activePizzaTexture = resourceLoader.cookedRoniAndPeppersAndMushMaterial;
+                        textureChange = true;
                         break;
                     default:
                         activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
+                        textureChange = true;
                         break;
                 }
             }
@@ -559,6 +622,7 @@ namespace PizzaTime
                 else if (cookTime >= totalCookTime + burnTime)
                 {
                     activePizzaTexture = resourceLoader.cookedBurnt;
+                    textureChange = true;
                     isCooking = false;
                 }
             }
