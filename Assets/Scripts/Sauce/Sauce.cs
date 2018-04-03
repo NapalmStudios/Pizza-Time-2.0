@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace PizzaTime
 {
-    //Change Pie Prefabs Settings
     public class Sauce : MonoBehaviour
     {
         private GameObject sauceBottle;

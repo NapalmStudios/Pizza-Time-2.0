@@ -82,12 +82,7 @@ namespace PizzaTime
 
         void Update()
         {
-            sauceObjects = GameObject.FindGameObjectsWithTag(resourceLoader.sauceObj.tag);
-            cheeseObjects = GameObject.FindGameObjectsWithTag(resourceLoader.cheeseObj.tag);
-            roniObjects = GameObject.FindGameObjectsWithTag(resourceLoader.roniObj.tag);
-            baconObjects = GameObject.FindGameObjectsWithTag(resourceLoader.baconObj.tag);
-            pepperObjects = GameObject.FindGameObjectsWithTag(resourceLoader.pepperObj.tag);
-            mushroomObjects = GameObject.FindGameObjectsWithTag(resourceLoader.mushObj.tag);
+            StartCoroutine(FindToppings());
         }
 
         private void OnCollisionEnter(Collision col)
@@ -111,6 +106,17 @@ namespace PizzaTime
             {
                 Instantiate(woodObjForSpawner, woodSpawnPosition.transform.position, woodSpawnPosition.transform.rotation);
             }
+        }
+
+        private IEnumerator FindToppings()
+        {
+            sauceObjects = GameObject.FindGameObjectsWithTag(resourceLoader.sauceObj.tag);
+            cheeseObjects = GameObject.FindGameObjectsWithTag(resourceLoader.cheeseObj.tag);
+            roniObjects = GameObject.FindGameObjectsWithTag(resourceLoader.roniObj.tag);
+            baconObjects = GameObject.FindGameObjectsWithTag(resourceLoader.baconObj.tag);
+            pepperObjects = GameObject.FindGameObjectsWithTag(resourceLoader.pepperObj.tag);
+            mushroomObjects = GameObject.FindGameObjectsWithTag(resourceLoader.mushObj.tag);
+            yield return null;
         }
 
         /// <summary>
