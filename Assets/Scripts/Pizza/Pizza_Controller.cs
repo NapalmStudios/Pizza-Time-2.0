@@ -53,10 +53,13 @@ namespace PizzaTime
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
         private ResourceLoader resourceLoader;
+        private AudioSource audio;
         // -------------------------------------------------- \\
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
+
+            audio = GetComponent<AudioSource>();
 
             //maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
@@ -616,6 +619,7 @@ namespace PizzaTime
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
                     isCooked = true;
+                    audio.Play();
                     CookedPizzas(isCooked);
                     isCooking = false;
                 }

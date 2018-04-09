@@ -14,7 +14,7 @@ public class TicketSpawn : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnTickets(Day, 3));
+        StartCoroutine(SpawnTickets(Day, 5));
     }
 
     public IEnumerator SpawnTickets(int Day, int amountToSpawn)
