@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toppingType: 1
   dirtyTopping: 0
-  timeToDirty: 0
+  timeToDirty: 5
 --- !u!114 &114618793858701258
 MonoBehaviour:
   m_ObjectHideFlags: 1

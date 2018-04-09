@@ -111,7 +111,7 @@ namespace PizzaTime
                     PizzaAddCheeseTopping(topping, toppingObj, toppingDirty);
                     break;
                 default:
-                    //ToppingSelector(topping);
+                    ToppingSelector(topping, toppingObj, toppingDirty);
                     break;
             }
 
@@ -225,38 +225,25 @@ namespace PizzaTime
         /// Selects the Topping Case to enable putting a topping onto a pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void ToppingSelector(GameObject topping)
+        private void ToppingSelector(TOPPING topping, GameObject toppingObj, bool dirtyTop)
         {
-            if (topping.tag.Equals(resourceLoader.roniObj.tag))
+            if (dirtyTop)
             {
-                toppingCase = PIZZA.Roni;
+                isDirty = true;
             }
-            else if (topping.tag.Equals(resourceLoader.baconObj.tag))
+            switch (topping)
             {
-                toppingCase = PIZZA.Bacon;
-            }
-            else if (topping.tag.Equals(resourceLoader.pepperObj.tag))
-            {
-                toppingCase = PIZZA.Peppers;
-            }
-            else if (topping.tag.Equals(resourceLoader.mushObj.tag))
-            {
-                toppingCase = PIZZA.Mushrooms;
-            }
-
-            switch (toppingCase)
-            {
-                case PIZZA.Roni:
-                    PizzaAddRoniTopping(topping);
+                case TOPPING.Roni:
+                    PizzaAddRoniTopping(toppingObj);
                     break;
-                case PIZZA.Bacon:
-                    PizzaAddBaconTopping(topping);
+                case TOPPING.Bacon:
+                    PizzaAddBaconTopping(toppingObj);
                     break;
-                case PIZZA.Peppers:
-                    PizzaAddPeppersTopping(topping);
+                case TOPPING.Peppers:
+                    PizzaAddPeppersTopping(toppingObj);
                     break;
-                case PIZZA.Mushrooms:
-                    PizzaAddMushroomsTopping(topping);
+                case TOPPING.Mushrooms:
+                    PizzaAddMushroomsTopping(toppingObj);
                     break;
                 default:
                     break;
@@ -283,10 +270,6 @@ namespace PizzaTime
                 default:
                     break;
             }
-            //if (topping.tag.Equals(resourceLoader.cheeseObj.tag))
-            //{
-
-            //}
         }
 
         /// <summary>
