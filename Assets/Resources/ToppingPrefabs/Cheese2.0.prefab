@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 54452428306389262}
   - component: {fileID: 114056779239142014}
   - component: {fileID: 65712840336195392}
+  - component: {fileID: 114284913411084840}
   m_Layer: 9
   m_Name: Cheese2.0
   m_TagString: cheese
@@ -158,6 +159,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114284913411084840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1229748901221764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c326405f3f0fab5418f64c222d35061b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toppingType: 1
+  dirtyTopping: 0
+  timeToDirty: 0
 --- !u!114 &114618793858701258
 MonoBehaviour:
   m_ObjectHideFlags: 1

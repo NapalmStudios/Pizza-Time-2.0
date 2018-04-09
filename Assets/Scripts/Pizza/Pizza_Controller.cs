@@ -95,9 +95,53 @@ namespace PizzaTime
 
         private void OnCollisionEnter(Collision col)
         {
-            GameObject topping = col.gameObject;
+            var topping = col.gameObject.GetComponent<ToppingController>().toppingType;
+            var toppingDirty = col.gameObject.GetComponent<ToppingController>().dirtyTopping;
+            var toppingObj = col.gameObject;
+            
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
+            TextureGetter();
+
+            switch(pizzaCase)
+            {
+                case PIZZA.Dough:
+                    break;
+                case PIZZA.Sauce:
+                    PizzaAddCheeseTopping(topping, toppingObj, toppingDirty);
+                    break;
+                default:
+                    //ToppingSelector(topping);
+                    break;
+            }
+
+        }
+
+        void OnTriggerStay(Collider col)
+        {
+            GameObject objectPizzaIsTouching = col.gameObject;
+            if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
+            {
+                onOven = true;
+                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+            }
+            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
+            {
+                StartCoroutine(PizzaWait());
+            }
+            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                onOven = false;
+                isDirty = false;
+            }
+        }
+
+        private void TextureGetter()
+        {
             //Looks at the current pizza texture and then sets pizzaCase to the correct value
             if (currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial) /*|| currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial)*/)
             {
@@ -139,77 +183,41 @@ namespace PizzaTime
             {
                 pizzaCase = PIZZA.RoniPepper;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.roniAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.roniAndMushMaterial))
             {
                 pizzaCase = PIZZA.RoniMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.peppersAndBaconMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.peppersAndBaconMaterial))
             {
                 pizzaCase = PIZZA.PeppersBacon;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.peppersAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.peppersAndMushMaterial))
             {
                 pizzaCase = PIZZA.PeppersMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.baconAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.baconAndMushMaterial))
             {
                 pizzaCase = PIZZA.BaconMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.roniAndBaconAndPeppersMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.roniAndBaconAndPeppersMaterial))
             {
                 pizzaCase = PIZZA.RoniPeppersBacon;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.mushAndBaconAndPeppers))
+            else if (currentPizzaTexture.Equals(resourceLoader.mushAndBaconAndPeppers))
             {
                 pizzaCase = PIZZA.PeppersBaconMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.roniAndBaconAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.roniAndBaconAndMushMaterial))
             {
                 pizzaCase = PIZZA.RoniBaconMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.roniAndPeppersAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.roniAndPeppersAndMushMaterial))
             {
                 pizzaCase = PIZZA.RoniPeppersMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.theWorksMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.theWorksMaterial))
             {
                 pizzaCase = PIZZA.TheWorks;
-            }
-
-            switch(pizzaCase)
-            {
-                case PIZZA.Dough:
-                    break;
-                case PIZZA.Sauce:
-                    PizzaAddCheeseTopping(topping);
-                    break;
-                default:
-                    ToppingSelector(topping);
-                    break;
-            }
-
-        }
-
-        void OnTriggerStay(Collider col)
-        {
-            GameObject objectPizzaIsTouching = col.gameObject;
-            if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
-            {
-                onOven = true;
-                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
-            }
-            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
-            {
-                StartCoroutine(PizzaWait());
-            }
-            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                onOven = false;
-                isDirty = false;
             }
         }
 
@@ -259,14 +267,26 @@ namespace PizzaTime
         /// If-Else Statement for Adding Cheese Before Able to Add Other Toppings
         /// </summary>
         /// <param name="topping"></param>
-        private void PizzaAddCheeseTopping(GameObject topping)
+        private void PizzaAddCheeseTopping(TOPPING topping, GameObject toppingObj, bool dirtyTop)
         {
-            if (topping.tag.Equals(resourceLoader.cheeseObj.tag))
+            switch(topping)
             {
-                activePizzaTexture = resourceLoader.cheeseMaterial;
-                textureChange = true;
-                Destroy(topping);
+                case TOPPING.Cheese:
+                    activePizzaTexture = resourceLoader.cheeseMaterial;
+                    textureChange = true;
+                    if(dirtyTop)
+                    {
+                        isDirty = true;
+                    }
+                    Destroy(toppingObj);
+                    break;
+                default:
+                    break;
             }
+            //if (topping.tag.Equals(resourceLoader.cheeseObj.tag))
+            //{
+
+            //}
         }
 
         /// <summary>
