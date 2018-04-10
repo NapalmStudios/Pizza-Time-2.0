@@ -17,6 +17,7 @@ namespace PizzaTime
     public class ToppingController : MonoBehaviour
     {
         public TOPPING toppingType;
+        public GameObject toppingObject;
         public bool dirtyTopping = false;
         public int timeToDirty;
         private ResourceLoader resourceLoader;
@@ -24,6 +25,7 @@ namespace PizzaTime
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
+            toppingObject = this.gameObject;
         }
 
         private void OnCollisionStay(Collision col)

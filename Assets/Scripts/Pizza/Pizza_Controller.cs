@@ -107,9 +107,7 @@ namespace PizzaTime
         /// <param name="col"></param>
         private void OnCollisionEnter(Collision col)
         {
-            var topping = col.gameObject.GetComponent<ToppingController>().toppingType;
-            var toppingDirty = col.gameObject.GetComponent<ToppingController>().dirtyTopping;
-            var toppingObj = col.gameObject;
+            var toppingControl = col.gameObject.GetComponent<ToppingController>();
             
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
@@ -120,10 +118,10 @@ namespace PizzaTime
                 case PIZZA.Dough:
                     break;
                 case PIZZA.Sauce:
-                    PizzaAddCheeseTopping(topping, toppingObj, toppingDirty);
+                    PizzaAddCheeseTopping(toppingControl);
                     break;
                 default:
-                    ToppingSelector(topping, toppingObj, toppingDirty);
+                    ToppingSelector(toppingControl);
                     break;
             }
 
@@ -243,13 +241,14 @@ namespace PizzaTime
         /// Selects the Topping Case to enable putting a topping onto a pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void ToppingSelector(TOPPING topping, GameObject toppingObj, bool dirtyTop)
+        private void ToppingSelector(ToppingController topping)
         {
-            if (dirtyTop)
+            var toppingObj = topping.toppingObject;
+            if (topping.dirtyTopping)
             {
                 isDirty = true;
             }
-            switch (topping)
+            switch (topping.toppingType)
             {
                 case TOPPING.Roni:
                     PizzaAddRoniTopping(toppingObj);
@@ -272,18 +271,18 @@ namespace PizzaTime
         /// If-Else Statement for Adding Cheese Before Able to Add Other Toppings
         /// </summary>
         /// <param name="topping"></param>
-        private void PizzaAddCheeseTopping(TOPPING topping, GameObject toppingObj, bool dirtyTop)
+        private void PizzaAddCheeseTopping(ToppingController topping)
         {
-            switch(topping)
+            switch(topping.toppingType)
             {
                 case TOPPING.Cheese:
                     activePizzaTexture = resourceLoader.cheeseMaterial;
                     textureChange = true;
-                    if(dirtyTop)
+                    if(topping.dirtyTopping)
                     {
                         isDirty = true;
                     }
-                    Destroy(toppingObj);
+                    Destroy(topping.toppingObject);
                     break;
                 default:
                     break;
