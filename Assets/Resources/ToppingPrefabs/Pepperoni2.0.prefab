@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114310795677738630}
   - component: {fileID: 54617300079475708}
   - component: {fileID: 114091880111605778}
+  - component: {fileID: 114823034434395108}
   m_Layer: 10
   m_Name: Pepperoni2.0
   m_TagString: roni
@@ -173,6 +174,20 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114823034434395108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926933724379224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c326405f3f0fab5418f64c222d35061b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toppingType: 2
+  dirtyTopping: 0
+  timeToDirty: 5
 --- !u!114 &114956396576620660
 MonoBehaviour:
   m_ObjectHideFlags: 1

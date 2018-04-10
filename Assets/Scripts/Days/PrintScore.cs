@@ -12,8 +12,6 @@ namespace PizzaTime
         private GameObject punchCardObjForSpawner;
         private bool punchCardSpawned = false;
 
-
-        // Use this for initialization
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
@@ -22,13 +20,16 @@ namespace PizzaTime
             punchCardObjForSpawner = resourceLoader.punchCardObj;
         }
 
-        // Update is called once per frame
         void Update()
         {
             StartCoroutine(PrintPunchTicket());
             StartCoroutine(CheckForPunchCard());
         }
 
+        /// <summary>
+        /// Print Punch Ticket at End of Day
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator PrintPunchTicket()
         {
             while(days.outOfTime && !punchCardSpawned)
@@ -42,6 +43,10 @@ namespace PizzaTime
             yield return null;
         }
 
+        /// <summary>
+        /// Checks to See if there is a Punch Card within the level
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator CheckForPunchCard()
         {
             if(GameObject.FindGameObjectWithTag(resourceLoader.punchCardObj.tag))

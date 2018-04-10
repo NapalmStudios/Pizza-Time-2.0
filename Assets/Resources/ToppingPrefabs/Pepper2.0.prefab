@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114396859054756892}
   - component: {fileID: 54927360277946654}
   - component: {fileID: 114593890193135206}
+  - component: {fileID: 114715790089433832}
   m_Layer: 0
   m_Name: Pepper2.0
   m_TagString: peppers
@@ -190,3 +191,17 @@ MonoBehaviour:
   hideDelayOnGrab: 0
   hideControllerOnUse: 0
   hideDelayOnUse: 0
+--- !u!114 &114715790089433832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1681676850917926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c326405f3f0fab5418f64c222d35061b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toppingType: 4
+  dirtyTopping: 0
+  timeToDirty: 5
