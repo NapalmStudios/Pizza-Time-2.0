@@ -85,6 +85,10 @@ namespace PizzaTime
             StartCoroutine(FindToppings());
         }
 
+        /// <summary>
+        /// Spawn Trigger Collisions
+        /// </summary>
+        /// <param name="col"></param>
         private void OnCollisionEnter(Collision col)
         {
             GameObject trigger = col.gameObject;
@@ -112,6 +116,10 @@ namespace PizzaTime
             }
         }
 
+        /// <summary>
+        /// Finds all toppings with in the Scene
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator FindToppings()
         {
             sauceObjects = GameObject.FindGameObjectsWithTag(resourceLoader.sauceObj.tag);
@@ -151,7 +159,9 @@ namespace PizzaTime
             }
         }
 
-        //Selects the Available Mechanics for Pizzas for the Days
+        /// <summary>
+        /// Selects the Available Mechanics for Pizzas for the Days
+        /// </summary>
         private void MechanicsSelector()
         {
             switch(days.currentDay)

@@ -72,6 +72,10 @@ namespace PizzaTime
             StartCoroutine(AddSauce());
         }
 
+        /// <summary>
+        /// Waits to see if there is a texture change on the Pizza
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator TextureChanger()
         {
             if(textureChange)
@@ -82,6 +86,10 @@ namespace PizzaTime
             yield return null;
         }
 
+        /// <summary>
+        /// Sauce Texture Change
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator AddSauce()
         {
             if (hasSauce && activePizzaTexture.Equals(resourceLoader.pizzaDoughMaterial))
@@ -93,6 +101,10 @@ namespace PizzaTime
             yield return null;
         }
 
+        /// <summary>
+        /// For topping changing when a topping collides with the pizza
+        /// </summary>
+        /// <param name="col"></param>
         private void OnCollisionEnter(Collision col)
         {
             var topping = col.gameObject.GetComponent<ToppingController>().toppingType;
@@ -116,7 +128,10 @@ namespace PizzaTime
             }
 
         }
-
+        /// <summary>
+        /// Logic if the pizza is staying on Certain objects a.k.a the Floor and Oven
+        /// </summary>
+        /// <param name="col"></param>
         void OnTriggerStay(Collider col)
         {
             GameObject objectPizzaIsTouching = col.gameObject;
@@ -140,6 +155,9 @@ namespace PizzaTime
             }
         }
 
+        /// <summary>
+        /// Looks at the current texture of the Pizza Object and sets the pizzaCase value
+        /// </summary>
         private void TextureGetter()
         {
             //Looks at the current pizza texture and then sets pizzaCase to the correct value
@@ -613,6 +631,12 @@ namespace PizzaTime
             return calculation;
         }
 
+        /// <summary>
+        /// Method for Cooking the Pizza as well as Buring the Pizza
+        /// </summary>
+        /// <param name="isCooking"></param>
+        /// <param name="cookingSpeed"></param>
+        /// <returns></returns>
         private IEnumerator Cooking(bool isCooking, float cookingSpeed)
         {
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
@@ -636,6 +660,10 @@ namespace PizzaTime
             yield return null;
         }
 
+        /// <summary>
+        /// Method for if the Pizza is touching the floor
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator PizzaWait()
         {
             yield return new WaitForSeconds(timeBeforeDirty);
