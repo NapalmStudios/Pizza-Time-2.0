@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114455611943673770}
   - component: {fileID: 114135404855198810}
   - component: {fileID: 114719983070311672}
+  - component: {fileID: 114506829262106894}
   m_Layer: 0
   m_Name: Bacon2.0
   m_TagString: bacon
@@ -143,6 +144,20 @@ MonoBehaviour:
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 0
+--- !u!114 &114506829262106894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717731748787382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c326405f3f0fab5418f64c222d35061b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toppingType: 3
+  dirtyTopping: 0
+  timeToDirty: 5
 --- !u!114 &114719983070311672
 MonoBehaviour:
   m_ObjectHideFlags: 1

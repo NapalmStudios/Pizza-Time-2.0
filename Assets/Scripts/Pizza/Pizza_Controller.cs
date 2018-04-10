@@ -72,6 +72,10 @@ namespace PizzaTime
             StartCoroutine(AddSauce());
         }
 
+        /// <summary>
+        /// Waits to see if there is a texture change on the Pizza
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator TextureChanger()
         {
             if(textureChange)
@@ -82,6 +86,10 @@ namespace PizzaTime
             yield return null;
         }
 
+        /// <summary>
+        /// Sauce Texture Change
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator AddSauce()
         {
             if (hasSauce && activePizzaTexture.Equals(resourceLoader.pizzaDoughMaterial))
@@ -93,11 +101,63 @@ namespace PizzaTime
             yield return null;
         }
 
+        /// <summary>
+        /// For topping changing when a topping collides with the pizza
+        /// </summary>
+        /// <param name="col"></param>
         private void OnCollisionEnter(Collision col)
         {
-            GameObject topping = col.gameObject;
+            var toppingControl = col.gameObject.GetComponent<ToppingController>();
+            
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
+            TextureGetter();
+
+            switch(pizzaCase)
+            {
+                case PIZZA.Dough:
+                    break;
+                case PIZZA.Sauce:
+                    PizzaAddCheeseTopping(toppingControl);
+                    break;
+                default:
+                    ToppingSelector(toppingControl);
+                    break;
+            }
+
+        }
+        /// <summary>
+        /// Logic if the pizza is staying on Certain objects a.k.a the Floor and Oven
+        /// </summary>
+        /// <param name="col"></param>
+        void OnTriggerStay(Collider col)
+        {
+            GameObject objectPizzaIsTouching = col.gameObject;
+            if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
+            {
+                onOven = true;
+                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+            }
+            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
+            {
+                StartCoroutine(PizzaWait());
+            }
+            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                onOven = false;
+                isDirty = false;
+            }
+        }
+
+        /// <summary>
+        /// Looks at the current texture of the Pizza Object and sets the pizzaCase value
+        /// </summary>
+        private void TextureGetter()
+        {
             //Looks at the current pizza texture and then sets pizzaCase to the correct value
             if (currentPizzaTexture.Equals(resourceLoader.pizzaDoughMaterial) /*|| currentPizzaTexture.Equals(resourceLoader.gfPizzaDoughMaterial)*/)
             {
@@ -139,77 +199,41 @@ namespace PizzaTime
             {
                 pizzaCase = PIZZA.RoniPepper;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.roniAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.roniAndMushMaterial))
             {
                 pizzaCase = PIZZA.RoniMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.peppersAndBaconMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.peppersAndBaconMaterial))
             {
                 pizzaCase = PIZZA.PeppersBacon;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.peppersAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.peppersAndMushMaterial))
             {
                 pizzaCase = PIZZA.PeppersMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.baconAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.baconAndMushMaterial))
             {
                 pizzaCase = PIZZA.BaconMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.roniAndBaconAndPeppersMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.roniAndBaconAndPeppersMaterial))
             {
                 pizzaCase = PIZZA.RoniPeppersBacon;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.mushAndBaconAndPeppers))
+            else if (currentPizzaTexture.Equals(resourceLoader.mushAndBaconAndPeppers))
             {
                 pizzaCase = PIZZA.PeppersBaconMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.roniAndBaconAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.roniAndBaconAndMushMaterial))
             {
                 pizzaCase = PIZZA.RoniBaconMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.roniAndPeppersAndMushMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.roniAndPeppersAndMushMaterial))
             {
                 pizzaCase = PIZZA.RoniPeppersMush;
             }
-            else if(currentPizzaTexture.Equals(resourceLoader.theWorksMaterial))
+            else if (currentPizzaTexture.Equals(resourceLoader.theWorksMaterial))
             {
                 pizzaCase = PIZZA.TheWorks;
-            }
-
-            switch(pizzaCase)
-            {
-                case PIZZA.Dough:
-                    break;
-                case PIZZA.Sauce:
-                    PizzaAddCheeseTopping(topping);
-                    break;
-                default:
-                    ToppingSelector(topping);
-                    break;
-            }
-
-        }
-
-        void OnTriggerStay(Collider col)
-        {
-            GameObject objectPizzaIsTouching = col.gameObject;
-            if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
-            {
-                onOven = true;
-                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
-            }
-            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
-            {
-                StartCoroutine(PizzaWait());
-            }
-            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                onOven = false;
-                isDirty = false;
             }
         }
 
@@ -217,38 +241,26 @@ namespace PizzaTime
         /// Selects the Topping Case to enable putting a topping onto a pizza
         /// </summary>
         /// <param name="topping"></param>
-        private void ToppingSelector(GameObject topping)
+        private void ToppingSelector(ToppingController topping)
         {
-            if (topping.tag.Equals(resourceLoader.roniObj.tag))
+            var toppingObj = topping.toppingObject;
+            if (topping.dirtyTopping)
             {
-                toppingCase = PIZZA.Roni;
+                isDirty = true;
             }
-            else if (topping.tag.Equals(resourceLoader.baconObj.tag))
+            switch (topping.toppingType)
             {
-                toppingCase = PIZZA.Bacon;
-            }
-            else if (topping.tag.Equals(resourceLoader.pepperObj.tag))
-            {
-                toppingCase = PIZZA.Peppers;
-            }
-            else if (topping.tag.Equals(resourceLoader.mushObj.tag))
-            {
-                toppingCase = PIZZA.Mushrooms;
-            }
-
-            switch (toppingCase)
-            {
-                case PIZZA.Roni:
-                    PizzaAddRoniTopping(topping);
+                case TOPPING.Roni:
+                    PizzaAddRoniTopping(toppingObj);
                     break;
-                case PIZZA.Bacon:
-                    PizzaAddBaconTopping(topping);
+                case TOPPING.Bacon:
+                    PizzaAddBaconTopping(toppingObj);
                     break;
-                case PIZZA.Peppers:
-                    PizzaAddPeppersTopping(topping);
+                case TOPPING.Peppers:
+                    PizzaAddPeppersTopping(toppingObj);
                     break;
-                case PIZZA.Mushrooms:
-                    PizzaAddMushroomsTopping(topping);
+                case TOPPING.Mushrooms:
+                    PizzaAddMushroomsTopping(toppingObj);
                     break;
                 default:
                     break;
@@ -259,13 +271,21 @@ namespace PizzaTime
         /// If-Else Statement for Adding Cheese Before Able to Add Other Toppings
         /// </summary>
         /// <param name="topping"></param>
-        private void PizzaAddCheeseTopping(GameObject topping)
+        private void PizzaAddCheeseTopping(ToppingController topping)
         {
-            if (topping.tag.Equals(resourceLoader.cheeseObj.tag))
+            switch(topping.toppingType)
             {
-                activePizzaTexture = resourceLoader.cheeseMaterial;
-                textureChange = true;
-                Destroy(topping);
+                case TOPPING.Cheese:
+                    activePizzaTexture = resourceLoader.cheeseMaterial;
+                    textureChange = true;
+                    if(topping.dirtyTopping)
+                    {
+                        isDirty = true;
+                    }
+                    Destroy(topping.toppingObject);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -610,6 +630,12 @@ namespace PizzaTime
             return calculation;
         }
 
+        /// <summary>
+        /// Method for Cooking the Pizza as well as Buring the Pizza
+        /// </summary>
+        /// <param name="isCooking"></param>
+        /// <param name="cookingSpeed"></param>
+        /// <returns></returns>
         private IEnumerator Cooking(bool isCooking, float cookingSpeed)
         {
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
@@ -633,6 +659,10 @@ namespace PizzaTime
             yield return null;
         }
 
+        /// <summary>
+        /// Method for if the Pizza is touching the floor
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator PizzaWait()
         {
             yield return new WaitForSeconds(timeBeforeDirty);

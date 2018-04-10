@@ -26,6 +26,10 @@ namespace PizzaTime
             StartCoroutine(CheckDay());
         }
 
+        /// <summary>
+        /// Checks to see if Punch Card Obj has collided
+        /// </summary>
+        /// <param name="col"></param>
         void OnCollisionEnter(Collision col)
         {
             if(col.gameObject.tag.Equals(resourceLoader.punchCardObj.tag))
@@ -35,7 +39,9 @@ namespace PizzaTime
             }
         }
 
-        //Increases the value of currentDay and resets outOfTime bool
+        /// <summary>
+        /// Increases the value of currentDay and resets outOfTime bool
+        /// </summary>
         private void ClockOut()
         {
             currentDay++;
@@ -45,7 +51,10 @@ namespace PizzaTime
             scorer.score = 0;
         }
 
-        //Checks Current Day value to see if timer should be enabled
+        /// <summary>
+        /// Checks Current Day value to see if timer should be enabled
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator CheckDay()
         {
             if(currentDay >= 5)
@@ -60,7 +69,11 @@ namespace PizzaTime
             yield return null;
         }
 
-        //Timer Based on seconds variable
+        /// <summary>
+        /// Timer Based on seconds variable
+        /// </summary>
+        /// <param name="seconds"></param>
+        /// <returns></returns>
         private IEnumerator DayTimer(int seconds)
         {
             while(!outOfTime)
@@ -71,9 +84,12 @@ namespace PizzaTime
             yield return null;
         }
 
+        /// <summary>
+        /// Method for Tutorial Levels of the Game
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator Tutorials()
         {
-            //Should Change Out of Time in Tutorials when all tickets have despawned
             if (GameObject.FindObjectsOfType<Ticket>().Length == 0)
             {
                 outOfTime = true;
@@ -81,7 +97,10 @@ namespace PizzaTime
             yield return null;
         }
 
-        //Clears Scene of Toppings at End of Day
+        /// <summary>
+        /// Clears Scene of Toppings at End of Day
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator ClearSceneOfToppings()
         {
             if(clearSceneOfToppings)
@@ -107,7 +126,10 @@ namespace PizzaTime
             yield return null;
         }
 
-        //Destorys Specified Gameobjects in given array
+        /// <summary>
+        /// Destorys Specified Gameobjects in given array
+        /// </summary>
+        /// <param name="objects"></param>
         private void DestoryObjects(GameObject[] objects)
         {
             foreach(GameObject obj in objects)
