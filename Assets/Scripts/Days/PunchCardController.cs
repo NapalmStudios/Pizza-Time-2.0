@@ -25,6 +25,10 @@ namespace PizzaTime
             StartCoroutine(Scoring());
         }
 
+        /// <summary>
+        /// Displays Scoring onto the Punch Card Game Object
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator Scoring()
         {
             dayNumberText.text = "Day: " + day.currentDay;
