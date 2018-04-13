@@ -45,6 +45,7 @@ public class Goal : MonoBehaviour
                 Destroy(col.gameObject);
                 break;
             }
+            Destroy(col.gameObject);
         }
 
         //TODO maybe lose money if wrong pizza
