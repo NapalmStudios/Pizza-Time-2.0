@@ -28,10 +28,10 @@ public class Ticket : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(TipTiming());
+        TipTiming();
     }
 
-    private IEnumerator TipTiming()
+    private void TipTiming()
     {
         while(tipTime > 0)
         {
@@ -52,6 +52,10 @@ public class Ticket : MonoBehaviour
         {
             isActive = false;
         }
-        yield return null;
+
+        if(isActive == false)
+        {
+            Destroy(gameObject);
+        }
     }
 }

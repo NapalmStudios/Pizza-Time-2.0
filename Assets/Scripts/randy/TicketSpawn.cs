@@ -10,7 +10,7 @@ public class TicketSpawn : MonoBehaviour
     public int randomTicket;
     public int Day;
     public Ticket ticketToSpawn;
-    public List<Ticket> currentTickets = new List<Ticket>();
+    public Ticket[] currentTickets;
 
     void Start()
     {
@@ -32,8 +32,16 @@ public class TicketSpawn : MonoBehaviour
                     }
                     while (ticketToSpawn.ticketType != TicketType.IsCheese);
 
-                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
-                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                    for (int j = 0; j < currentTickets.Length; j++)
+                    {
+                        if (currentTickets == null)
+                        {
+                            currentTickets[j] = (Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation));
+                            yield return new WaitForSeconds(TimeBetweenSpawn);
+
+                        }
+                        
+                    }
                 }
 
                 break;
@@ -49,8 +57,16 @@ public class TicketSpawn : MonoBehaviour
                     }
                     while (ticketToSpawn.ticketType != TicketType.IsSingle);
 
-                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
-                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                    for (int j = 0; j < currentTickets.Length; j++)
+                    {
+                        if (currentTickets == null)
+                        {
+                            currentTickets[j] = (Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation));
+                            yield return new WaitForSeconds(TimeBetweenSpawn);
+
+                        }
+
+                    }
                 }
 
                 break;
@@ -66,8 +82,16 @@ public class TicketSpawn : MonoBehaviour
                     }
                     while (ticketToSpawn.ticketType != TicketType.IsDouble);
 
-                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
-                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                    for (int j = 0; j < currentTickets.Length; j++)
+                    {
+                        if (currentTickets == null)
+                        {
+                            currentTickets[j] = (Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation));
+                            yield return new WaitForSeconds(TimeBetweenSpawn);
+
+                        }
+
+                    }
                 }
 
                 break;
@@ -83,8 +107,16 @@ public class TicketSpawn : MonoBehaviour
                     }
                     while (ticketToSpawn.ticketType != TicketType.IsTripple);
 
-                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
-                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                    for (int j = 0; j < currentTickets.Length; j++)
+                    {
+                        if (currentTickets == null)
+                        {
+                            currentTickets[j] = (Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation));
+                            yield return new WaitForSeconds(TimeBetweenSpawn);
+
+                        }
+
+                    }
                 }
 
                 break;
@@ -96,8 +128,16 @@ public class TicketSpawn : MonoBehaviour
                     randomTicket = Random.Range(0, ticket.Count);
                     ticketToSpawn = ticket[randomTicket];
 
-                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
-                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                    for (int j = 0; j < currentTickets.Length; j++)
+                    {
+                        if (currentTickets == null)
+                        {
+                            currentTickets[j] = (Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation));
+                            yield return new WaitForSeconds(TimeBetweenSpawn);
+
+                        }
+
+                    }
                 }
 
                 break;
