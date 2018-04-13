@@ -471,6 +471,10 @@ namespace PizzaTime
             }
         }
 
+        /// <summary>
+        /// Changes Texture and Destorys Topping
+        /// </summary>
+        /// <param name="topping"></param>
         private void DestoryToppingChangeTexture(GameObject topping)
         {
             textureChange = true;
