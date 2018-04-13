@@ -38,6 +38,7 @@ ModelImporter:
     100060: Lever Base
     100062: Lever Base001
     100064: Lever001
+    100066: Lever002
     400000: Bolt
     400002: Bolt001
     400004: Bolt002
@@ -71,8 +72,10 @@ ModelImporter:
     400060: Lever Base
     400062: Lever Base001
     400064: Lever001
+    400066: Lever002
     2100000: 09 - Default
     2100002: No Name
+    2100004: lambert1
     2300000: Bolt
     2300002: Bolt001
     2300004: Bolt002
@@ -106,6 +109,7 @@ ModelImporter:
     2300060: Lever Base
     2300062: Lever Base001
     2300064: Lever001
+    2300066: Lever002
     3300000: Bolt
     3300002: Bolt001
     3300004: Bolt002
@@ -139,6 +143,7 @@ ModelImporter:
     3300060: Lever Base
     3300062: Lever Base001
     3300064: Lever001
+    3300066: Lever002
     4300000: Dough Spawner
     4300002: Lever Base
     4300004: Lever
@@ -172,6 +177,7 @@ ModelImporter:
     4300060: Bolt025
     4300062: Bolt026
     4300064: Bolt027
+    4300066: Lever002
     9500000: //RootNode
   externalObjects: {}
   materials:
