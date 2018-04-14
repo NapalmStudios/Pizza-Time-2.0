@@ -130,14 +130,16 @@ public class TicketSpawn : MonoBehaviour
 
                     for (int j = 0; j < currentTickets.Length; j++)
                     {
-                        if (currentTickets == null)
+                        if (currentTickets[j] == null)
                         {
-                            currentTickets[j] = (Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation));
-                            yield return new WaitForSeconds(TimeBetweenSpawn);
+                            currentTickets[j] = ticketToSpawn;
+                            Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation);
 
+                            break;
                         }
 
                     }
+                    yield return new WaitForSeconds(TimeBetweenSpawn);
                 }
 
                 break;

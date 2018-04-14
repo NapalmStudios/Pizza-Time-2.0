@@ -33,7 +33,7 @@ public class Ticket : MonoBehaviour
 
     private void TipTiming()
     {
-        while(tipTime > 0)
+        if(tipTime > 0)
         {
             tipTime -= Time.deltaTime;
         }
@@ -43,7 +43,7 @@ public class Ticket : MonoBehaviour
             tipTime = 0;
         }
 
-        while (ticketTime > 0)
+        if (ticketTime > 0)
         {
             ticketTime -= Time.deltaTime;
         }
