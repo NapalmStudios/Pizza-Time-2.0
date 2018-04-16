@@ -54,6 +54,7 @@ TagManager:
   - Floor
   - Trash
   - FirePlace
+  - Oven
   layers:
   - Default
   - TransparentFX

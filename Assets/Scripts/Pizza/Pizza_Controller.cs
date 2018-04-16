@@ -136,7 +136,7 @@ namespace PizzaTime
             GameObject objectPizzaIsTouching = col.gameObject;
             if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
             {
-                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+                //Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
                 Cooking(isCooking, cookingSpeed);
             }
             else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
@@ -641,23 +641,23 @@ namespace PizzaTime
         private void Cooking(bool isCooking, float cookingSpeed)
         {
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
-            if(isCooking)
-            {
+           // if(isCooking)
+           // {
                 cookTime += Time.deltaTime;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
                     isCooked = true;
                     audio.Play();
                     CookedPizzas(isCooked);
-                    isCooking = false;
+                  //  isCooking = false;
                 }
                 else if (cookTime >= totalCookTime + burnTime)
                 {
                     activePizzaTexture = resourceLoader.cookedBurnt;
                     textureChange = true;
-                    isCooking = false;
+                   // isCooking = false;
                 }
-            }
+            //}
             
         }
 
