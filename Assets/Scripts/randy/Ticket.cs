@@ -20,15 +20,21 @@ public class Ticket : MonoBehaviour
     public int ticketWorth;
     public int dirtyNeg;
     public Material pizzaMat;
+    private TicketSpawn ticketSpawn;
 
     private void Start()
     {
         isActive = true;
+        ticketSpawn = GetComponent<TicketSpawn>();
     }
 
     private void Update()
     {
         TipTiming();
+        if (isActive == false)
+        {
+
+        }
     }
 
     private void TipTiming()
@@ -55,7 +61,7 @@ public class Ticket : MonoBehaviour
 
         if(isActive == false)
         {
-            Destroy(gameObject);
+          //  Destroy(gameObject);
         }
     }
 }
