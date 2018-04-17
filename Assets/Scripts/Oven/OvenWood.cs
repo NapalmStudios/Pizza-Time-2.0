@@ -23,7 +23,7 @@ namespace PizzaTime
         void OnCollisionEnter(Collision col)
         {
             GameObject oven = col.gameObject;
-            if(oven.tag.Equals(resourceLoader.woodObj.tag))
+            if(oven.tag.Equals(resourceLoader.ovenObj.tag))
             {
                 var ovenComp = oven.GetComponent<Oven>();
                 ovenComp.newLogAdded = true;

@@ -3,57 +3,73 @@ using System.Collections.Generic;
 using UnityEngine;
 using PizzaTime;
 
-namespace PizzaTime
+public enum TicketType
 {
-    public enum TicketType
+    IsCheese,
+    IsSingle,
+    IsDouble,
+    IsTripple
+}
+
+public class Ticket : MonoBehaviour
+{
+    public TicketType ticketType;
+    public bool isActive;
+    public float ticketTime;
+    public float tipTime;
+    public int ticketWorth;
+    public int dirtyNeg;
+    public Material pizzaMat;
+    private TicketSpawn ticketSpawn;
+
+    private void Start()
     {
-        IsCheese,
-        IsSingle,
-        IsDouble,
-        IsTripple
+        isActive = true;
+        ticketSpawn = GetComponent<TicketSpawn>();
     }
 
-    public class Ticket : MonoBehaviour
+    private void Update()
     {
-        public TicketType ticketType;
-        public bool isActive;
-        public float ticketTime;
-        public float tipTime;
-        public int ticketWorth;
-        public int dirtyNeg;
-        public Material pizzaMat;
-
-        private void Start()
+        
+        if (isActive == false)
         {
-            isActive = true;
+            for(int i = 0; i < ticketSpawn.currentTickets.Length; i++)
+            {
+                if(ticketSpawn.currentTickets[i] == this)
+                {
+                    ticketSpawn.currentTickets[i] = null;
+                }
+            }
         }
 
-        private void Update()
+        TipTiming();
+    }
+
+    private void TipTiming()
+    {
+        if(tipTime > 0)
         {
-            TipTiming();
+            tipTime -= Time.deltaTime;
         }
 
-        private void TipTiming()
+        if (tipTime < 0)
         {
-            if (tipTime > 0)
-            {
-                tipTime -= Time.deltaTime;
-            }
+            tipTime = 0;
+        }
 
-            if (tipTime < 0)
-            {
-                tipTime = 0;
-            }
+        if (ticketTime > 0)
+        {
+            ticketTime -= Time.deltaTime;
+        }
 
-            if (ticketTime > 0)
-            {
-                ticketTime -= Time.deltaTime;
-            }
+        if (ticketTime <= 0)
+        {
+            isActive = false;
+        }
 
-            if (ticketTime <= 0)
-            {
-                isActive = false;
-            }
+        if(isActive == false)
+        {
+            Destroy(gameObject);
         }
     }
 }

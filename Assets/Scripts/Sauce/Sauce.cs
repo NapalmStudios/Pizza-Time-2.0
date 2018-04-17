@@ -19,7 +19,7 @@ namespace PizzaTime
 
         void Update()
         {
-            SquirtSauce();
+            //SquirtSauce();
         }
 
         public void SquirtSauce()

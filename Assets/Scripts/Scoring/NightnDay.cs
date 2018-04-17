@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PizzaTime
-{
-    public class NightnDay : MonoBehaviour
+public class NightnDay : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update ()
     {
-        void Update()
-        {
-            transform.RotateAround(Vector3.zero, Vector3.right, 10f * Time.deltaTime);
-            transform.LookAt(Vector3.zero);
-        }
-    }
+        transform.RotateAround(Vector3.zero, Vector3.right, 10f * Time.deltaTime);
+        transform.LookAt(Vector3.zero);
+	}
 }

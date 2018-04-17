@@ -1,55 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using PizzaTime;
 
-namespace PizzaTime
-{
-    public class Goal : MonoBehaviour
+public class Goal : MonoBehaviour
+{  
+    public int tip;
+    public int score;
+    public int pizzasMade;
+    public Text text;
+
+    TicketSpawn ticketSpawner;
+
+    void Start()
     {
-        public int tip;
-        public int score;
-        public int pizzasMade;
+        ticketSpawner = FindObjectOfType<TicketSpawn>();
+    }
 
-        TicketSpawn ticketSpawner;
+    void Update()
+    {
+        //ticketSpawner = FindObjectOfType<TicketSpawn>();
+        
+    }
 
-        void Start()
+    private void OnTriggerEnter(Collider col)
+    {
+        var pizzaObj = col.gameObject.GetComponent<Pizza_Controller>();
+
+        for (int i = 0; i < ticketSpawner.currentTickets.Length; i++)
         {
-            ticketSpawner = FindObjectOfType<TicketSpawn>();
-        }
+            var ticket = ticketSpawner.currentTickets[i];
 
-        void Update()
-        {
-            //ticketSpawner = FindObjectOfType<TicketSpawn>();
-        }
-
-        private void OnTriggerEnter(Collider col)
-        {
-            var pizzaObj = col.gameObject.GetComponent<Pizza_Controller>();
-
-            for (int i = 0; i < ticketSpawner.currentTickets.Count; i++)
+            if (pizzaObj.activePizzaTexture.Equals(ticket.pizzaMat) && ticket.isActive == true)
             {
-                var ticket = ticketSpawner.currentTickets[i];
-
-                if (pizzaObj.activePizzaTexture.Equals(ticket.pizzaMat) && ticket.isActive == true)
+                if (pizzaObj.isDirty)
                 {
-                    if (pizzaObj.isDirty)
-                    {
-                        score += (ticket.ticketWorth + (tip * (int)ticket.tipTime)) - ticket.dirtyNeg;
-                    }
-                    else
-                    {
-                        score += ticket.ticketWorth + (tip * (int)ticket.tipTime);
-                    }
-
-                    ticket.isActive = false;
-                    pizzasMade++;
-                    Destroy(col.gameObject);
-                    break;
+                    score += (ticket.ticketWorth + (tip * (int)ticket.tipTime)) - ticket.dirtyNeg;
                 }
+                else
+                {
+                    score += ticket.ticketWorth + (tip * (int)ticket.tipTime);
+                }
+                text.text = "you got" + score;
+                ticket.isActive = false;
+                pizzasMade++;
+                ticketSpawner.currentTickets[i] = null;
+                Destroy(col.gameObject);
+                break;
             }
-
-            //TODO maybe lose money if wrong pizza
+            Destroy(col.gameObject);
         }
+
+        //TODO maybe lose money if wrong pizza
     }
 }

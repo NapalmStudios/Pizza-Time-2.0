@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Delivered : MonoBehaviour
-{
+public class Delivered : MonoBehaviour {
+
+
     public static int score;
     Text text;
 
+    //test
     void Awake()
     {
         text = GetComponent<Text>();

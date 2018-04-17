@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
-using VRTK;
-
 namespace PizzaTime
 {
     public enum PIZZA
@@ -63,7 +61,7 @@ namespace PizzaTime
 
             audio = GetComponent<AudioSource>();
 
-            //maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
+            maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
             activePizzaTexture = resourceLoader.pizzaDoughMaterial;
             textureChange = true;
@@ -72,6 +70,7 @@ namespace PizzaTime
         {
             StartCoroutine(TextureChanger());
             StartCoroutine(AddSauce());
+            
         }
 
         /// <summary>
@@ -137,8 +136,8 @@ namespace PizzaTime
             GameObject objectPizzaIsTouching = col.gameObject;
             if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
             {
-                onOven = true;
-                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+                //Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+                Cooking(isCooking, cookingSpeed);
             }
             else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
             {
@@ -154,6 +153,7 @@ namespace PizzaTime
                 isDirty = false;
             }
         }
+
 
         /// <summary>
         /// Looks at the current texture of the Pizza Object and sets the pizzaCase value
@@ -278,12 +278,13 @@ namespace PizzaTime
             switch(topping.toppingType)
             {
                 case TOPPING.Cheese:
-                    if (topping.dirtyTopping)
+                    activePizzaTexture = resourceLoader.cheeseMaterial;
+                    textureChange = true;
+                    if(topping.dirtyTopping)
                     {
                         isDirty = true;
                     }
-                    activePizzaTexture = resourceLoader.cheeseMaterial;
-                    DestoryToppingChangeTexture(topping.toppingObject);
+                    Destroy(topping.toppingObject);
                     break;
                 default:
                     break;
@@ -300,35 +301,43 @@ namespace PizzaTime
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.roniMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Bacon:
                     activePizzaTexture = resourceLoader.roniAndBaconMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Peppers:
                     activePizzaTexture = resourceLoader.roniAndPeppersMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Mushrooms:
                     activePizzaTexture = resourceLoader.roniAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.PeppersBacon:
                     activePizzaTexture = resourceLoader.roniAndBaconAndPeppersMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.PeppersMush:
                     activePizzaTexture = resourceLoader.roniAndPeppersAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.BaconMush:
                     activePizzaTexture = resourceLoader.roniAndBaconAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.PeppersBaconMush:
                     activePizzaTexture = resourceLoader.theWorksMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 default:
                     break;
@@ -345,35 +354,43 @@ namespace PizzaTime
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.baconMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Roni:
                     activePizzaTexture = resourceLoader.roniAndBaconMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Peppers:
                     activePizzaTexture = resourceLoader.peppersAndBaconMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Mushrooms:
                     activePizzaTexture = resourceLoader.baconAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniMush:
                     activePizzaTexture = resourceLoader.roniAndBaconAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniPepper: 
                     activePizzaTexture = resourceLoader.roniAndBaconAndPeppersMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.PeppersMush:
                     activePizzaTexture = resourceLoader.mushAndBaconAndPeppers;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniPeppersMush:
                     activePizzaTexture = resourceLoader.theWorksMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 default:
                     break;
@@ -390,35 +407,43 @@ namespace PizzaTime
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.peppersMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Roni:
                     activePizzaTexture = resourceLoader.roniAndPeppersMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Bacon:
                     activePizzaTexture = resourceLoader.peppersAndBaconMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Mushrooms:
                     activePizzaTexture = resourceLoader.peppersAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniBacon:
                     activePizzaTexture = resourceLoader.roniAndBaconAndPeppersMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniMush:
                     activePizzaTexture = resourceLoader.roniAndPeppersAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.BaconMush:
                     activePizzaTexture = resourceLoader.mushAndBaconAndPeppers;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniBaconMush:
                     activePizzaTexture = resourceLoader.theWorksMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 default:
                     break;
@@ -436,51 +461,47 @@ namespace PizzaTime
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.mushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Roni:
                     activePizzaTexture = resourceLoader.roniAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Bacon:
                     activePizzaTexture = resourceLoader.baconAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.Peppers:
                     activePizzaTexture = resourceLoader.peppersAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniBacon:
                     activePizzaTexture = resourceLoader.roniAndBaconAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniPepper:
                     activePizzaTexture = resourceLoader.roniAndPeppersAndMushMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.PeppersBacon:
                     activePizzaTexture = resourceLoader.mushAndBaconAndPeppers;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 case PIZZA.RoniPeppersBacon:
                     activePizzaTexture = resourceLoader.theWorksMaterial;
-                    DestoryToppingChangeTexture(topping);
+                    textureChange = true;
+                    Destroy(topping);
                     break;
                 default:
                     break;
             }
-        }
-
-        /// <summary>
-        /// Changes Texture and Destorys Topping
-        /// </summary>
-        /// <param name="topping"></param>
-        private void DestoryToppingChangeTexture(GameObject topping)
-        {
-            textureChange = true;
-            var grabbing = topping.GetComponent<VRTK_InteractableObject>();
-            grabbing.isGrabbable = false;
-            Destroy(topping);
         }
 
         /// <summary>
@@ -617,11 +638,12 @@ namespace PizzaTime
         /// <param name="isCooking"></param>
         /// <param name="cookingSpeed"></param>
         /// <returns></returns>
-        private IEnumerator Cooking(bool isCooking, float cookingSpeed)
+        private void Cooking(bool isCooking, float cookingSpeed)
         {
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
-            if(isCooking && onOven)
-            {
+             //if(isCooking)
+            // {
+            isCooking = true;
                 cookTime += Time.deltaTime;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
@@ -636,8 +658,8 @@ namespace PizzaTime
                     textureChange = true;
                     isCooking = false;
                 }
-            }
-            yield return null;
+            //}
+            
         }
 
         /// <summary>
