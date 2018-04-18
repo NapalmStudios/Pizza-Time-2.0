@@ -40,7 +40,7 @@ public class TicketSpawn : MonoBehaviour
                             yield return new WaitForSeconds(TimeBetweenSpawn);
 
                         }
-                        
+
                     }
                 }
 
@@ -132,17 +132,13 @@ public class TicketSpawn : MonoBehaviour
                     {
                         if (currentTickets[j] == null)
                         {
-                            currentTickets[j] = ticketToSpawn;
-                            Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation);
-
-                            break;
+                            currentTickets[j] = (Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation));
+                            yield return new WaitForSeconds(TimeBetweenSpawn);
                         }
-
                     }
-                    yield return new WaitForSeconds(TimeBetweenSpawn);
                 }
 
                 break;
-        }     
+        }
     }
 }

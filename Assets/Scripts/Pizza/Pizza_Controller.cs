@@ -579,8 +579,8 @@ namespace PizzaTime
                         textureChange = true;
                         break;
                     default:
-                        activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
-                        textureChange = true;
+                        //activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
+                        //textureChange = true;
                         break;
                 }
             }
@@ -644,6 +644,7 @@ namespace PizzaTime
            // if(isCooking)
            // {
                 cookTime += Time.deltaTime;
+            Debug.Log(cookTime);
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
                     isCooked = true;

@@ -14,7 +14,7 @@ public enum TicketType
 public class Ticket : MonoBehaviour
 {
     public TicketType ticketType;
-    public bool isActive;
+    public bool isActive = false;
     public float ticketTime;
     public float tipTime;
     public int ticketWorth;
@@ -25,16 +25,13 @@ public class Ticket : MonoBehaviour
     private void Start()
     {
         isActive = true;
-        ticketSpawn = GetComponent<TicketSpawn>();
+        ticketSpawn = FindObjectOfType<TicketSpawn>();
+        
     }
 
     private void Update()
     {
         TipTiming();
-        if (isActive == false)
-        {
-
-        }
     }
 
     private void TipTiming()
@@ -59,9 +56,20 @@ public class Ticket : MonoBehaviour
             isActive = false;
         }
 
-        if(isActive == false)
+        if (isActive == false)
         {
-          //  Destroy(gameObject);
+            for (int i = 0; i < ticketSpawn.currentTickets.Length; i++)
+            {
+                if (ticketSpawn.currentTickets[i] == this)
+                {
+                    ticketSpawn.currentTickets[i] = null;
+                }
+            }
+        }
+
+        if (isActive == false)
+        {
+            Destroy(gameObject);
         }
     }
 }

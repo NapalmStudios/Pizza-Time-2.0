@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 33442078729169502}
   - component: {fileID: 23614825561280094}
   - component: {fileID: 65505962781245054}
+  - component: {fileID: 114559682408014996}
   m_Layer: 0
   m_Name: dough
   m_TagString: dough
@@ -359,6 +360,17 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: -10, y: 0, z: 0}
     scale: {x: 1, y: 1, z: 1}
+--- !u!114 &114559682408014996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730480822578348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950d4bd4bd11ddf4784b70c0e873d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114655957938883052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,10 +429,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36a26486add6724a806e244db406ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCookTempature: 700
-  midCookTempature: 750
-  totalCookTime: 4
-  burnTime: 10
+  minCookTempature: 650
+  midCookTempature: 900
+  totalCookTime: 16
+  burnTime: 32
   initialLowestCookSpeedValue: 1
   timeBeforeDirty: 0
   isCooked: 0
