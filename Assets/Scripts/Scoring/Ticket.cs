@@ -20,20 +20,34 @@ public class Ticket : MonoBehaviour
     public int ticketWorth;
     public int dirtyNeg;
     public Material pizzaMat;
+    private TicketSpawn ticketSpawn;
 
     private void Start()
     {
         isActive = true;
+        ticketSpawn = GetComponent<TicketSpawn>();
     }
 
     private void Update()
     {
-        StartCoroutine(TipTiming());
+        
+        if (isActive == false)
+        {
+            for(int i = 0; i < ticketSpawn.currentTickets.Length; i++)
+            {
+                if(ticketSpawn.currentTickets[i] == this)
+                {
+                    ticketSpawn.currentTickets[i] = null;
+                }
+            }
+        }
+
+        TipTiming();
     }
 
-    private IEnumerator TipTiming()
+    private void TipTiming()
     {
-        while(tipTime > 0)
+        if(tipTime > 0)
         {
             tipTime -= Time.deltaTime;
         }
@@ -43,7 +57,7 @@ public class Ticket : MonoBehaviour
             tipTime = 0;
         }
 
-        while (ticketTime > 0)
+        if (ticketTime > 0)
         {
             ticketTime -= Time.deltaTime;
         }
@@ -52,6 +66,10 @@ public class Ticket : MonoBehaviour
         {
             isActive = false;
         }
-        yield return null;
+
+        if(isActive == false)
+        {
+            Destroy(gameObject);
+        }
     }
 }

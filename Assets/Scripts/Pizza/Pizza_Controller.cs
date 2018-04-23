@@ -61,7 +61,7 @@ namespace PizzaTime
 
             audio = GetComponent<AudioSource>();
 
-            //maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
+            maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
             activePizzaTexture = resourceLoader.pizzaDoughMaterial;
             textureChange = true;
@@ -70,6 +70,7 @@ namespace PizzaTime
         {
             StartCoroutine(TextureChanger());
             StartCoroutine(AddSauce());
+            
         }
 
         /// <summary>
@@ -135,8 +136,8 @@ namespace PizzaTime
             GameObject objectPizzaIsTouching = col.gameObject;
             if (objectPizzaIsTouching.tag.Equals(resourceLoader.ovenObj.tag))
             {
-                onOven = true;
-                Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+                //Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
+                Cooking(isCooking, cookingSpeed);
             }
             else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
             {
@@ -152,6 +153,7 @@ namespace PizzaTime
                 isDirty = false;
             }
         }
+
 
         /// <summary>
         /// Looks at the current texture of the Pizza Object and sets the pizzaCase value
@@ -636,11 +638,12 @@ namespace PizzaTime
         /// <param name="isCooking"></param>
         /// <param name="cookingSpeed"></param>
         /// <returns></returns>
-        private IEnumerator Cooking(bool isCooking, float cookingSpeed)
+        private void Cooking(bool isCooking, float cookingSpeed)
         {
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
-            if(isCooking && onOven)
-            {
+             //if(isCooking)
+            // {
+            isCooking = true;
                 cookTime += Time.deltaTime;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
@@ -655,8 +658,8 @@ namespace PizzaTime
                     textureChange = true;
                     isCooking = false;
                 }
-            }
-            yield return null;
+            //}
+            
         }
 
         /// <summary>
