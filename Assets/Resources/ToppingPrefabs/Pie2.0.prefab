@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 65262156327042994}
   - component: {fileID: 23313367794221262}
   - component: {fileID: 54837722754418078}
-  - component: {fileID: 114821547075172596}
   - component: {fileID: 114655957938883052}
   - component: {fileID: 114224823228601126}
   - component: {fileID: 114361258789003498}
@@ -49,6 +48,7 @@ GameObject:
   - component: {fileID: 33442078729169502}
   - component: {fileID: 23614825561280094}
   - component: {fileID: 65505962781245054}
+  - component: {fileID: 114559682408014996}
   m_Layer: 0
   m_Name: dough
   m_TagString: dough
@@ -360,6 +360,17 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: -10, y: 0, z: 0}
     scale: {x: 1, y: 1, z: 1}
+--- !u!114 &114559682408014996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730480822578348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950d4bd4bd11ddf4784b70c0e873d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114655957938883052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,7 +392,7 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 114821547075172596}
+  grabAttachMechanicScript: {fileID: 114224823228601126}
   secondaryGrabActionScript: {fileID: 114361258789003498}
   isUsable: 0
   holdButtonToUse: 0
@@ -407,25 +418,6 @@ MonoBehaviour:
   hideDelayOnGrab: 0
   hideControllerOnUse: 0
   hideDelayOnUse: 0
---- !u!114 &114821547075172596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1460158677564054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afa0b205791c9f4496bf2814aeac078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  precisionGrab: 0
-  rightSnapHandle: {fileID: 0}
-  leftSnapHandle: {fileID: 0}
-  throwVelocityWithAttachDistance: 0
-  throwMultiplier: 1
-  onGrabCollisionDelay: 0
-  destroyImmediatelyOnThrow: 1
-  breakForce: 1500
 --- !u!114 &114871956863159264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,11 +429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36a26486add6724a806e244db406ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCookTempature: 0
-  midCookTempature: 0
-  totalCookTime: 0
-  burnTime: 0
-  initialLowestCookSpeedValue: 0
+  minCookTempature: 650
+  midCookTempature: 900
+  totalCookTime: 16
+  burnTime: 32
+  initialLowestCookSpeedValue: 1
   timeBeforeDirty: 0
   isCooked: 0
   isDirty: 0
