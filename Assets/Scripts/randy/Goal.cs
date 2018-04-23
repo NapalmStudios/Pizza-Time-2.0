@@ -45,7 +45,7 @@ public class Goal : MonoBehaviour
                     {
                         score += ticket.ticketWorth + (tip * (int)ticket.tipTime);
                     }
-                    tmp.text += "Today's Earnings = $" + score;
+                    tmp.text = "Today's Earnings = $" + score;
                     ticket.isActive = false;
                     pizzasMade++;
                     ticketSpawner.currentTickets[i] = null;

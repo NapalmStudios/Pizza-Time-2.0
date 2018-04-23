@@ -645,18 +645,19 @@ namespace PizzaTime
            // {
                 cookTime += Time.deltaTime;
             Debug.Log(cookTime);
+            isCooking = true;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
-                    isCooked = true;
                     audio.Play();
+                    isCooked = true;
                     CookedPizzas(isCooked);
-                  //  isCooking = false;
+                    isCooking = false;
                 }
                 else if (cookTime >= totalCookTime + burnTime)
                 {
                     activePizzaTexture = resourceLoader.cookedBurnt;
                     textureChange = true;
-                   // isCooking = false;
+                    isCooking = false;
                 }
             //}
             

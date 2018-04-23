@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticketType: 0
   isActive: 0
-  ticketTime: 20
+  ticketTime: 30
   tipTime: 200
   ticketWorth: 100
   dirtyNeg: 2
