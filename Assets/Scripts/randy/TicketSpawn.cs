@@ -4,32 +4,103 @@ using UnityEngine;
 
 public class TicketSpawn : MonoBehaviour
 {
-
-    public Transform[] points;
-    public GameObject[] listOfTickets;
-    public int time;
-    public int index;
-    private GameObject currentTicket;
-    public int spawnTicket;
-    public GameObject ticketspawning;
+    public List<Transform> spawnPoints = new List<Transform>();
+    public List<Ticket> ticket = new List<Ticket>();
+    public int TimeBetweenSpawn;
+    public int randomTicket;
+    public int Day;
+    public Ticket ticketToSpawn;
+    public List<Ticket> currentTickets = new List<Ticket>();
 
     void Start()
     {
-
+        StartCoroutine(SpawnTickets(Day, 5));
     }
 
-    void Update()
+    public IEnumerator SpawnTickets(int Day, int amountToSpawn)
     {
-        time++;
-        if (time >= spawnTicket)
+        switch (Day)
         {
-            int pointIndex = Random.Range(0, points.Length);
+            case 0:
 
-            index = Random.Range(0, listOfTickets.Length);
-            currentTicket = listOfTickets[index];
+                for (int i = 0; i < amountToSpawn; i++)
+                {
+                    do
+                    {
+                        randomTicket = Random.Range(0, ticket.Count);
+                        ticketToSpawn = ticket[randomTicket];
+                    }
+                    while (ticketToSpawn.ticketType != TicketType.IsCheese);
 
-            ticketspawning = Instantiate(currentTicket, points[pointIndex].position, Quaternion.identity);
-            time = 0;
-        }
+                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
+                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                }
+
+                break;
+
+            case 1:
+
+                for (int i = 0; i < amountToSpawn; i++)
+                {
+                    do
+                    {
+                        randomTicket = Random.Range(0, ticket.Count);
+                        ticketToSpawn = ticket[randomTicket];
+                    }
+                    while (ticketToSpawn.ticketType != TicketType.IsSingle);
+
+                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
+                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                }
+
+                break;
+
+            case 2:
+
+                for (int i = 0; i < amountToSpawn; i++)
+                {
+                    do
+                    {
+                        randomTicket = Random.Range(0, ticket.Count);
+                        ticketToSpawn = ticket[randomTicket];
+                    }
+                    while (ticketToSpawn.ticketType != TicketType.IsDouble);
+
+                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
+                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                }
+
+                break;
+
+            case 3:
+
+                for (int i = 0; i < amountToSpawn; i++)
+                {
+                    do
+                    {
+                        randomTicket = Random.Range(0, ticket.Count);
+                        ticketToSpawn = ticket[randomTicket];
+                    }
+                    while (ticketToSpawn.ticketType != TicketType.IsTripple);
+
+                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
+                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                }
+
+                break;
+
+            default:
+
+                for (int i = 0; i < amountToSpawn; i++)
+                {
+                    randomTicket = Random.Range(0, ticket.Count);
+                    ticketToSpawn = ticket[randomTicket];
+
+                    currentTickets.Add(Instantiate(ticketToSpawn, spawnPoints[i].position, spawnPoints[i].rotation));
+                    yield return new WaitForSeconds(TimeBetweenSpawn);
+                }
+
+                break;
+        }     
     }
 }
