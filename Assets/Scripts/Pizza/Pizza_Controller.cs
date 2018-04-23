@@ -579,8 +579,8 @@ namespace PizzaTime
                         textureChange = true;
                         break;
                     default:
-                        //activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
-                        //textureChange = true;
+                        activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
+                        textureChange = true;
                         break;
                 }
             }
@@ -641,22 +641,22 @@ namespace PizzaTime
         private void Cooking(bool isCooking, float cookingSpeed)
         {
             //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
-           // if(isCooking)
-           // {
+             //if(isCooking)
+            // {
+            isCooking = true;
                 cookTime += Time.deltaTime;
-            Debug.Log(cookTime);
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
                     isCooked = true;
                     audio.Play();
                     CookedPizzas(isCooked);
-                  //  isCooking = false;
+                    isCooking = false;
                 }
                 else if (cookTime >= totalCookTime + burnTime)
                 {
                     activePizzaTexture = resourceLoader.cookedBurnt;
                     textureChange = true;
-                   // isCooking = false;
+                    isCooking = false;
                 }
             //}
             

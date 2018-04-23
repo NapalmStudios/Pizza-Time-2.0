@@ -14,7 +14,7 @@ public class TicketSpawn : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnTickets(Day, 5));
+        StartCoroutine(SpawnTickets(Day, 50));
     }
 
     public IEnumerator SpawnTickets(int Day, int amountToSpawn)
@@ -40,7 +40,7 @@ public class TicketSpawn : MonoBehaviour
                             yield return new WaitForSeconds(TimeBetweenSpawn);
 
                         }
-
+                        
                     }
                 }
 
@@ -132,13 +132,17 @@ public class TicketSpawn : MonoBehaviour
                     {
                         if (currentTickets[j] == null)
                         {
-                            currentTickets[j] = (Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation));
-                            yield return new WaitForSeconds(TimeBetweenSpawn);
+                            currentTickets[j] = ticketToSpawn;
+                            Instantiate(ticketToSpawn, spawnPoints[j].position, spawnPoints[j].rotation);
+
+                            break;
                         }
+
                     }
+                    yield return new WaitForSeconds(TimeBetweenSpawn);
                 }
 
                 break;
-        }
+        }     
     }
 }
