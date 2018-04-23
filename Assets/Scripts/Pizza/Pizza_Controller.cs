@@ -113,17 +113,19 @@ namespace PizzaTime
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
             TextureGetter();
-
-            switch(pizzaCase)
+            if (!isCooking && !isCooked)
             {
-                case PIZZA.Dough:
-                    break;
-                case PIZZA.Sauce:
-                    PizzaAddCheeseTopping(toppingControl);
-                    break;
-                default:
-                    ToppingSelector(toppingControl);
-                    break;
+                switch (pizzaCase)
+                {
+                    case PIZZA.Dough:
+                        break;
+                    case PIZZA.Sauce:
+                        PizzaAddCheeseTopping(toppingControl);
+                        break;
+                    default:
+                        ToppingSelector(toppingControl);
+                        break;
+                }
             }
 
         }
@@ -640,11 +642,7 @@ namespace PizzaTime
         /// <returns></returns>
         private void Cooking(bool isCooking, float cookingSpeed)
         {
-            //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
-           // if(isCooking)
-           // {
-                cookTime += Time.deltaTime;
-            Debug.Log(cookTime);
+            cookTime += Time.deltaTime;
             isCooking = true;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
@@ -659,8 +657,6 @@ namespace PizzaTime
                     textureChange = true;
                     isCooking = false;
                 }
-            //}
-            
         }
 
         /// <summary>
