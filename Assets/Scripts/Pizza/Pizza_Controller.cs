@@ -580,6 +580,10 @@ namespace PizzaTime
                         activePizzaTexture = resourceLoader.cookedRoniAndPeppersAndMushMaterial;
                         textureChange = true;
                         break;
+                    case PIZZA.TheWorks:
+                        activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
+                        textureChange = true;
+                        break;
                     default:
                         //activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
                         //textureChange = true;
