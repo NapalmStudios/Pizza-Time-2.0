@@ -50,6 +50,7 @@ namespace PizzaTime
         private bool textureChange = false;
         private float maxCookTempature;
         private bool onOven = false;
+        private bool doneCheck = false;
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
         private ResourceLoader resourceLoader;
@@ -71,6 +72,16 @@ namespace PizzaTime
             StartCoroutine(TextureChanger());
             StartCoroutine(AddSauce());
             
+        }
+
+        private IEnumerator PizzaDoneAudioCheck()
+        {
+            if (isCooked && !doneCheck)
+            {
+                audio.PlayOneShot(audio.clip);
+                doneCheck = true;
+            }
+            yield return null;
         }
 
         /// <summary>
@@ -514,6 +525,7 @@ namespace PizzaTime
         {
             if(cooked)
             {
+                
                 switch (pizzaCase)
                 {
                     case PIZZA.Dough:
@@ -650,7 +662,6 @@ namespace PizzaTime
             isCooking = true;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
-                    audio.Play();
                     isCooked = true;
                     CookedPizzas(isCooked);
                     isCooking = false;

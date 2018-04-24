@@ -52,7 +52,11 @@ public class Goal : MonoBehaviour
                     Destroy(col.gameObject);
                     break;
                 }
-
+                else
+                {
+                    tmp.text = "Today's Earnings = $" + (score - 100);
+                    Destroy(col.gameObject);
+                }
             }
             Destroy(col.gameObject);
         }
