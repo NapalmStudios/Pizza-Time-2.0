@@ -431,7 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minCookTempature: 650
   midCookTempature: 900
-  totalCookTime: 16
+  totalCookTime: 8
   burnTime: 32
   initialLowestCookSpeedValue: 1
   timeBeforeDirty: 0

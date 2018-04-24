@@ -113,17 +113,19 @@ namespace PizzaTime
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
             TextureGetter();
-
-            switch(pizzaCase)
+            if (!isCooking && !isCooked)
             {
-                case PIZZA.Dough:
-                    break;
-                case PIZZA.Sauce:
-                    PizzaAddCheeseTopping(toppingControl);
-                    break;
-                default:
-                    ToppingSelector(toppingControl);
-                    break;
+                switch (pizzaCase)
+                {
+                    case PIZZA.Dough:
+                        break;
+                    case PIZZA.Sauce:
+                        PizzaAddCheeseTopping(toppingControl);
+                        break;
+                    default:
+                        ToppingSelector(toppingControl);
+                        break;
+                }
             }
 
         }
@@ -578,9 +580,13 @@ namespace PizzaTime
                         activePizzaTexture = resourceLoader.cookedRoniAndPeppersAndMushMaterial;
                         textureChange = true;
                         break;
-                    default:
+                    case PIZZA.TheWorks:
                         activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
                         textureChange = true;
+                        break;
+                    default:
+                        //activePizzaTexture = resourceLoader.cookedTheWorksMaterial;
+                        //textureChange = true;
                         break;
                 }
             }
@@ -640,15 +646,12 @@ namespace PizzaTime
         /// <returns></returns>
         private void Cooking(bool isCooking, float cookingSpeed)
         {
-            //Checks isCooking bool to allow cook time to increase when oven tempature is warm enough
-             //if(isCooking)
-            // {
+            cookTime += Time.deltaTime;
             isCooking = true;
-                cookTime += Time.deltaTime;
                 if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
                 {
-                    isCooked = true;
                     audio.Play();
+                    isCooked = true;
                     CookedPizzas(isCooked);
                     isCooking = false;
                 }
@@ -658,8 +661,6 @@ namespace PizzaTime
                     textureChange = true;
                     isCooking = false;
                 }
-            //}
-            
         }
 
         /// <summary>

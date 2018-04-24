@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticketType: 1
   isActive: 0
-  ticketTime: 20
+  ticketTime: 90
   tipTime: 0
   ticketWorth: 100
   dirtyNeg: 0
