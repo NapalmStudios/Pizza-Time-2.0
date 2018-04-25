@@ -1,0 +1,261 @@
+fileFormatVersion: 2
+guid: 615557b34d0c15a498b15cab97080c4a
+timeCreated: 1522786719
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Bolt
+    100002: Bolt001
+    100004: Bolt002
+    100006: Bolt003
+    100008: Bolt004
+    100010: Bolt005
+    100012: Bolt006
+    100014: Bolt007
+    100016: Bolt008
+    100018: Bolt009
+    100020: Bolt010
+    100022: Bolt011
+    100024: Bolt012
+    100026: Bolt013
+    100028: Bolt014
+    100030: Bolt015
+    100032: Bolt016
+    100034: Bolt017
+    100036: Bolt018
+    100038: Bolt019
+    100040: Bolt020
+    100042: Bolt021
+    100044: Bolt022
+    100046: Bolt023
+    100048: Bolt024
+    100050: Bolt025
+    100052: Bolt026
+    100054: Bolt027
+    100056: //RootNode
+    100058: Lever
+    100060: Lever Base
+    100062: Lever Base001
+    100064: Lever001
+    100066: Lever002
+    400000: Bolt
+    400002: Bolt001
+    400004: Bolt002
+    400006: Bolt003
+    400008: Bolt004
+    400010: Bolt005
+    400012: Bolt006
+    400014: Bolt007
+    400016: Bolt008
+    400018: Bolt009
+    400020: Bolt010
+    400022: Bolt011
+    400024: Bolt012
+    400026: Bolt013
+    400028: Bolt014
+    400030: Bolt015
+    400032: Bolt016
+    400034: Bolt017
+    400036: Bolt018
+    400038: Bolt019
+    400040: Bolt020
+    400042: Bolt021
+    400044: Bolt022
+    400046: Bolt023
+    400048: Bolt024
+    400050: Bolt025
+    400052: Bolt026
+    400054: Bolt027
+    400056: //RootNode
+    400058: Lever
+    400060: Lever Base
+    400062: Lever Base001
+    400064: Lever001
+    400066: Lever002
+    2100000: 09 - Default
+    2100002: No Name
+    2100004: lambert1
+    2300000: Bolt
+    2300002: Bolt001
+    2300004: Bolt002
+    2300006: Bolt003
+    2300008: Bolt004
+    2300010: Bolt005
+    2300012: Bolt006
+    2300014: Bolt007
+    2300016: Bolt008
+    2300018: Bolt009
+    2300020: Bolt010
+    2300022: Bolt011
+    2300024: Bolt012
+    2300026: Bolt013
+    2300028: Bolt014
+    2300030: Bolt015
+    2300032: Bolt016
+    2300034: Bolt017
+    2300036: Bolt018
+    2300038: Bolt019
+    2300040: Bolt020
+    2300042: Bolt021
+    2300044: Bolt022
+    2300046: Bolt023
+    2300048: Bolt024
+    2300050: Bolt025
+    2300052: Bolt026
+    2300054: Bolt027
+    2300056: //RootNode
+    2300058: Lever
+    2300060: Lever Base
+    2300062: Lever Base001
+    2300064: Lever001
+    2300066: Lever002
+    3300000: Bolt
+    3300002: Bolt001
+    3300004: Bolt002
+    3300006: Bolt003
+    3300008: Bolt004
+    3300010: Bolt005
+    3300012: Bolt006
+    3300014: Bolt007
+    3300016: Bolt008
+    3300018: Bolt009
+    3300020: Bolt010
+    3300022: Bolt011
+    3300024: Bolt012
+    3300026: Bolt013
+    3300028: Bolt014
+    3300030: Bolt015
+    3300032: Bolt016
+    3300034: Bolt017
+    3300036: Bolt018
+    3300038: Bolt019
+    3300040: Bolt020
+    3300042: Bolt021
+    3300044: Bolt022
+    3300046: Bolt023
+    3300048: Bolt024
+    3300050: Bolt025
+    3300052: Bolt026
+    3300054: Bolt027
+    3300056: //RootNode
+    3300058: Lever
+    3300060: Lever Base
+    3300062: Lever Base001
+    3300064: Lever001
+    3300066: Lever002
+    4300000: Dough Spawner
+    4300002: Lever Base
+    4300004: Lever
+    4300006: Bolt
+    4300008: Bolt001
+    4300010: Lever Base001
+    4300012: Bolt002
+    4300014: Bolt003
+    4300016: Lever001
+    4300018: Bolt009
+    4300020: Bolt008
+    4300022: Bolt007
+    4300024: Bolt006
+    4300026: Bolt005
+    4300028: Bolt015
+    4300030: Bolt014
+    4300032: Bolt013
+    4300034: Bolt012
+    4300036: Bolt011
+    4300038: Bolt004
+    4300040: Bolt010
+    4300042: Bolt016
+    4300044: Bolt017
+    4300046: Bolt018
+    4300048: Bolt019
+    4300050: Bolt020
+    4300052: Bolt021
+    4300054: Bolt022
+    4300056: Bolt023
+    4300058: Bolt024
+    4300060: Bolt025
+    4300062: Bolt026
+    4300064: Bolt027
+    4300066: Lever002
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
