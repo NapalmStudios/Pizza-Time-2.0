@@ -9,7 +9,7 @@ public class TicketSpawn : MonoBehaviour
     public int TimeBetweenSpawn;
     public int randomTicket;
     public int Day;
-    public int amountTicket = 50;
+    public int amountTicket = 5000;
     public Ticket ticketToSpawn;
     public Ticket[] currentTickets;
 

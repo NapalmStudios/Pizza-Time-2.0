@@ -60,12 +60,10 @@ namespace PizzaTime
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
-
             audio = GetComponent<AudioSource>();
-            CheckForStartPizza();
-            maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
+            //maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
-            activePizzaTexture = resourceLoader.pizzaDoughMaterial;
+            CheckForStartPizza();
             textureChange = true;
         }
         public void Update()
