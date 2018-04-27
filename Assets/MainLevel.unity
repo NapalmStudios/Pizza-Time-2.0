@@ -1967,7 +1967,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &143774627
 GameObject:
@@ -13529,7 +13529,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &1022534642
 GameObject:
@@ -28235,6 +28235,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23538549078689524, guid: 73b0b2cdda051cc4e82ce97f38d84451,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f97f6155e34cfe46bfb325268398774, type: 2}
+    - target: {fileID: 23690382341014756, guid: 73b0b2cdda051cc4e82ce97f38d84451,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f97f6155e34cfe46bfb325268398774, type: 2}
+    - target: {fileID: 23962515653836682, guid: 73b0b2cdda051cc4e82ce97f38d84451,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f97f6155e34cfe46bfb325268398774, type: 2}
+    - target: {fileID: 23614363766304168, guid: 73b0b2cdda051cc4e82ce97f38d84451,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f97f6155e34cfe46bfb325268398774, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 73b0b2cdda051cc4e82ce97f38d84451, type: 2}
   m_IsPrefabParent: 0

@@ -4,11 +4,6 @@ using UnityEngine;
 
 namespace PizzaTime
 {
-    /*
-     * TODO: Fix Issue of Object coninuing to move when it shouldn't
-     *       Change Texture of Object
-     */
-
     public class PauseMenu : MonoBehaviour
     {
         public GameObject exitObj;
