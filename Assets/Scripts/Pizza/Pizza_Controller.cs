@@ -37,6 +37,7 @@ namespace PizzaTime
         public float timeBeforeDirty;
         public bool isCooked = false;
         public bool isDirty = false;
+        public bool startMenuPizza;
         public bool isGlutenFree = false;
         public bool hasSauce = false;
         public GameObject pizza;
@@ -61,7 +62,7 @@ namespace PizzaTime
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
 
             audio = GetComponent<AudioSource>();
-
+            CheckForStartPizza();
             maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
             activePizzaTexture = resourceLoader.pizzaDoughMaterial;
@@ -72,6 +73,18 @@ namespace PizzaTime
             StartCoroutine(TextureChanger());
             StartCoroutine(AddSauce());
             StartCoroutine(PizzaDoneAudioCheck());
+        }
+
+        public void CheckForStartPizza()
+        {
+            if(startMenuPizza)
+            {
+                activePizzaTexture = resourceLoader.cheeseMaterial;
+            }
+            else
+            {
+                activePizzaTexture = resourceLoader.pizzaDoughMaterial;
+            }
         }
 
         private IEnumerator PizzaDoneAudioCheck()
