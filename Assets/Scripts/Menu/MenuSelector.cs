@@ -14,6 +14,7 @@ namespace PizzaTime
         {
             isStartObj = gameObject.GetComponent<MenuSelector>().isStartObj;
             isExitObj = gameObject.GetComponent<MenuSelector>().isExitObj;
+            
         }
 
         void OnCollisionEnter(Collision col)
