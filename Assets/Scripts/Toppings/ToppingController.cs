@@ -56,12 +56,10 @@ namespace PizzaTime
             if(Time.timeScale < 1 && toppingObject.activeSelf)
             {
                 toppingObject.SetActive(false);
-                //GetComponent<BoxCollider>().enabled = false;
             }
             else
             {
                 toppingObject.SetActive(true);
-                //GetComponent<BoxCollider>().enabled = true;
             }
             yield return null;
         }
