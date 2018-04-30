@@ -28256,6 +28256,16 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0f97f6155e34cfe46bfb325268398774, type: 2}
+    - target: {fileID: 114226986945277778, guid: 73b0b2cdda051cc4e82ce97f38d84451,
+        type: 2}
+      propertyPath: isExitObj
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114226986945277778, guid: 73b0b2cdda051cc4e82ce97f38d84451,
+        type: 2}
+      propertyPath: isExitInGameObj
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 73b0b2cdda051cc4e82ce97f38d84451, type: 2}
   m_IsPrefabParent: 0
@@ -31238,7 +31248,7 @@ MonoBehaviour:
   TimeBetweenSpawn: 10
   randomTicket: 0
   Day: 5
-  amountTicket: 50
+  amountTicket: 5000
   ticketToSpawn: {fileID: 114234615293993930, guid: f1856604e5a856f48a829b60c3dee235,
     type: 2}
   currentTickets:

@@ -29443,7 +29443,7 @@ MonoBehaviour:
   TimeBetweenSpawn: 10
   randomTicket: 0
   Day: 5
-  amountTicket: 50
+  amountTicket: 5000
   ticketToSpawn: {fileID: 114234615293993930, guid: f1856604e5a856f48a829b60c3dee235,
     type: 2}
   currentTickets:

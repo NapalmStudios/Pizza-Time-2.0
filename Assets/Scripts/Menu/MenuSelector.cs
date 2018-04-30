@@ -8,6 +8,7 @@ namespace PizzaTime
     public class MenuSelector : MonoBehaviour
     {
         public bool isStartObj;
+        public bool isExitInGameObj;
         public bool isExitObj;
 
         void Start()
@@ -30,6 +31,11 @@ namespace PizzaTime
                 else if(isExitObj)
                 {
                     Application.Quit();
+                    Destroy(this.gameObject);
+                }
+                else if (isExitObj)
+                {
+                    SceneManager.LoadScene(0, LoadSceneMode.Single);
                     Destroy(this.gameObject);
                 }
             }
