@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using PizzaTime;
 using TMPro;
 
@@ -9,6 +10,7 @@ public class Goal : MonoBehaviour
 {
     public int tip;
     public int score;
+    public int targetScore;
     public int pizzasMade;
     public TextMeshProUGUI tmp;
 
@@ -22,7 +24,16 @@ public class Goal : MonoBehaviour
     void Update()
     {
         //ticketSpawner = FindObjectOfType<TicketSpawn>();
+        StartCoroutine(CheckForScore());
+    }
 
+    private IEnumerator CheckForScore()
+    {
+        if(score == targetScore)
+        {
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        }
+        yield return null;
     }
 
     private void OnTriggerEnter(Collider col)
