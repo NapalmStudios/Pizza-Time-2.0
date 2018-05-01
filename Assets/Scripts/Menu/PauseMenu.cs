@@ -19,6 +19,7 @@ namespace PizzaTime
         private GameObject[] baconObjects;
         private GameObject[] pepperObjects;
         private GameObject[] mushroomObjects;
+        private GameObject[] goal;
         private ResourceLoader resourceLoader;
 
         void Start()
@@ -45,6 +46,7 @@ namespace PizzaTime
                 baconObjects = GameObject.FindGameObjectsWithTag(resourceLoader.baconObj.tag);
                 pepperObjects = GameObject.FindGameObjectsWithTag(resourceLoader.pepperObj.tag);
                 mushroomObjects = GameObject.FindGameObjectsWithTag(resourceLoader.mushObj.tag);
+                goal = GameObject.FindGameObjectsWithTag("Goal");
                 exitObj.SetActive(true);
                 exitPizza.SetActive(true);
                 exitObj.transform.position = new Vector3(pos.x+.4f, pos.y-.13f, pos.z-.2f);
@@ -65,6 +67,7 @@ namespace PizzaTime
             ArrayComb(baconObjects);
             ArrayComb(pepperObjects);
             ArrayComb(mushroomObjects);
+            ArrayComb(goal);
         }
 
         private void ArrayComb(GameObject[] objs)
