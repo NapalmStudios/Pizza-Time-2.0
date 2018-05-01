@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: 3a739b58dea828b43af95a045df544d7
+timeCreated: 1524726612
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Burger
+    100004: Burger2
+    100006: chefDrone
+    100008: chefDrone 1
+    100010: chest
+    100012: droneSpatula
+    100014: forkTool
+    100016: Grille
+    100018: head
+    100020: Knob
+    100022: Knob001
+    100024: Knob002
+    100026: Knob003
+    100028: Knob004
+    100030: Knob005
+    100032: L_clavicle
+    100034: L_eyebrow
+    100036: L_foot
+    100038: L_forearm
+    100040: L_hand
+    100042: L_hand_tip
+    100044: L_hip
+    100046: L_knee
+    100048: L_leg
+    100050: L_toe
+    100052: L_upperarm
+    100054: lowerneck
+    100056: m_chefHat
+    100058: m_spatula:m_spatula
+    100060: Pelvis
+    100062: Pizza Box
+    100064: Pizza Cutter
+    100066: 'Pizza Cutter #2'
+    100068: R_clavicle
+    100070: R_eyebrow
+    100072: R_foot
+    100074: R_forearm
+    100076: R_hand
+    100078: R_hand_tip
+    100080: R_hip
+    100082: R_knee
+    100084: R_leg
+    100086: R_toe
+    100088: R_upperarm
+    100090: roboReset
+    100092: Robot Character
+    100094: //RootNode
+    100096: Sauce Bottle
+    100098: spoonTool
+    100100: torso
+    100102: upperneck
+    100104: waist
+    400000: Box001
+    400002: Burger
+    400004: Burger2
+    400006: chefDrone
+    400008: chefDrone 1
+    400010: chest
+    400012: droneSpatula
+    400014: forkTool
+    400016: Grille
+    400018: head
+    400020: Knob
+    400022: Knob001
+    400024: Knob002
+    400026: Knob003
+    400028: Knob004
+    400030: Knob005
+    400032: L_clavicle
+    400034: L_eyebrow
+    400036: L_foot
+    400038: L_forearm
+    400040: L_hand
+    400042: L_hand_tip
+    400044: L_hip
+    400046: L_knee
+    400048: L_leg
+    400050: L_toe
+    400052: L_upperarm
+    400054: lowerneck
+    400056: m_chefHat
+    400058: m_spatula:m_spatula
+    400060: Pelvis
+    400062: Pizza Box
+    400064: Pizza Cutter
+    400066: 'Pizza Cutter #2'
+    400068: R_clavicle
+    400070: R_eyebrow
+    400072: R_foot
+    400074: R_forearm
+    400076: R_hand
+    400078: R_hand_tip
+    400080: R_hip
+    400082: R_knee
+    400084: R_leg
+    400086: R_toe
+    400088: R_upperarm
+    400090: roboReset
+    400092: Robot Character
+    400094: //RootNode
+    400096: Sauce Bottle
+    400098: spoonTool
+    400100: torso
+    400102: upperneck
+    400104: waist
+    2100000: robot
+    2100002: lambert3
+    2100004: lambert4
+    2100006: lambert5
+    2100008: m_spatula_lambert2
+    2100010: m_spatula_blinn1
+    2100012: m_spatula_lambert5
+    2100014: lambert1
+    2100016: m_spatula_lambert3
+    2100018: m_spatula_lambert6
+    2100020: 02 - Default1
+    2100022: 01 - Default2
+    2100024: Burger1
+    2100026: lambert7
+    2100028: 08 - Default
+    2100030: 01 - Default1
+    2100032: pizzaBox
+    2100034: mustard
+    2100036: 'Material #70'
+    2100038: 'Material #71'
+    2100040: 02 - Default2
+    2100042: 'Material #69'
+    2100044: m_spatula_lambert11
+    2100046: m_spatula_blinn3
+    2100048: m_spatula_lambert12
+    2100050: lambert15
+    2100052: m_spatula_lambert13
+    2100054: m_spatula_lambert14
+    2100056: antennaRed4
+    2100058: pupili_black4
+    2100060: botGreen4
+    2100062: circuitYellow4
+    2100064: eyewhite4
+    2100066: antennaGrey4
+    2100068: circuitBlue4
+    2300000: Box001
+    2300002: Burger
+    2300004: Burger2
+    2300006: chefDrone 1
+    2300008: droneSpatula
+    2300010: forkTool
+    2300012: Grille
+    2300014: Knob
+    2300016: Knob001
+    2300018: Knob002
+    2300020: Knob003
+    2300022: Knob004
+    2300024: Knob005
+    2300026: L_eyebrow
+    2300028: m_chefHat
+    2300030: m_spatula:m_spatula
+    2300032: Pizza Box
+    2300034: Pizza Cutter
+    2300036: 'Pizza Cutter #2'
+    2300038: R_eyebrow
+    2300040: roboReset
+    2300042: Sauce Bottle
+    2300044: spoonTool
+    3300000: Box001
+    3300002: Burger
+    3300004: Burger2
+    3300006: chefDrone 1
+    3300008: droneSpatula
+    3300010: forkTool
+    3300012: Grille
+    3300014: Knob
+    3300016: Knob001
+    3300018: Knob002
+    3300020: Knob003
+    3300022: Knob004
+    3300024: Knob005
+    3300026: L_eyebrow
+    3300028: m_chefHat
+    3300030: m_spatula:m_spatula
+    3300032: Pizza Box
+    3300034: Pizza Cutter
+    3300036: 'Pizza Cutter #2'
+    3300038: R_eyebrow
+    3300040: roboReset
+    3300042: Sauce Bottle
+    3300044: spoonTool
+    4300000: Robot Character
+    4300002: L_eyebrow
+    4300004: R_eyebrow
+    4300006: m_chefHat
+    4300008: m_spatula:m_spatula
+    4300010: spoonTool
+    4300012: forkTool
+    4300014: Pizza Cutter
+    4300016: Burger2
+    4300018: roboReset
+    4300020: Grille
+    4300022: Knob
+    4300024: Box001
+    4300026: Knob001
+    4300028: Knob002
+    4300030: Knob003
+    4300032: Knob004
+    4300034: Knob005
+    4300036: Burger
+    4300038: Pizza Box
+    4300040: Sauce Bottle
+    4300042: 'Pizza Cutter #2'
+    4300044: droneSpatula
+    4300046: chefDrone
+    9500000: //RootNode
+    13700000: Robot Character
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
