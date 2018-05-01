@@ -47,7 +47,6 @@ public class Goal : MonoBehaviour
 
                 if (pizzaObj.activePizzaTexture.Equals(ticket.pizzaMat) && ticket.isActive == true)
                 {
-                    Debug.Log("int");
                     if (pizzaObj.isDirty)
                     {
                         score += (ticket.ticketWorth + (tip * (int)ticket.tipTime)) - ticket.dirtyNeg;
