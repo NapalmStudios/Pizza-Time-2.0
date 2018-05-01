@@ -97,6 +97,7 @@ namespace PizzaTime
         void Start()
         {
             LoadResources();
+            Time.timeScale = 1;
         }
 
         private void LoadResources()

@@ -15,7 +15,7 @@ namespace PizzaTime
         {
             isStartObj = gameObject.GetComponent<MenuSelector>().isStartObj;
             isExitObj = gameObject.GetComponent<MenuSelector>().isExitObj;
-            
+            isExitInGameObj = gameObject.GetComponent<MenuSelector>().isExitInGameObj;
         }
 
         void OnCollisionEnter(Collision col)
@@ -33,9 +33,10 @@ namespace PizzaTime
                     Application.Quit();
                     Destroy(this.gameObject);
                 }
-                else if (isExitObj)
+                else if (isExitInGameObj)
                 {
                     SceneManager.LoadScene(0, LoadSceneMode.Single);
+                    Time.timeScale = 1;
                     Destroy(this.gameObject);
                 }
             }
