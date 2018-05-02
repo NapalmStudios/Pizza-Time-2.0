@@ -58,7 +58,7 @@ public class Ticket : MonoBehaviour
 
         if (isActive == false)
         {
-            for (int i = 0; i < ticketSpawn.currentTickets.Length; i++)
+            for (int i = 0; i < ticketSpawn.currentTickets.Count; i++)
             {
                 if (ticketSpawn.currentTickets[i] == this)
                 {
