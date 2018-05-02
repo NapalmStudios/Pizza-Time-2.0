@@ -12,7 +12,11 @@ public class Goal : MonoBehaviour
     public int score;
     public int targetScore;
     public int pizzasMade;
+    public int strikeCount;
     public TextMeshProUGUI tmp;
+    public TextMeshProUGUI strikes;
+
+    private bool waitDestroy;
 
     public TicketSpawn ticketSpawner;
 
@@ -29,7 +33,7 @@ public class Goal : MonoBehaviour
 
     private IEnumerator CheckForScore()
     {
-        if(score == targetScore)
+        if((score == targetScore) || strikeCount >= 3)
         {
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
@@ -64,14 +68,23 @@ public class Goal : MonoBehaviour
                 }
                 else
                 {
-                    tmp.text = "Today's Earnings = $" + (score - 100);
+                    strikeCount++;
+                    if(strikeCount == 1)
+                    {
+                        strikes.text = "Strikes: X";
+                    }
+                    else if (strikeCount == 2)
+                    {
+                        strikes.text = "Strikes: X  X";
+                    }
+                    else if(strikeCount == 3)
+                    {
+                        strikes.text = "Strikes: X  X  X";
+                    }
                     Destroy(col.gameObject);
+                    break;
                 }
             }
-            Destroy(col.gameObject);
         }
-
-
-        //TODO maybe lose money if wrong pizza
     }
 }
