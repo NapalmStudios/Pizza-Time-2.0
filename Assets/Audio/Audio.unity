@@ -214,6 +214,10 @@ Prefab:
       propertyPath: m_CellSize.x
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1700125590130888, guid: 231ce09b8299fa34aa3f61d0b47c54d5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 231ce09b8299fa34aa3f61d0b47c54d5, type: 2}
   m_IsPrefabParent: 0

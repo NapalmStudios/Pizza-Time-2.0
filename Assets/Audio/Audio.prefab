@@ -28,6 +28,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1200084440841878
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4392265671130190}
+  - component: {fileID: 114325623656212082}
+  m_Layer: 0
+  m_Name: Dough Lever
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1259255922919268
 GameObject:
   m_ObjectHideFlags: 1
@@ -121,6 +137,38 @@ GameObject:
   - component: {fileID: 114758437620265454}
   m_Layer: 0
   m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1361492650821370
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4763596056964762}
+  - component: {fileID: 114626660493974616}
+  m_Layer: 0
+  m_Name: Ingredients Lever
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1388796811462442
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4096458241432464}
+  - component: {fileID: 114482853965953370}
+  m_Layer: 0
+  m_Name: Wood Stove Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,6 +335,19 @@ Transform:
   m_Father: {fileID: 4620384371421916}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4096458241432464
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388796811462442}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4556710579933880}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4152615850783904
 Transform:
   m_ObjectHideFlags: 1
@@ -368,6 +429,19 @@ Transform:
   m_Father: {fileID: 4730808548088930}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4392265671130190
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200084440841878}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4556710579933880}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4519455309243020
 Transform:
   m_ObjectHideFlags: 1
@@ -392,6 +466,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4152615850783904}
+  - {fileID: 4096458241432464}
+  - {fileID: 4392265671130190}
+  - {fileID: 4763596056964762}
   m_Father: {fileID: 4299399923724908}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -428,6 +505,19 @@ Transform:
   - {fileID: 4386447150446612}
   m_Father: {fileID: 4793518983093108}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4763596056964762
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361492650821370}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4556710579933880}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4780320617273656
 Transform:
@@ -725,7 +815,7 @@ MonoBehaviour:
   _pan2DRandomization: 0
   _override3DProperties: 0
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0
   _spreadLevel: 0
   _spatialize: 0
   _dopplerLevel: 1
@@ -955,9 +1045,9 @@ MonoBehaviour:
   _override2DProperties: 0
   _pan2D: 0
   _pan2DRandomization: 0
-  _override3DProperties: 0
+  _override3DProperties: 1
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0.75
   _spreadLevel: 0
   _spatialize: 0
   _dopplerLevel: 1
@@ -1046,7 +1136,7 @@ MonoBehaviour:
   _pan2DRandomization: 0
   _override3DProperties: 0
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0
   _spreadLevel: 0
   _spatialize: 0
   _dopplerLevel: 1
@@ -1162,7 +1252,7 @@ MonoBehaviour:
   _pan2DRandomization: 0
   _override3DProperties: 0
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0
   _spreadLevel: 0
   _spatialize: 0
   _dopplerLevel: 1
@@ -1284,6 +1374,122 @@ MonoBehaviour:
     _transitionToSnapshotData:
       _snapshot: 
       _timeToReach: 0
+--- !u!114 &114325623656212082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200084440841878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -71199202, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numVirtualizationEvents: 100
+  _maxInstances: 1
+  _stealingBehaviour: 0
+  _minimumPlaybackInterval: 0
+  _overrideParentVolume: 0
+  _volume: 1
+  _volumeRandomization: 0
+  _mute: 0
+  _overrideParentPitch: 0
+  _pitch: 1
+  _pitchRandomization: 0
+  _override2DProperties: 0
+  _pan2D: 0
+  _pan2DRandomization: 0
+  _override3DProperties: 0
+  _priority: 128
+  _panLevel: 1
+  _spreadLevel: 0
+  _spatialize: 0
+  _dopplerLevel: 1
+  _maxDistance: 500
+  _minDistance: 1
+  _rolloffMode: 0
+  _customCurvesType: 0
+  _customCurvesName: 
+  _overrideFadeProperties: 0
+  _fadeInTime: 0
+  _fadeInCurve: 0.5
+  _fadeOutTime: 0
+  _fadeOutCurve: 0.5
+  _reverbZoneMix: 1
+  _overrideBypassProperties: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _overrideAudioMixerGroup: 0
+  _audioMixerGroup: {fileID: 0}
+  _notifyParentComponent: 0
+  _audioBusName: 
+  _overrideAudioBus: 0
+  _overrideMusicTimeSettings: 0
+  _musicTimeSettingsIndex: -1
+  _musicTempo: -1
+  _musicTimeSignatureLower: 0
+  _musicTimeSignatureUpper: 0
+  _musicTimeResetOnPlay: 0
+  _midiProperties:
+    _overrideParentNoteTracking: 0
+    _noteTracking: 0
+    _keyRangeMin: 0
+    _keyRangeMax: 127
+    _velocityRangeMin: 0
+    _velocityRangeMax: 127
+    _channelRangeMin: 1
+    _channelRangeMax: 16
+    _rootNote: -36
+    _transpose: 0
+    _velocity: 0
+  _overrideSpatializeProperty: 0
+  _probability: 100
+  _multipleInstancesPerGameObject: 1
+  _componentVirtualization: 0
+  _overrideVolumeThreshold: 0
+  _volumeThreshold: 1
+  _virtualizationBehavior: 1
+  _RTPManager:
+    _parameters: []
+    _reference: {fileID: 0}
+  Guid: 
+  _componentHolder: {fileID: 0}
+  _onEventNotifyEventName: 
+  _audioClip: {fileID: 0}
+  _audioClipHandle:
+    _audioClipPath: 
+    _useAudioClipPath: 1
+  _dynamicAudioClipLoading: 0
+  _dynamicAudioClipUnloadDelay: 0
+  _dynamicAsyncAudioClipLoading: 0
+  _audioClipAssetPath: 0
+  _delay: 0
+  _delayInBeats: 0
+  _loop: 0
+  _ignoreNativeLoop: 0
+  _randomizeStart: 0
+  _randomizeStartPercentage: 100
+  _numLoops: -1
+  _loopMarkersLoaded: 0
+  _useLoopMarkers: 1
+  _startLoopMarkerIndex: 0
+  _endLoopMarkerIndex: 1
+  _loopRegionIndex: 0
+  _randomizeStartLoopMarkerIndex: 0
+  _randomizeEndLoopMarkerIndex: 0
+  _randomizeRegionIndex: 0
+  _dontPlay: 0
+  _dontStopOnDestroy: 0
+  _ignoreVirtualization: 0
+  _randomizePosition: 0
+  _randomizeMinPosition: 0
+  _randomizeMaxPosition: 10
+  _syncWithMusicTime: 0
+  _markers: []
+  _syncRegionsWithTempo: 0
+  _audioClipTempo: 120
+  _regions: []
 --- !u!114 &114360307698230650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1477,9 +1683,9 @@ MonoBehaviour:
   _override2DProperties: 0
   _pan2D: 0
   _pan2DRandomization: 0
-  _override3DProperties: 0
+  _override3DProperties: 1
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0
   _spreadLevel: 0
   _spatialize: 0
   _dopplerLevel: 1
@@ -1541,6 +1747,122 @@ MonoBehaviour:
   _eventEditor:
     _eventNames: []
     _eventList: []
+--- !u!114 &114482853965953370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388796811462442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -71199202, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numVirtualizationEvents: 100
+  _maxInstances: 1
+  _stealingBehaviour: 0
+  _minimumPlaybackInterval: 0
+  _overrideParentVolume: 0
+  _volume: 1
+  _volumeRandomization: 0
+  _mute: 0
+  _overrideParentPitch: 0
+  _pitch: 1
+  _pitchRandomization: 0
+  _override2DProperties: 0
+  _pan2D: 0
+  _pan2DRandomization: 0
+  _override3DProperties: 0
+  _priority: 128
+  _panLevel: 1
+  _spreadLevel: 0
+  _spatialize: 0
+  _dopplerLevel: 1
+  _maxDistance: 500
+  _minDistance: 1
+  _rolloffMode: 0
+  _customCurvesType: 0
+  _customCurvesName: 
+  _overrideFadeProperties: 0
+  _fadeInTime: 0
+  _fadeInCurve: 0.5
+  _fadeOutTime: 0
+  _fadeOutCurve: 0.5
+  _reverbZoneMix: 1
+  _overrideBypassProperties: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _overrideAudioMixerGroup: 0
+  _audioMixerGroup: {fileID: 0}
+  _notifyParentComponent: 0
+  _audioBusName: 
+  _overrideAudioBus: 0
+  _overrideMusicTimeSettings: 0
+  _musicTimeSettingsIndex: -1
+  _musicTempo: -1
+  _musicTimeSignatureLower: 0
+  _musicTimeSignatureUpper: 0
+  _musicTimeResetOnPlay: 0
+  _midiProperties:
+    _overrideParentNoteTracking: 0
+    _noteTracking: 0
+    _keyRangeMin: 0
+    _keyRangeMax: 127
+    _velocityRangeMin: 0
+    _velocityRangeMax: 127
+    _channelRangeMin: 1
+    _channelRangeMax: 16
+    _rootNote: -36
+    _transpose: 0
+    _velocity: 0
+  _overrideSpatializeProperty: 0
+  _probability: 100
+  _multipleInstancesPerGameObject: 1
+  _componentVirtualization: 0
+  _overrideVolumeThreshold: 0
+  _volumeThreshold: 1
+  _virtualizationBehavior: 1
+  _RTPManager:
+    _parameters: []
+    _reference: {fileID: 0}
+  Guid: 
+  _componentHolder: {fileID: 0}
+  _onEventNotifyEventName: 
+  _audioClip: {fileID: 0}
+  _audioClipHandle:
+    _audioClipPath: 
+    _useAudioClipPath: 1
+  _dynamicAudioClipLoading: 0
+  _dynamicAudioClipUnloadDelay: 0
+  _dynamicAsyncAudioClipLoading: 0
+  _audioClipAssetPath: 0
+  _delay: 0
+  _delayInBeats: 0
+  _loop: 1
+  _ignoreNativeLoop: 0
+  _randomizeStart: 0
+  _randomizeStartPercentage: 100
+  _numLoops: -1
+  _loopMarkersLoaded: 0
+  _useLoopMarkers: 1
+  _startLoopMarkerIndex: 0
+  _endLoopMarkerIndex: 1
+  _loopRegionIndex: 0
+  _randomizeStartLoopMarkerIndex: 0
+  _randomizeEndLoopMarkerIndex: 0
+  _randomizeRegionIndex: 0
+  _dontPlay: 0
+  _dontStopOnDestroy: 0
+  _ignoreVirtualization: 0
+  _randomizePosition: 0
+  _randomizeMinPosition: 0
+  _randomizeMaxPosition: 10
+  _syncWithMusicTime: 0
+  _markers: []
+  _syncRegionsWithTempo: 0
+  _audioClipTempo: 120
+  _regions: []
 --- !u!114 &114516318766608496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1601,7 +1923,7 @@ MonoBehaviour:
   _pan2DRandomization: 0
   _override3DProperties: 0
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0
   _spreadLevel: 0
   _spatialize: 0
   _dopplerLevel: 1
@@ -1778,6 +2100,122 @@ MonoBehaviour:
   _eventEditor:
     _eventNames: []
     _eventList: []
+--- !u!114 &114626660493974616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361492650821370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -71199202, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numVirtualizationEvents: 100
+  _maxInstances: 1
+  _stealingBehaviour: 0
+  _minimumPlaybackInterval: 0
+  _overrideParentVolume: 0
+  _volume: 1
+  _volumeRandomization: 0
+  _mute: 0
+  _overrideParentPitch: 0
+  _pitch: 1
+  _pitchRandomization: 0
+  _override2DProperties: 0
+  _pan2D: 0
+  _pan2DRandomization: 0
+  _override3DProperties: 0
+  _priority: 128
+  _panLevel: 1
+  _spreadLevel: 0
+  _spatialize: 0
+  _dopplerLevel: 1
+  _maxDistance: 500
+  _minDistance: 1
+  _rolloffMode: 0
+  _customCurvesType: 0
+  _customCurvesName: 
+  _overrideFadeProperties: 0
+  _fadeInTime: 0
+  _fadeInCurve: 0.5
+  _fadeOutTime: 0
+  _fadeOutCurve: 0.5
+  _reverbZoneMix: 1
+  _overrideBypassProperties: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _overrideAudioMixerGroup: 0
+  _audioMixerGroup: {fileID: 0}
+  _notifyParentComponent: 0
+  _audioBusName: 
+  _overrideAudioBus: 0
+  _overrideMusicTimeSettings: 0
+  _musicTimeSettingsIndex: -1
+  _musicTempo: -1
+  _musicTimeSignatureLower: 0
+  _musicTimeSignatureUpper: 0
+  _musicTimeResetOnPlay: 0
+  _midiProperties:
+    _overrideParentNoteTracking: 0
+    _noteTracking: 0
+    _keyRangeMin: 0
+    _keyRangeMax: 127
+    _velocityRangeMin: 0
+    _velocityRangeMax: 127
+    _channelRangeMin: 1
+    _channelRangeMax: 16
+    _rootNote: -36
+    _transpose: 0
+    _velocity: 0
+  _overrideSpatializeProperty: 0
+  _probability: 100
+  _multipleInstancesPerGameObject: 1
+  _componentVirtualization: 0
+  _overrideVolumeThreshold: 0
+  _volumeThreshold: 1
+  _virtualizationBehavior: 1
+  _RTPManager:
+    _parameters: []
+    _reference: {fileID: 0}
+  Guid: 
+  _componentHolder: {fileID: 0}
+  _onEventNotifyEventName: 
+  _audioClip: {fileID: 0}
+  _audioClipHandle:
+    _audioClipPath: 
+    _useAudioClipPath: 1
+  _dynamicAudioClipLoading: 0
+  _dynamicAudioClipUnloadDelay: 0
+  _dynamicAsyncAudioClipLoading: 0
+  _audioClipAssetPath: 0
+  _delay: 0
+  _delayInBeats: 0
+  _loop: 0
+  _ignoreNativeLoop: 0
+  _randomizeStart: 0
+  _randomizeStartPercentage: 100
+  _numLoops: -1
+  _loopMarkersLoaded: 0
+  _useLoopMarkers: 1
+  _startLoopMarkerIndex: 0
+  _endLoopMarkerIndex: 1
+  _loopRegionIndex: 0
+  _randomizeStartLoopMarkerIndex: 0
+  _randomizeEndLoopMarkerIndex: 0
+  _randomizeRegionIndex: 0
+  _dontPlay: 0
+  _dontStopOnDestroy: 0
+  _ignoreVirtualization: 0
+  _randomizePosition: 0
+  _randomizeMinPosition: 0
+  _randomizeMaxPosition: 10
+  _syncWithMusicTime: 0
+  _markers: []
+  _syncRegionsWithTempo: 0
+  _audioClipTempo: 120
+  _regions: []
 --- !u!114 &114667124324184480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1805,7 +2243,7 @@ MonoBehaviour:
   _pan2DRandomization: 0
   _override3DProperties: 0
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0
   _spreadLevel: 0
   _spatialize: 0
   _dopplerLevel: 1
@@ -1927,7 +2365,7 @@ MonoBehaviour:
   _pan2DRandomization: 0
   _override3DProperties: 0
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0
   _spreadLevel: 0
   _spatialize: 0
   _dopplerLevel: 1
