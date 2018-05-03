@@ -6,6 +6,6 @@ namespace PizzaTime
 {
     public class PizzaControllerGetter : MonoBehaviour
     {
-        
+
     }
 }

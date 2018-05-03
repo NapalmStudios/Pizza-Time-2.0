@@ -11,7 +11,7 @@ public class TicketSpawn : MonoBehaviour
     public int Day;
     public int amountTicket = 5000;
     public Ticket ticketToSpawn;
-    public Ticket[] currentTickets;
+    public List<Ticket> currentTickets = new List<Ticket>();
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class TicketSpawn : MonoBehaviour
 
     public void SpawnTicket()
     {
-        for (int j = 0; j < currentTickets.Length; j++)
+        for (int j = 0; j < currentTickets.Count; j++)
         {
             if (currentTickets[j] == null)
             {

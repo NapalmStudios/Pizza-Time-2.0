@@ -12,7 +12,16 @@ public class Goal : MonoBehaviour
     public int score;
     public int targetScore;
     public int pizzasMade;
+    public int strikeCount;
     public TextMeshProUGUI tmp;
+    public TextMeshProUGUI strikes;
+
+    private Ticket ticket;
+    private bool populate = false;
+    public bool match = false;
+    public bool noMatch = false;
+    public bool completed = false;
+    public List<Material> test = new List<Material>();
 
     public TicketSpawn ticketSpawner;
 
@@ -25,11 +34,12 @@ public class Goal : MonoBehaviour
     {
         //ticketSpawner = FindObjectOfType<TicketSpawn>();
         StartCoroutine(CheckForScore());
+        
     }
 
     private IEnumerator CheckForScore()
     {
-        if(score == targetScore)
+        if ((score == targetScore) || strikeCount >= 3)
         {
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
@@ -41,11 +51,10 @@ public class Goal : MonoBehaviour
         var pizzaObj = col.gameObject.GetComponent<Pizza_Controller>();
         if (pizzaObj != null)
         {
-            for (int i = 0; i < ticketSpawner.currentTickets.Length; i++)
-            {
-                var ticket = ticketSpawner.currentTickets[i];
-
-                if (pizzaObj.activePizzaTexture.Equals(ticket.pizzaMat) && ticket.isActive == true)
+            //StartCoroutine(Scoring(col.gameObject, pizzaObj));
+            LoopThroughTickets(pizzaObj);
+            
+                if (match)
                 {
                     if (pizzaObj.isDirty)
                     {
@@ -58,20 +67,45 @@ public class Goal : MonoBehaviour
                     tmp.text = "Today's Earnings = $" + score;
                     ticket.isActive = false;
                     pizzasMade++;
-                    ticketSpawner.currentTickets[i] = null;
+                    //ticketSpawner.currentTickets[i] = null;
                     Destroy(col.gameObject);
-                    break;
+                    match = false;
                 }
-                else
+                else if(noMatch)
                 {
-                    tmp.text = "Today's Earnings = $" + (score - 100);
+                    strikeCount++;
+                    if (strikeCount == 1)
+                    {
+                        strikes.text = "Strikes: X";
+                    }
+                    else if (strikeCount == 2)
+                    {
+                        strikes.text = "Strikes: X  X";
+                    }
+                    else if (strikeCount == 3)
+                    {
+                        strikes.text = "Strikes: X  X  X";
+                    }
                     Destroy(col.gameObject);
+                    noMatch = false;
                 }
-            }
-            Destroy(col.gameObject);
         }
+    }
 
-
-        //TODO maybe lose money if wrong pizza
+    public void LoopThroughTickets(Pizza_Controller pizzaObj)
+    {
+        var test = GameObject.FindObjectsOfType<Ticket>();
+        foreach (Ticket obj in test)
+        {
+            if (pizzaObj.activePizzaTexture.Equals(obj.pizzaMat))
+            {
+                ticket = obj;
+                match = true;
+            }
+            else
+            {
+                noMatch = true;
+            }
+        }
     }
 }
