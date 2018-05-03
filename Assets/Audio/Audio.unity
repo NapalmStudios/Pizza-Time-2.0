@@ -197,13 +197,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4017018762115734, guid: 231ce09b8299fa34aa3f61d0b47c54d5, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114047304735388812, guid: 231ce09b8299fa34aa3f61d0b47c54d5,
         type: 2}
       propertyPath: AudioManager
       value: 
       objectReference: {fileID: 848096132}
+    - target: {fileID: 114017483741148292, guid: 231ce09b8299fa34aa3f61d0b47c54d5,
+        type: 2}
+      propertyPath: m_CellSize.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017483741148292, guid: 231ce09b8299fa34aa3f61d0b47c54d5,
+        type: 2}
+      propertyPath: m_CellSize.x
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 231ce09b8299fa34aa3f61d0b47c54d5, type: 2}
   m_IsPrefabParent: 0
