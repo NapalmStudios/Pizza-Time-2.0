@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620197288123650}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2066047398, guid: 4b4e8768ed04d6a4f98af6f4f83be984, type: 3}
   m_Name: 
@@ -1555,10 +1555,10 @@ MonoBehaviour:
   _eventParameter: 1
   _eventScheduleParameter: 0
   _eventParameterName: 
-  _delay: 0
+  _delay: 0.5
   _probability: 100
   _eventTriggerType: 0
-  _ignoreGameObject: 0
+  _ignoreGameObject: 1
   _overrideParentGameObject: 0
   _addToQueue: 0
   _min: 0
