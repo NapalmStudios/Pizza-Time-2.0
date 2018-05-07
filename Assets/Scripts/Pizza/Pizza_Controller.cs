@@ -676,12 +676,14 @@ namespace PizzaTime
             {
 
                 isCooked = true;
+                Fabric.EventManager.Instance.PostEvent("Diegetic - Pizza Cooked", gameObject);
                 CookedPizzas(isCooked);
                 isCooking = false;
             }
             else if (cookTime >= totalCookTime + burnTime)
             {
                 activePizzaTexture = resourceLoader.cookedBurnt;
+                Fabric.EventManager.Instance.PostEvent("Diegetic - Pizza Burnt", gameObject);
                 textureChange = true;
                 isCooking = false;
             }
