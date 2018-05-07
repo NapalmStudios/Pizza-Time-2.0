@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventName: State - New Ticket
-  _eventID: 0
+  _eventID: -993475858
   _overrideEventTriggerAction: 0
   _overrideParameters:
     _overrideIncomingEventAction: 0
@@ -2793,8 +2793,8 @@ MonoBehaviour:
   _maxInstances: 5
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
-  _overrideParentVolume: 0
-  _volume: 1
+  _overrideParentVolume: 1
+  _volume: 0.1
   _volumeRandomization: 0
   _mute: 0
   _overrideParentPitch: 0
@@ -3445,8 +3445,8 @@ MonoBehaviour:
   _maxInstances: 5
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
-  _overrideParentVolume: 0
-  _volume: 1
+  _overrideParentVolume: 1
+  _volume: 0.1
   _volumeRandomization: 0
   _mute: 0
   _overrideParentPitch: 0
