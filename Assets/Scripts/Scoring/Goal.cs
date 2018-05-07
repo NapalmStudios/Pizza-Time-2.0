@@ -28,6 +28,8 @@ public class Goal : MonoBehaviour
     void Start()
     {
         ticketSpawner = FindObjectOfType<TicketSpawn>();
+        tmp.text = "Today's Earnings = $" + score;
+        strikes.text = "Strikes: ";
     }
 
     void Update()
