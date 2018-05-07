@@ -117,7 +117,7 @@ NavMeshSettings:
 GameObject:
   m_PrefabParentObject: {fileID: 1358088805698712, guid: 956c55e742435f847bf281fb0cc89a36,
     type: 2}
-  m_PrefabInternal: {fileID: 2018517370}
+  m_PrefabInternal: {fileID: 1853700375}
 --- !u!1001 &1251937785
 Prefab:
   m_ObjectHideFlags: 0
@@ -174,12 +174,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1700125590130888, guid: 231ce09b8299fa34aa3f61d0b47c54d5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 231ce09b8299fa34aa3f61d0b47c54d5, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &2018517370
+--- !u!1001 &1853700375
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2

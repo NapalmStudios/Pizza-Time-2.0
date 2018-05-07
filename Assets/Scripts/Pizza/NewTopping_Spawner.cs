@@ -94,6 +94,8 @@ namespace PizzaTime
             GameObject trigger = col.gameObject;
             if (trigger.tag.Equals(resourceLoader.pieSpawnTrigger.tag))
             {
+                // TODO: Lever Sound Diegetic - Dough Lever
+                Fabric.EventManager.Instance.PostEvent("Diegetic - Dough Lever", gameObject);
                 Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
                 StartCoroutine(PizzaWait());
             }

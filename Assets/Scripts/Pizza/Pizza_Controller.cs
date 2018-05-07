@@ -130,6 +130,8 @@ namespace PizzaTime
         /// <param name="col"></param>
         private void OnCollisionEnter(Collision col)
         {
+            Fabric.EventManager.Instance.PostEvent("Diegetic - Pizza Impact", gameObject);
+
             var toppingControl = col.gameObject.GetComponent<ToppingController>();
 
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
