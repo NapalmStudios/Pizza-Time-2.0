@@ -1799,7 +1799,7 @@ MonoBehaviour:
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
   _overrideParentVolume: 1
-  _volume: 0.31622776
+  _volume: 0.1
   _volumeRandomization: 0
   _mute: 0
   _overrideParentPitch: 0
@@ -2790,7 +2790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numVirtualizationEvents: 100
-  _maxInstances: 1
+  _maxInstances: 5
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
   _overrideParentVolume: 0
@@ -3442,7 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numVirtualizationEvents: 100
-  _maxInstances: 1
+  _maxInstances: 5
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
   _overrideParentVolume: 0
@@ -3558,11 +3558,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numVirtualizationEvents: 100
-  _maxInstances: 1
+  _maxInstances: 3
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
-  _overrideParentVolume: 0
-  _volume: 1
+  _overrideParentVolume: 1
+  _volume: 0.25118864
   _volumeRandomization: 0
   _mute: 0
   _overrideParentPitch: 0
