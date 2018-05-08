@@ -55,12 +55,10 @@ namespace PizzaTime
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
         private ResourceLoader resourceLoader;
-        private AudioSource audio;
         // -------------------------------------------------- \\
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
-            audio = GetComponent<AudioSource>();
             //maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
             CheckForStartPizza();
@@ -89,7 +87,7 @@ namespace PizzaTime
         {
             if (isCooked && !doneCheck)
             {
-                audio.PlayOneShot(audio.clip);
+                Fabric.EventManager.Instance.PostEvent("Diegetic - Pizza Cooked", gameObject);
                 doneCheck = true;
             }
             yield return null;
@@ -676,7 +674,6 @@ namespace PizzaTime
             {
 
                 isCooked = true;
-                Fabric.EventManager.Instance.PostEvent("Diegetic - Pizza Cooked", gameObject);
                 CookedPizzas(isCooked);
                 isCooking = false;
             }
