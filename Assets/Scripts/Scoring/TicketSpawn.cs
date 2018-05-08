@@ -20,6 +20,7 @@ public class TicketSpawn : MonoBehaviour
 
     public void SpawnTicket()
     {
+        Fabric.EventManager.Instance.PostEvent("State - New Ticket");
         for (int j = 0; j < currentTickets.Count; j++)
         {
             if (currentTickets[j] == null)

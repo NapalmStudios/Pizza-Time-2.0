@@ -157,24 +157,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114777050370341088, guid: 956c55e742435f847bf281fb0cc89a36,
-        type: 2}
-      propertyPath: _overrideParentVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114653492001259800, guid: 956c55e742435f847bf281fb0cc89a36,
-        type: 2}
-      propertyPath: _overrideParentVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114777050370341088, guid: 956c55e742435f847bf281fb0cc89a36,
+    - target: {fileID: 114328608189646682, guid: 956c55e742435f847bf281fb0cc89a36,
         type: 2}
       propertyPath: _volume
-      value: 0.1
+      value: 0.17782794
       objectReference: {fileID: 0}
-    - target: {fileID: 114653492001259800, guid: 956c55e742435f847bf281fb0cc89a36,
+    - target: {fileID: 114328608189646682, guid: 956c55e742435f847bf281fb0cc89a36,
         type: 2}
-      propertyPath: _volume
+      propertyPath: _maxDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328608189646682, guid: 956c55e742435f847bf281fb0cc89a36,
+        type: 2}
+      propertyPath: _minDistance
       value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
