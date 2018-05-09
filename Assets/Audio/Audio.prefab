@@ -1479,9 +1479,9 @@ MonoBehaviour:
   _volume: 1
   _volumeRandomization: 0
   _mute: 0
-  _overrideParentPitch: 0
+  _overrideParentPitch: 1
   _pitch: 1
-  _pitchRandomization: 0
+  _pitchRandomization: 0.02930224
   _override2DProperties: 0
   _pan2D: 0
   _pan2DRandomization: 0
@@ -1566,8 +1566,8 @@ MonoBehaviour:
   _maxInstances: 1
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
-  _overrideParentVolume: 0
-  _volume: 1
+  _overrideParentVolume: 1
+  _volume: 0.70794576
   _volumeRandomization: 0
   _mute: 0
   _overrideParentPitch: 0
@@ -1633,7 +1633,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 8300000, guid: 26c94ecc373785149bb6a8efb3865a8b, type: 3}
+  _audioClip: {fileID: 8300000, guid: a034ef5df9abb0248b02fb70542c9deb, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1
