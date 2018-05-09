@@ -249,8 +249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticketType: 3
   isActive: 0
-  ticketTime: 90
+  ticketTime: 180
   tipTime: 0
-  ticketWorth: 100
+  ticketWorth: 35
   dirtyNeg: 0
   pizzaMat: {fileID: 2100000, guid: d21867a8844fe9e48a40995fa53ab2b9, type: 2}

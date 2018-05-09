@@ -56,7 +56,7 @@ public class Goal : MonoBehaviour
             
                 if (match)
                 {
-                    Fabric.EventManager.Instance.PostEvent("State - Success (Mid)");
+                    Fabric.EventManager.Instance.PostEvent("State - Success (Random)");
                     if (pizzaObj.isDirty)
                     {
                         score += (ticket.ticketWorth + (tip * (int)ticket.tipTime)) - ticket.dirtyNeg;
