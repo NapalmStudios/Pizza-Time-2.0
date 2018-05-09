@@ -33,6 +33,7 @@ namespace PizzaTime
                     var pizzaControl = hit.collider.gameObject.GetComponent<Pizza_Controller>();
                     if (!pizzaControl.hasSauce)
                     {
+                        Fabric.EventManager.Instance.PostEvent("Diegetic - Dough Lever", gameObject);
                         pizzaControl.hasSauce = true;
                     }
                 }
