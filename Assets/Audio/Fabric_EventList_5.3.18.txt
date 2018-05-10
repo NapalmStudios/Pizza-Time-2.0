@@ -1,0 +1,10 @@
+Diegetic - Pizza Impact
+Music - Failure Stinger
+Music - Start Main Music
+Music - Stop Main Music
+Music - Victory Stinger
+State - New Ticket
+State - Success (High)
+State - Success (Low)
+State - Success (Mid)
+State - Ticket Failure

@@ -94,6 +94,8 @@ namespace PizzaTime
             GameObject trigger = col.gameObject;
             if (trigger.tag.Equals(resourceLoader.pieSpawnTrigger.tag))
             {
+                // TODO: Lever Sound Diegetic - Dough Lever
+                Fabric.EventManager.Instance.PostEvent("Diegetic - Dough Lever", gameObject);
                 Instantiate(pizzaObjForSpawner, pizzaSpawnPosition.transform.position, pizzaSpawnPosition.transform.rotation);
                 StartCoroutine(PizzaWait());
             }
@@ -149,6 +151,7 @@ namespace PizzaTime
         /// <param name="maxToppingAmount">Max Amount of Toppings to Spawn</param>
         private void SpawnTopping(GameObject[] toppingArray, GameObject topping, GameObject toppingSpawner, int maxToppingAmount)
         {
+            Fabric.EventManager.Instance.PostEvent("Diegetic - Dough Lever", gameObject);
             for(int i = 0; i < toppingArray.Length; i++)
             {
                 Destroy(toppingArray[i]);
