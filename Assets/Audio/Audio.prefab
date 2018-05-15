@@ -1491,7 +1491,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 8300000, guid: 08f6f21d9cb1303428a873c47ae61256, type: 3}
+  _audioClip: {fileID: 8300000, guid: 2e106aa908dddc74fa0543c0dd7be167, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1
@@ -1948,8 +1948,8 @@ MonoBehaviour:
   _maxInstances: 1
   _stealingBehaviour: 0
   _minimumPlaybackInterval: 0
-  _overrideParentVolume: 0
-  _volume: 1
+  _overrideParentVolume: 1
+  _volume: 0.17782794
   _volumeRandomization: 0
   _mute: 0
   _overrideParentPitch: 0
@@ -2015,7 +2015,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 8300000, guid: 2e576f0e916aaea488e1110553a8b7f9, type: 3}
+  _audioClip: {fileID: 8300000, guid: f84335333e824944e9fc690ba7b593cf, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1

@@ -53,6 +53,7 @@ public class Ticket : MonoBehaviour
 
         if (ticketTime <= 0)
         {
+            Fabric.EventManager.Instance.PostEvent("State - Ticket Failure");
             isActive = false;
         }
 
