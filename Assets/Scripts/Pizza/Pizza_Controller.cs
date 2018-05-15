@@ -25,7 +25,7 @@ namespace PizzaTime
         RoniPeppersMush,
         TheWorks
     };
-    
+
     public class Pizza_Controller : MonoBehaviour
     {
         // ----------------- Class Variables ---------------- \\
@@ -37,6 +37,7 @@ namespace PizzaTime
         public float timeBeforeDirty;
         public bool isCooked = false;
         public bool isDirty = false;
+        public bool startMenuPizza;
         public bool isGlutenFree = false;
         public bool hasSauce = false;
         public GameObject pizza;
@@ -54,31 +55,39 @@ namespace PizzaTime
         private PIZZA pizzaCase;
         private PIZZA toppingCase;
         private ResourceLoader resourceLoader;
-        private AudioSource audio;
         // -------------------------------------------------- \\
         void Start()
         {
             resourceLoader = GameObject.FindObjectOfType<ResourceLoader>();
-
-            audio = GetComponent<AudioSource>();
-
-            maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
+            //maxCookTempature = GameObject.FindObjectOfType<Oven>().maxTempature;
             pizzaController = this;
-            activePizzaTexture = resourceLoader.pizzaDoughMaterial;
+            CheckForStartPizza();
             textureChange = true;
         }
         public void Update()
         {
             StartCoroutine(TextureChanger());
             StartCoroutine(AddSauce());
-            
+            StartCoroutine(PizzaDoneAudioCheck());
+        }
+
+        public void CheckForStartPizza()
+        {
+            if(startMenuPizza)
+            {
+                activePizzaTexture = resourceLoader.cheeseMaterial;
+            }
+            else
+            {
+                activePizzaTexture = resourceLoader.pizzaDoughMaterial;
+            }
         }
 
         private IEnumerator PizzaDoneAudioCheck()
         {
             if (isCooked && !doneCheck)
             {
-                audio.PlayOneShot(audio.clip);
+                Fabric.EventManager.Instance.PostEvent("Diegetic - Pizza Cooked", gameObject);
                 doneCheck = true;
             }
             yield return null;
@@ -90,7 +99,7 @@ namespace PizzaTime
         /// <returns></returns>
         private IEnumerator TextureChanger()
         {
-            if(textureChange)
+            if (textureChange)
             {
                 pizza.GetComponent<Renderer>().material = activePizzaTexture;
                 textureChange = false;
@@ -119,8 +128,10 @@ namespace PizzaTime
         /// <param name="col"></param>
         private void OnCollisionEnter(Collision col)
         {
+            Fabric.EventManager.Instance.PostEvent("Diegetic - Pizza Impact", gameObject);
+
             var toppingControl = col.gameObject.GetComponent<ToppingController>();
-            
+
             currentPizzaTexture = pizza.GetComponent<Renderer>().sharedMaterial;
 
             TextureGetter();
@@ -152,11 +163,11 @@ namespace PizzaTime
                 //Cook(objectPizzaIsTouching.GetComponent<Oven>().tempature);
                 Cooking(isCooking, cookingSpeed);
             }
-            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
+            else if (objectPizzaIsTouching.tag.Equals(resourceLoader.floorObj.tag))
             {
                 StartCoroutine(PizzaWait());
             }
-            else if(objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
+            else if (objectPizzaIsTouching.tag.Equals(resourceLoader.trashCanObj.tag))
             {
                 Destroy(this.gameObject);
             }
@@ -288,12 +299,12 @@ namespace PizzaTime
         /// <param name="topping"></param>
         private void PizzaAddCheeseTopping(ToppingController topping)
         {
-            switch(topping.toppingType)
+            switch (topping.toppingType)
             {
                 case TOPPING.Cheese:
                     activePizzaTexture = resourceLoader.cheeseMaterial;
                     textureChange = true;
-                    if(topping.dirtyTopping)
+                    if (topping.dirtyTopping)
                     {
                         isDirty = true;
                     }
@@ -310,7 +321,7 @@ namespace PizzaTime
         /// <param name="topping"></param>
         private void PizzaAddRoniTopping(GameObject topping)
         {
-            switch(pizzaCase)
+            switch (pizzaCase)
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.roniMaterial;
@@ -363,7 +374,7 @@ namespace PizzaTime
         /// <param name="topping"></param>
         private void PizzaAddBaconTopping(GameObject topping)
         {
-            switch(pizzaCase)
+            switch (pizzaCase)
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.baconMaterial;
@@ -390,7 +401,7 @@ namespace PizzaTime
                     textureChange = true;
                     Destroy(topping);
                     break;
-                case PIZZA.RoniPepper: 
+                case PIZZA.RoniPepper:
                     activePizzaTexture = resourceLoader.roniAndBaconAndPeppersMaterial;
                     textureChange = true;
                     Destroy(topping);
@@ -416,7 +427,7 @@ namespace PizzaTime
         /// <param name="topping"></param>
         private void PizzaAddPeppersTopping(GameObject topping)
         {
-            switch(pizzaCase)
+            switch (pizzaCase)
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.peppersMaterial;
@@ -470,7 +481,7 @@ namespace PizzaTime
         /// <param name="topping"></param>
         private void PizzaAddMushroomsTopping(GameObject topping)
         {
-            switch(pizzaCase)
+            switch (pizzaCase)
             {
                 case PIZZA.Cheese:
                     activePizzaTexture = resourceLoader.mushMaterial;
@@ -523,9 +534,8 @@ namespace PizzaTime
         /// <param name="cooked"></param>
         private void CookedPizzas(bool cooked)
         {
-            if(cooked)
+            if (cooked)
             {
-                
                 switch (pizzaCase)
                 {
                     case PIZZA.Dough:
@@ -615,12 +625,12 @@ namespace PizzaTime
             {
                 isCooking = false;
             }
-            else if(currentOvenTempature >= minCookTempature && currentOvenTempature < midCookTempature)
+            else if (currentOvenTempature >= minCookTempature && currentOvenTempature < midCookTempature)
             {
                 isCooking = true;
                 cookingSpeed = SetCookingSpeed(currentOvenTempature, minCookTempature, midCookTempature, initialLowestCookSpeedValue);
             }
-            else if(currentOvenTempature >= midCookTempature && currentOvenTempature < maxCookTempature)
+            else if (currentOvenTempature >= midCookTempature && currentOvenTempature < maxCookTempature)
             {
                 isCooking = true;
                 cookingSpeed = SetCookingSpeed(currentOvenTempature, midCookTempature, maxCookTempature, initialLowestCookSpeedValue + 1);
@@ -660,18 +670,20 @@ namespace PizzaTime
         {
             cookTime += Time.deltaTime;
             isCooking = true;
-                if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
-                {
-                    isCooked = true;
-                    CookedPizzas(isCooked);
-                    isCooking = false;
-                }
-                else if (cookTime >= totalCookTime + burnTime)
-                {
-                    activePizzaTexture = resourceLoader.cookedBurnt;
-                    textureChange = true;
-                    isCooking = false;
-                }
+            if (cookTime >= totalCookTime && cookTime <= totalCookTime + burnTime)
+            {
+
+                isCooked = true;
+                CookedPizzas(isCooked);
+                isCooking = false;
+            }
+            else if (cookTime >= totalCookTime + burnTime)
+            {
+                activePizzaTexture = resourceLoader.cookedBurnt;
+                Fabric.EventManager.Instance.PostEvent("Diegetic - Pizza Burnt", gameObject);
+                textureChange = true;
+                isCooking = false;
+            }
         }
 
         /// <summary>

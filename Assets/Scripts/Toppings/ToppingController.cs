@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
+using VRTK.GrabAttachMechanics;
+using VRTK.SecondaryControllerGrabActions;
 
 namespace PizzaTime
 {
@@ -28,6 +31,11 @@ namespace PizzaTime
             toppingObject = this.gameObject;
         }
 
+        void Update()
+        {
+            StartCoroutine(Grabbable());
+        }
+
         private void OnCollisionStay(Collision col)
         {
             var objTag = col.gameObject.tag;
@@ -41,6 +49,19 @@ namespace PizzaTime
         {
             yield return new WaitForSeconds(timeToDirty);
             dirtyTopping = true;
+        }
+
+        private IEnumerator Grabbable()
+        {
+            if(Time.timeScale < 1 && toppingObject.activeSelf)
+            {
+                toppingObject.SetActive(false);
+            }
+            else
+            {
+                toppingObject.SetActive(true);
+            }
+            yield return null;
         }
     }
 }
